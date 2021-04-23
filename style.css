@@ -1,0 +1,305 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('/fonts/rubik/Rubik-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Rubik';
+    src: url('/fonts/rubik/Rubik-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Rubik';
+    src: url('/fonts/rubik/Rubik-Light.ttf') format('truetype');
+    font-weight: light;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Rubik', 'Helvetica', 'sans-serif';
+}
+a {
+    text-decoration: none !important;
+}
+li {
+    list-style: none !important;
+}
+.perso_link_dark a{
+    color: #505160 !important;
+}
+.perso_link_light a{
+    color: #FFF !important;
+}
+.perso_search {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 2.5rem;
+    font-style: italic;
+}
+.perso_search_color_2 {
+    background-color: rgb(250, 250, 250);
+    color: #505160;
+}
+.perso_button {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 2.5rem;
+    border: none;
+}
+.perso_button_2 {
+    height: 3rem;
+}
+.perso_block_nav_mobile {
+    position: relative;
+    left: 0.7rem;
+}
+.perso_link_header {
+    text-decoration: none;
+}
+.perso_index_carousel {
+    z-index: 1;
+}
+.perso_index_header {
+    z-index: 2;
+    position: relative;
+}
+.perso_circle {
+    background-color: #FDAB91;
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    position: relative;
+    left: 15%;
+    top: 40%;
+    z-index: 3;
+    box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.356);
+}
+.perso_radius_button {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.title_img_carousel {
+    position: relative;
+    top: 10%;
+    left: 9%;
+    font-size: 3rem;
+    color: white;
+}
+.perso_svg {
+    height: 5rem;
+    width: auto;
+}
+.perso_svg_2 {
+    height: 3.5rem;
+    width: auto;
+}
+.perso_card_left {
+    border-bottom-left-radius: 0.2rem !important;
+}
+.perso_card_right {
+    border-bottom-right-radius: 0.2rem !important;
+}
+.perso_shadow {
+    box-shadow: 0 0 5px #50516069;
+}
+.perso_shadow_nimesalerie {
+    box-shadow: 0 0 15px #5051604d;
+    z-index: 1;
+}
+.footer {
+    z-index: 2;
+}
+.img-banniere-1 {
+    background-image: url(img/chat_yeux_bleus.jpg);
+    background-size: cover;
+    background-position-x: center;
+    width: 100%;
+    position: absolute;
+    height: 40rem;
+}
+.img-banniere-2 {
+    background-image: url(img/dogo_banniere.jpg);
+    background-size: cover;
+    background-position-x: center;
+    width: 100%;
+    position: absolute;
+    height: 40rem;
+}
+.img-banniere-3 {
+    background-image: url(img/rabbit_banniere.jpg);
+    background-size: cover;
+    background-position-x: center;
+    width: 100%;
+    position: absolute;
+    height: 40rem;
+}
+.perso_icon_paiement {
+    height: 2rem;
+}
+.perso_icon_paiement_2 {
+    height: 2.5rem;
+}
+.separator {
+    margin: 3rem 0 3rem 0;
+    height: 0.05rem;
+    width: 25rem;
+    background: linear-gradient(to left,#505160, white, #505160);
+}
+.perso_copy {
+    font-size: 0.9rem;
+}
+.produit_photo_produit {
+    width: 3rem;
+    height: 100%;
+}
+.perso_accordion_b_produit {
+    width: 25% !important;
+}
+.perso_accordion_b_produit:not(.collapsed) {
+    background-color: white !important;
+}
+.perso_accordion_b_produit:focus {
+    box-shadow: 0 0 0 0 !important;
+    border: 0 !important;
+}
+.perso_stock_color {
+    color: #4fca3e;
+}
+.perso_card_width_produit {
+    width: 15rem;
+}
+.perso_accordion_size {
+    width: 75% !important;
+}
+.perso_avis_size {
+    width: 75% !important;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 991.98px) {
+    .perso_logo svg {
+        width: 100%;
+        height: 40%;
+    }
+    .perso_ham_button {
+        display: none;
+    }
+    .title_img_carousel {
+        position: relative;
+        top: 2%;
+        left: 2%;
+        font-size: 2.5rem;
+        color: white;
+    }
+    .perso_circle {
+        background-color: #FDAB91;
+        border-radius: 50%;
+        width: 10rem;
+        height: 10rem;
+        position: relative;
+        left: 11%;
+        top: 5%;
+        z-index: 3;
+        box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.356);
+    }
+    .perso_overflow {
+        overflow-x: auto;
+    }
+    .perso_card_width {
+        width: 18rem;
+    }
+    .img-banniere-1 {
+        height: 25rem;
+    }
+    .img-banniere-2 {
+        height: 25rem;
+    }
+    .img-banniere-3 {
+        height: 25rem;
+    }
+    .perso_card_width_produit {
+        width: 11rem;
+    }
+    .perso_accordion_b_produit {
+        width: 75% !important;
+    }
+    .perso_accordion_size {
+        width: 100% !important;
+    }
+    .perso_avis_size {
+        width: 100% !important;
+    }
+} 
+@media (min-width: 991.99px) {
+    .perso_ham_button_2 {
+        display: none;
+    }
+}
+@media (max-width: 575.98px) { 
+    .label_icon_navbar {
+        display: none;
+    }
+    .perso_logo svg {
+        display: none;
+    }
+    .nav_mobile {
+        display: none;
+    }
+    .perso_circle {
+        background-color: #FDAB91;
+        border-radius: 50%;
+        width: 8rem;
+        height: 8rem;
+        position: relative;
+        left: 5%;
+        top: 42%;
+        z-index: 3;
+        box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.356);
+    }
+    .img-banniere-1 {
+        height: 20rem;
+    }
+    .img-banniere-2 {
+        height: 20rem;
+    }
+    .img-banniere-3 {
+        height: 20rem;
+    }
+    .title_img_carousel {
+        font-size: 1.8rem;
+    }
+    .perso_card_width {
+        width: 12rem;
+    }
+    .perso_card_width_produit {
+        width: 10rem;
+    }
+    .perso_categorie_title {
+        display: none;
+    }
+    .separator {
+        margin: 2rem 0 2rem 0;
+        width: 18rem;
+    }
+    .perso_accordion_b_produit {
+        width: 100% !important;
+    }
+}
+@media (min-width: 575.99px) {
+    .perso_search_mobile_2 {
+        display: none;
+    }
+}
