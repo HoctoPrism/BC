@@ -3,10 +3,10 @@
         <div class="col-12 d-flex flex-column align-items-center justify-content-center my-3">
         <div class="fs-4 d-md-block d-none">Retrouvez nous sur nos réseaux sociaux !</div>
         <div class="mt-4">
-            <a href="#" class="mx-2"><img src="../icons/Facebook.svg" alt="icone facebook"></a>
-            <a href="#" class="mx-2"><img src="../icons/Twitter.svg" alt="icone twitter"></a>
-            <a href="#" class="mx-2"><img src="../icons/Instagram.svg" alt="icone Instagram"></a>
-            <a href="#" class="mx-2"><img src="../icons/Pinterest.svg" alt="icone Pinterest"></a>
+            <a href="#" class="mx-2"><img src="../icon/Facebook.svg" alt="icone facebook"></a>
+            <a href="#" class="mx-2"><img src="../icon/Twitter.svg" alt="icone twitter"></a>
+            <a href="#" class="mx-2"><img src="../icon/Instagram.svg" alt="icone Instagram"></a>
+            <a href="#" class="mx-2"><img src="../icon/Pinterest.svg" alt="icone Pinterest"></a>
         </div>
         <div class="separator"></div>
         </div>
@@ -24,25 +24,25 @@
         <div class="col-md-4 col-12 d-flex flex-column align-items-center text-center">
         <h3 class="fs-4 mb-4 mt-md-0 mt-5">Les modes de paiements suivant sont acceptés</h3>
         <div>
-            <a href="#"><img src="../icons/visa.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone visa"></a>
-            <a href="#"><img src="../icons/mastercard.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone mastercard"></a>
-            <a href="#"><img src="../icons/cb.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone cb"></a>
-            <a href="#"><img src="../icons/paypal.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone paypal"></a>
+            <a href="#"><img src="../icon/visa.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone visa"></a>
+            <a href="#"><img src="../icon/mastercard.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone mastercard"></a>
+            <a href="#"><img src="../icon/cb.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone cb"></a>
+            <a href="#"><img src="../icon/paypal.svg" class="perso_icon_paiement mx-1 my-md-3" alt="icone paypal"></a>
         </div>
         </div>
         <div class="col-md-4 col-12 d-flex flex-column align-items-center">
         <h3 class="fs-4 mb-md-3 mb-0 mt-md-0 mt-5">Nos Transporteurs</h3>
         <div class="d-flex flex-lg-row flex-md-column">
             <div class="d-flex align-items-center justify-content-center flex-column flex-md-row m-3">
-            <img src="../icons/colissimo.svg" class="perso_icon_paiement_2 me-md-2" alt="icone colissimo">
+            <img src="../icon/colissimo.svg" class="perso_icon_paiement_2 me-md-2" alt="icone colissimo">
             <span>Colissimo</span>
             </div>
             <div class="d-flex align-items-center justify-content-center flex-column flex-md-row m-3">
-            <img src="../icons/chronopost.svg" class="perso_icon_paiement_2 me-md-2" alt="icone chronopost">
+            <img src="../icon/chronopost.svg" class="perso_icon_paiement_2 me-md-2" alt="icone chronopost">
             <span>Chronopost</span>
             </div>
             <div class="d-flex align-items-center justify-content-center flex-column flex-md-row m-3">
-            <img src="../icons/ups.svg" class="perso_icon_paiement_2 me-md-2" alt="icone ups">
+            <img src="../icon/ups.svg" class="perso_icon_paiement_2 me-md-2" alt="icone ups">
             <span>UPS</span>
             </div>
         </div>

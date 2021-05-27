@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-2 col-3 d-flex align-items-lg-end justify-content-lg-end align-items-start justify-content-start">
-        <img src="../icons/produit/icon account-account.svg" alt=" img account" class="h-100">
+        <img src="../icon/produit/icon-account-account.svg" alt=" img account" class="h-100">
     </div>
     <div class="col-9 lh-1">
         <div class="fs-5">Nom du compte</div>

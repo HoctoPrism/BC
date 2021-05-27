@@ -49,11 +49,11 @@
             <div class="col-12 perso_stock_color fs-3 fw-bold">en stock</div>
             <div class="col-12">
                 <div class="d-flex mt-4">
-                    <img src="../icons/produit/Group-camion.svg" alt="logo camion">
+                    <img src="../icon/produit/Group-camion.svg" alt="logo camion">
                     <div class="ms-3">Livraison à domicile sans frais</div>
                 </div>
                 <div class="d-flex">
-                    <img src="../icons/produit/Group-cb.svg" alt="logo cb">
+                    <img src="../icon/produit/Group-cb.svg" alt="logo cb">
                     <div class="ms-3">Paiement sécurisé Paypal et CB  </div>
                 </div>
             </div>
