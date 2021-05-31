@@ -180,7 +180,10 @@ li {
 .perso_avis_size {
     width: 75% !important;
 }
-
+.border_cgu {
+    border: 0;
+    background-color: white;
+}
 
 
 

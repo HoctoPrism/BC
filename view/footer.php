@@ -53,9 +53,9 @@
             <li><a href="#">A Propos de Nous</a></li>
             <li><a href="#">Nous Contacter</a></li>
             <li><a href="#">FAQ</a></li>
-            <li><a href="#">Mentions Légales</a></li>
+            <li><a href="../view/mentions.php">Mentions Légales</a></li>
             <li><a href="#">Confidentialité</a></li>
-            <li><a href="#">Conditions Générales</a></li>
+            <li><a href="../view/CGU.php">Conditions Générales</a></li>
         </ul>
         </div>
         <div class="col-12 perso_copy text-center pt-3">© 2021 Copyright - La Nîmes'alerie</div>
