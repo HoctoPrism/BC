@@ -51,11 +51,11 @@
         <div class="separator"></div>
         <ul class="p-0 perso_link_light d-flex flex-md-row flex-column text-center justify-content-evenly w-100">
             <li><a href="#">A Propos de Nous</a></li>
-            <li><a href="#">Nous Contacter</a></li>
+            <li><a href="contact.php">Nous Contacter</a></li>
             <li><a href="#">FAQ</a></li>
-            <li><a href="../view/mentions.php">Mentions Légales</a></li>
+            <li><a href="mentions.php">Mentions Légales</a></li>
             <li><a href="#">Confidentialité</a></li>
-            <li><a href="../view/CGU.php">Conditions Générales</a></li>
+            <li><a href="CGU.php">Conditions Générales</a></li>
         </ul>
         </div>
         <div class="col-12 perso_copy text-center pt-3">© 2021 Copyright - La Nîmes'alerie</div>
