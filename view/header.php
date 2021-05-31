@@ -9,10 +9,36 @@
       <input type="search" value="" placeholder="Chercher un produit, une marque..." class="bg-secondary border-0 w-100 perso_search ps-3 text-white" id="search_header_bar">
       <button type="submit" class="btn-warning perso_button"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2rem" height="2rem" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z" fill="white"/></svg></button>
     </div>
-    <div class="col-md-3 col-4 d-flex align-items-center justify-content-around perso_link_dark fs-5">
-      <div class="text-center">
+    <div class="col-md-3 col-4 d-flex align-items-center justify-content-around perso_link_dark fs-5 dropdown">
+      <div class="text-center " data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
           <a href="../view/signin.php"><svg class="m-md-0 m-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="50" height="50" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M12 11a4 4 0 1 1 0-8a4 4 0 0 1 0 8z" stroke="#626262" stroke-width="2" stroke-linecap="round" class="il-md-length-40 il-md-duration-3 il-md-delay-2"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke="#626262" stroke-width="2" stroke-linecap="round" class="il-md-length-25 il-md-duration-2 il-md-delay-0"/></g></svg></a>
-          <p class="label_icon_navbar"><a href="#">Compte</a></p>
+          <p class="label_icon_navbar"><a href="../view/signin.php">Compte</a></p>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-item">
+          <div class="d-flex flex-column align-items-center">
+              <form for="signin" class="d-flex flex-column">
+                  <div class="d-flex align-items-center justify-content-between my-4 fs-5 hoverLogin">
+                      <div>Se connecter</div>
+                      <a href="signup.php">S'inscrire</a>
+                  </div>
+                  <div class="mb-3">
+                      <label for="EmailSignin" class="form-label">Adresse mail</label>
+                      <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                      <label for="PasswordSignin" class="form-label">Votre mot de passe</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="keepConnection">
+                      <label class="form-check-label" for="keepConnection">Rester connecté</label>
+                  </div>
+                  <div class="mb-2"><a href="signin.php">Mot de passe oublié ?</a></div>
+                  <button type="submit" class="btn btn-warning text-white">Envoyer</button>
+              </form>
+          </div>
+        </div>
       </div>
       <div class="text-center">
           <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#505160" class="bi bi-basket m-md-0" viewBox="0 0 16 16">

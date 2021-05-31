@@ -6,7 +6,7 @@
     <div class="col-8 row row-cols-lg-4 flex-nowrap justify-content-between text-secondary perso_overflow g-0">
         <div class="col">
         <div class="card m-3 p-0 border-0 perso_shadow perso_card_width">
-            <a href="view/product.php" class="text-white">
+            <a href="product.php" class="text-white">
             <img src="../img/tendances/chat_tendance.jpg" class="card-img-top img-fluid" alt="photo croquette">
             <div class="card-body p-0 d-flex justify-content-center">
                 <div class="bg-secondary w-75 p-2 perso_card_left"><h5 class="card-title fs-4">Croquette</h5></div>

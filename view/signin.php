@@ -30,10 +30,34 @@
                 <input type="checkbox" class="form-check-input" id="keepConnection">
                 <label class="form-check-label" for="keepConnection">Rester connecté</label>
             </div>
+            <div class="mb-2"><a href="#forgotPassword" class="text-secondary" data-bs-toggle="modal" data-bs-target="#forgotPassword">Mot de passe oublié ?</a></div>
             <button type="submit" class="btn btn-warning text-white">Envoyer</button>
         </form>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="forgotPassword" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forgotPasswordLabel">Réinitialisation du mot de passe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="EmailSignin" class="form-label">Adresse mail</label>
+                    <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+                </div>
+                <p>Saisissez l'adresse email que vous avez utilisée pour créer votre compte client afin de recevoir un lien de réinitialisation de mot de passe.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
     <?php include("footer.php")?>
+    <script src="../bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
