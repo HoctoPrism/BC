@@ -200,7 +200,18 @@ li {
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
 }
-
+.bg_delivery_title_default {
+    background-color: #afdbaa;
+}
+.bg_delivery_body_default {
+    background-color: #d3ebd1;
+}
+.bg_delivery_title {
+    background-color: #b9b9b9;
+}
+.bg_delivery_body {
+    background-color: #dddddd;
+}
 
 
 
