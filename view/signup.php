@@ -19,12 +19,12 @@
                 <div>S'inscrire</div>
             </div>
             <div class="mb-3">
-                <label for="EmailSignin" class="form-label">Adresse mail</label>
-                <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+                <label for="EmailSignUp" class="form-label">Adresse mail</label>
+                <input type="email" class="form-control" id="EmailSignUp" name="EmailSignUp" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="PasswordSignup" class="form-label">Votre mot de passe</label>
-                <input type="password" class="form-control" id="PasswordSignup">
+                <input type="password" class="form-control" id="PasswordSignup" name="PasswordSignup">
             </div>
             <p>Vos informations personnellles : </p>
             <div class="d-flex justify-content-between">
@@ -43,19 +43,19 @@
             </div>
             <div class="mb-3">
                 <label for="firstnameUser" class="form-label">Prénom</label>
-                <input type="text" class="form-control" id="firstnameUser">
+                <input type="text" class="form-control" id="firstnameUser" name="firstnameUser">
             </div>
             <div class="mb-3">
                 <label for="lastnameUser" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="lastnameUser">
+                <input type="text" class="form-control" id="lastnameUser" name="lastnameUser">
             </div>
             <div class="mb-3">
                 <label for="birthUser" class="form-label">Date de naissance</label>
-                <input type="date" class="form-control" id="birthUser">
+                <input type="date" class="form-control" id="birthUser" name="birthUser">
             </div>
             <div class="mb-3 ">
                 <label for="countrySignup" class="form-label">Pays</label>
-                <select class="form-select" aria-label="countrySignup">
+                <select class="form-select" aria-label="countrySignup" name="countrySignup">
                     <option value="France">France</option>
                     <option value="Belgique">Belgique</option>
                     <option value="Suisse">Suisse</option>

@@ -20,15 +20,15 @@
             </div>
             <div class="mb-3">
                 <label for="EmailSignin" class="form-label">Adresse mail</label>
-                <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="EmailSignin" name="EmailSignin" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="PasswordSignin" class="form-label">Votre mot de passe</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control" id="PasswordSignin" name="PasswordSignin">
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="keepConnection">
-                <label class="form-check-label" for="keepConnection">Rester connecté</label>
+                <label class="form-check-label" for="keepConnection" name="keepConnection">Rester connecté</label>
             </div>
             <div class="mb-2"><a href="#forgotPassword" class="text-secondary" data-bs-toggle="modal" data-bs-target="#forgotPassword">Mot de passe oublié ?</a></div>
             <button type="submit" class="btn btn-warning text-white">Envoyer</button>
@@ -44,8 +44,8 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="EmailSignin" class="form-label">Adresse mail</label>
-                    <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+                    <label for="EmailReset" class="form-label">Adresse mail</label>
+                    <input type="email" class="form-control" id="EmailReset" name="EmailReset" aria-describedby="emailHelp">
                 </div>
                 <p>Saisissez l'adresse email que vous avez utilisée pour créer votre compte client afin de recevoir un lien de réinitialisation de mot de passe.</p>
             </div>
