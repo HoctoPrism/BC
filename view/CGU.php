@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../perso_style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/perso_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <title>La Nîmes'alerie</title>
 </head>
 <body>
-    <?php include("header.php")?>
+    <?php include("inc/header.php")?>
     <h2 class="text-warning text-center py-5 fw-bold">Conditions générales de vente</h2>
     <div class="accordion accordion-flush mx-lg-5 mx-2 my-5" id="accordionExample">
         <div class="accordion-item border-0 py-2">
@@ -449,7 +449,7 @@
             </div>
         </div>
     </div>
-    <?php include("footer.php")?>
-    <script src="../bootstrap.bundle.min.js"></script>
+    <?php include("inc/footer.php")?>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

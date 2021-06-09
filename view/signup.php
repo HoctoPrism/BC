@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../perso_style.css">
-    <link rel="stylesheet" href="../https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/perso_style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <title>La Nîmes'alerie</title>
 </head>
 <body class="text-secondary">
-    <?php include("header.php")?>
+    <?php include("inc/header.php")?>
     <h2 class="mt-5 text-center">Vous inscrire</h2>
     <div class="d-flex flex-column align-items-center my-5">
         <form for="signin" class="d-flex flex-column">
             <div class="d-flex align-items-center justify-content-between my-4 fs-5">
-                <a href="signin.php" class="text-warning">Se connecter</a>
+                <a href="signin" class="text-warning">Se connecter</a>
                 <div>S'inscrire</div>
             </div>
             <div class="mb-3">
@@ -64,7 +64,7 @@
             <button type="submit" class="btn btn-warning text-white">Envoyer</button>
         </form>
     </div>
-    <?php include("footer.php")?>
+    <?php include("inc/footer.php")?>
 </body>
 </html>
 

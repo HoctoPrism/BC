@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../perso_style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/perso_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <title>La Nîmes'alerie</title>
 </head>
 <body>
-    <?php include("header.php")?>
+    <?php include("inc/header.php")?>
     <section class="container-fluid row row-cols-2">
         <div class="col-2 p-3">
             <a href="#"><div class="text-secondary fs-5 p-1">Mes informations</div></a>
@@ -35,28 +35,30 @@
                         <div class="col-3">197€80 TTC</div>
                         <div class="col-3">Expédiée le 13/02/2017</div>
                         <div class="accordion accordion-flush col-2" id="accordionFlush1">
-                            <h2 class="accordion-header d-flex justify-content-between align-items-center" id="flush-headingOne">
-                                <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Détails
+                            <h2 class="accordion-header d-flex justify-content-center align-items-center" id="flush-heading1">
+                                <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary d-flex colorTrigger" id="colorTrigger1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                                    <div>Détails</div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FDAB91" class="bi bi-caret-down mx-3" id="fadeColorBill" viewBox="0 0 16 16">
+                                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                                    </svg>
+                                    </div>
                                 </button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#505160" class="bi bi-caret-down" viewBox="0 0 16 16">
-                                    <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
-                                </svg>
                             </h2>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#flush-headingOne">
+                        <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#flush-heading1">
                             <div class="accordion-body">
                                 <div class="my-2">Mode de paiement : <strong>Carte bancaire</strong></div>
                                 <div class="my-2">Mode de livraison : <strong>Livraison Chronopost Express (13h)</strong></div>
                                 <div class="d-flex row align-items-center justify-content-center border-top">
-                                    <div class="col-7"><img src="../img/croquette_chat.png" alt="croquette de chat"></div>
+                                    <div class="col-7"><img src="img/croquette_chat.png" alt="croquette de chat"></div>
                                     <div class="col-2 text-end">x1</div>
                                     <div class="col-3 text-end">59€90</div>
                                 </div>
                                 <div class="d-flex row align-items-center justify-content-center border-top">
-                                    <div class="col-7"><img src="../img/croquette_chien.png" alt="croquette de chien"></div>
+                                    <div class="col-7"><img src="img/croquette_chien.png" alt="croquette de chien"></div>
                                     <div class="col-2 text-end">x1</div>
                                     <div class="col-3 text-end">119€90</div>
                                 </div>
@@ -86,23 +88,25 @@
                         <div class="col-3">102€89 TTC</div>
                         <div class="col-3">Expédiée le 21/01/2017</div>
                         <div class="accordion accordion-flush col-2" id="accordionFlush2">
-                            <h2 class="accordion-header d-flex justify-content-center align-items-center" id="flush-headingOne">
-                                <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Détails
+                            <h2 class="accordion-header d-flex justify-content-center align-items-center" id="flush-heading2">
+                                <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary d-flex colorTrigger" id="colorTrigger2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+                                    <div>Détails</div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FDAB91" class="bi bi-caret-down mx-3" id="fadeColorBill" viewBox="0 0 16 16">
+                                        <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                                    </svg>
+                                    </div>
                                 </button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#505160" class="bi bi-caret-down" viewBox="0 0 16 16">
-                                    <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
-                                </svg>
                             </h2>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#flush-headingTwo">
+                        <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#flush-heading2">
                             <div class="accordion-body">
                                 <div class="my-2">Mode de paiement : <strong>Carte bancaire</strong></div>
                                 <div class="my-2">Mode de livraison : <strong>Livraison Colissimo</strong></div>
                                 <div class="d-flex row align-items-center justify-content-center border-top">
-                                    <div class="col-7"><img src="../img/croquette_chat.png" alt="croquette de chat"></div>
+                                    <div class="col-7"><img src="img/croquette_chat.png" alt="croquette de chat"></div>
                                     <div class="col-2 text-end">x1</div>
                                     <div class="col-3 text-end">99€90</div>
                                 </div>
@@ -127,7 +131,8 @@
             </div>
         </div>
     </section>
-    <?php include("footer.php")?>
-    <script src="../bootstrap.bundle.min.js"></script>
+    <?php include("inc/footer.php")?>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/animDetailOrderButton.js"></script>
 </body>
 </html>

@@ -5,19 +5,19 @@
                 <h1 class="fw-bold fs-5 text-center p-0 mb-5 d-block d-md-none">Croquette Vita-Plus stérilisé au poulet pour chat adulte stérilisé - 3Kg</h1>
             </div>
             <div class="col-12">
-                <img src="../img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_0.jpg" alt="photo croquette" class="img-fluid perso_width_img_produit">
+                <img src="img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_0.jpg" alt="photo croquette" class="img-fluid perso_width_img_produit">
             </div>
             <div class="my-4">
-                <img src="../img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_1.jpg" alt="photo paquet" class="produit_photo_produit">
-                <img src="../img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_3.jpg" alt="photo paquet" class="produit_photo_produit">
-                <img src="../img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_5.jpg" alt="photo paquet" class="produit_photo_produit">
+                <img src="img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_1.jpg" alt="photo paquet" class="produit_photo_produit">
+                <img src="img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_3.jpg" alt="photo paquet" class="produit_photo_produit">
+                <img src="img/photo_produit/7613033136351_PHOTOSITE_20200324_164154_5.jpg" alt="photo paquet" class="produit_photo_produit">
             </div>
         </div>
     </div>
     <div class="col-lg-8 col-md-7 col-12">
         <div class="row">
             <div class="col-12">
-                <h1 class="fw-bold fs-lg-1 fs-4 d-md-block d-none">Croquette Vita-Plus stérilisé au poulet pour chat adulte stérilisé - 3Kg</h1>
+                <h1 class="fw-bold fs-4 d-md-block d-none">Croquette Vita-Plus stérilisé au poulet pour chat adulte stérilisé - 3Kg</h1>
             </div>
             <div class="col-12 row align-items-center mt-4">
                 <div class="col-lg-5 col-12 d-flex align-items-center flex-md-row flex-column">
@@ -49,11 +49,11 @@
             <div class="col-12 perso_stock_color fs-3 fw-bold">en stock</div>
             <div class="col-12">
                 <div class="d-flex mt-4">
-                    <img src="../icon/produit/Group-camion.svg" alt="logo camion">
+                    <img src="icon/produit/Group-camion.svg" alt="logo camion">
                     <div class="ms-3">Livraison à domicile sans frais</div>
                 </div>
                 <div class="d-flex">
-                    <img src="../icon/produit/Group-cb.svg" alt="logo cb">
+                    <img src="icon/produit/Group-cb.svg" alt="logo cb">
                     <div class="ms-3">Paiement sécurisé Paypal et CB  </div>
                 </div>
             </div>

@@ -1,27 +1,27 @@
 @font-face {
     font-family: 'Rubik';
-    src: url('/fonts/rubik/Rubik-Regular.ttf') format('truetype');
+    src: url('../fonts/rubik/Rubik-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Rubik';
-    src: url('/fonts/rubik/Rubik-Bold.ttf') format('truetype');
+    src: url('../fonts/rubik/Rubik-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Rubik';
-    src: url('/fonts/rubik/Rubik-Light.ttf') format('truetype');
+    src: url('../fonts/rubik/Rubik-Light.ttf') format('truetype');
     font-weight: light;
     font-style: normal;
     font-display: swap;
 }
 
 body {
-    font-family: 'Rubik', 'Helvetica', 'sans-serif';
+    font-family: 'Rubik', 'Helvetica', 'sans-serif' !important;
 }
 a {
     text-decoration: none !important;
@@ -116,7 +116,7 @@ li {
     z-index: 2;
 }
 .img-banniere-1 {
-    background-image: url(img/chat_yeux_bleus.jpg);
+    background-image: url(../img/chat_yeux_bleus.jpg);
     background-size: cover;
     background-position-x: center;
     width: 100%;
@@ -124,7 +124,7 @@ li {
     height: 40rem;
 }
 .img-banniere-2 {
-    background-image: url(img/dogo_banniere.jpg);
+    background-image: url(../img/dogo_banniere.jpg);
     background-size: cover;
     background-position-x: center;
     width: 100%;
@@ -132,7 +132,7 @@ li {
     height: 40rem;
 }
 .img-banniere-3 {
-    background-image: url(img/rabbit_banniere.jpg);
+    background-image: url(../img/rabbit_banniere.jpg);
     background-size: cover;
     background-position-x: center;
     width: 100%;
@@ -184,17 +184,19 @@ li {
     border: 0;
     background-color: white;
 }
-
 .hoverLogin a {
     color: #FDAB91 !important;
 }
+.colorLoginDiv {
+    color: #505160 !important;
+}
 .dropdown-item:hover {
     background-color: #FFF !important;
-
 }
 .dropdown:hover>.dropdown-menu {
     display: block;
-    top: 8rem;
+    left: -5rem;
+    width: 15rem;
 }
 .dropdown>.dropdown-toggle:active {
     /*Without this, clicking will make it sticky*/
@@ -212,8 +214,12 @@ li {
 .bg_delivery_body {
     background-color: #dddddd;
 }
-
-
+.colorTrigger svg {
+    transition: transform 1s ease;
+}
+.sliderText {
+    font-size: 1.8rem;
+}
 
 
 @media (max-width: 991.98px) {
@@ -269,6 +275,9 @@ li {
     .perso_avis_size {
         width: 100% !important;
     }
+    .sliderText {
+        font-size: 1.2rem;
+    }
 } 
 @media (min-width: 991.99px) {
     .perso_ham_button_2 {
@@ -323,6 +332,9 @@ li {
     }
     .perso_accordion_b_produit {
         width: 100% !important;
+    }
+    .sliderText {
+        font-size: 1rem;
     }
 }
 @media (min-width: 575.99px) {

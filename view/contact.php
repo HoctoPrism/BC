@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../perso_style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/perso_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <title>La Nîmes'alerie</title>
 </head>
 <body>
-    <?php include("header.php")?>
+    <?php include("inc/header.php")?>
     <section class="d-flex flex-column align-items-center my-5">
         <h1>Contactez-nous</h1>
         <p>Vous pouvez nous contacter via le formulaire ci dessous.</p>
@@ -38,7 +38,7 @@
             <button type="submit" class="btn btn-warning text-white w-50 align-self-center">Envoyer</button>
         </form>
     </section>
-    <?php include("footer.php")?>
-    <script src="../bootstrap.bundle.min.js"></script>
+    <?php include("inc/footer.php")?>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

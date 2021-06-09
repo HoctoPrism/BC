@@ -4,21 +4,21 @@
       <h3 class="title_img_carousel">La litière pour chat TopLit</h3>
       <div class="perso_circle text-white d-flex align-items-center flex-column text-center justify-content-center">
         <p class="fs-1 fw-bold mb-lg-3 mb-0">- 25 %</p>
-        <span class="fs-lg-4 fs-md-5 fs-6">jusqu'au <br/>11/12/2021</span>
+        <span class="sliderText">jusqu'au <br/>11/12/2021</span>
       </div>
     </div>
     <div class="carousel-item img-banniere-2" data-bs-interval="10000">
       <h3 class="title_img_carousel">La niche de gros chien</h3>
       <div class="perso_circle text-white d-flex align-items-center flex-column text-center justify-content-center">
         <p class="fs-1 fw-bold mb-lg-3 mb-0">- 42 %</p>
-        <span class="fs-lg-4 fs-md-5 fs-6">jusqu'au <br/>11/12/2021</span>
+        <span class="sliderText">jusqu'au <br/>11/12/2021</span>
       </div>
     </div>
     <div class="carousel-item img-banniere-3" data-bs-interval="10000">
       <h3 class="title_img_carousel">Les graines vita+ pour lapin</h3>
       <div class="perso_circle text-white d-flex align-items-center flex-column text-center justify-content-center">
         <p class="fs-1 fw-bold mb-lg-3 mb-0">- 33 %</p>
-        <span class="fs-lg-4 fs-md-5 fs-6">jusqu'au <br/>11/12/2021</span>
+        <span class="sliderText">jusqu'au <br/>11/12/2021</span>
       </div>
     </div>
   </div>

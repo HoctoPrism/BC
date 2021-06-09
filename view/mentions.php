@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../perso_style.css">
-    <link rel="stylesheet" href="../https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/perso_style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <title>La Nîmes'alerie</title>
 </head>
 <body>
-    <?php include("header.php") ?>
+    <?php include("inc/header.php") ?>
     <section class="m-5 text-secondary">
         <h2 class="text-warning text-center my-5 fw-bold">Mentions Légales</h2>
         <h3 class="text-warning fw-bold">Publication du site</h3>
@@ -42,6 +42,6 @@
             Tous droits réservés. L'usage ou la reproduction partielle même des textes, photos ou graphismes publiés sur ce site sont interdits sans l'accord de Animalis. Toute tentative donnera lieu à des poursuites.</p>
         </div>
     </section>
-    <?php include("footer.php") ?>
+    <?php include("inc/footer.php") ?>
 </body>
 </html>

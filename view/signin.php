@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../perso_style.css">
-    <link rel="stylesheet" href="../https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/perso_style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <title>La Nîmes'alerie</title>
 </head>
 <body class="text-secondary">
-    <?php include("header.php")?>
+    <?php include("inc/header.php")?>
     <h2 class="mt-5 text-center">Vous connecter</h2>
     <div class="d-flex flex-column align-items-center my-5">
         <form for="signin" class="d-flex flex-column">
             <div class="d-flex align-items-center justify-content-between my-4 fs-5">
                 <div>Se connecter</div>
-                <a href="signup.php" class="text-warning">S'inscrire</a>
+                <a href="signup" class="text-warning">S'inscrire</a>
             </div>
             <div class="mb-3">
                 <label for="EmailSignin" class="form-label">Adresse mail</label>
@@ -56,8 +56,8 @@
             </div>
         </div>
     </div>
-    <?php include("footer.php")?>
-    <script src="../bootstrap.bundle.min.js"></script>
+    <?php include("inc/footer.php")?>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
