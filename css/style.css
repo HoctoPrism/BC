@@ -220,6 +220,55 @@ li {
 .sliderText {
     font-size: 1.8rem;
 }
+/*
+*
+    *CSS POUR LA PARTIE ESPACE
+*
+*/
+.header_space_button {
+    height: 30rem;
+}
+#bloc_img_space{
+    transition: transform 3s;
+    height: 30rem;
+
+}
+#bloc_img_space:hover{
+    transform: scale(1.05);
+}
+#back_img_space {
+    background: url(../img/space.jpg) no-repeat;
+    position: relative;
+    background-size: 150%;
+    background-position-x: center;
+    max-width: 100%;
+    height: 20rem;
+    border-radius: 1.2rem;
+    animation-play-state: paused
+}
+#back_img_space.animated {
+    animation:zoomout 3s ease-in-out;
+}
+#bloc_img_space:hover #back_img_space {
+    animation: zoomin 3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes zoomin {
+    0% {
+       background-size: 150% auto; 
+    }
+    100% {
+       background-size: 100% auto; 
+    }
+}
+@keyframes zoomout {
+    0% {
+       background-size: 100% auto; 
+    }
+    100% {
+       background-size: 150% auto; 
+    }
+}
 
 @media (max-width: 991.98px) {
     .perso_logo svg {
