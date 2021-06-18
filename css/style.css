@@ -229,12 +229,12 @@ li {
     height: 30rem;
 }
 #bloc_img_space{
-    transition: transform 3s;
+    transition: transform 3s ease-in-out;
     height: 30rem;
 
 }
 #bloc_img_space:hover{
-    transform: scale(1.05);
+    transform: scale(1.15);
 }
 #back_img_space {
     background: url(../img/space.jpg) no-repeat;
