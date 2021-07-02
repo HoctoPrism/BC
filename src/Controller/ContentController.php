@@ -27,5 +27,6 @@ class ContentController extends AbstractController{
     {
         return $this->render('content/mentions.html.twig');
     }
+    
 };
 ?>
