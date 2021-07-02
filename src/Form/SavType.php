@@ -20,10 +20,10 @@ class SavType extends AbstractType
             ->add('Email', EmailType::class)
             ->add('Sujet', ChoiceType::class, [
                     'choices' => [
-                        'Produit défectueux' => true,
-                        'Produit incomplet' => true,
-                        'Pièce cassée' => true,
-                        'Produit périmée' => true,
+                        'Produit défectueux' => 'Produit défectueux',
+                        'Produit incomplet' => 'Produit incomplet',
+                        'Pièce cassée' => 'Pièce cassée',
+                        'Produit périmée' => 'Produit périmée',
                     ],
 /*                     "expanded" => true,
                     'choice_attr' => function(){ return ['class' => 'p-5'];}, */

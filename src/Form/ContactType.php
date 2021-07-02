@@ -20,9 +20,9 @@ class ContactType extends AbstractType
             ->add('Email', EmailType::class)
             ->add('Sujet', ChoiceType::class, [
                     'choices' => [
-                        'Marketing' => true,
-                        'Service Client' => true,
-                        'Technique' => true,
+                        'Marketing' => 'Marketing',
+                        'Service Client' => 'Service Client',
+                        'Technique' => 'Technique',
                     ],
                     /* "expanded" => true,
                     'choice_attr' => function(){ return ['class' => 'p-5'];}, */

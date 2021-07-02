@@ -15,22 +15,22 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, MailerInterface $mailer)
     {
-        $form = $this->createForm(ContactType::class);
-        $form->handleRequest($request);
+        $formContact = $this->createForm(ContactType::class);
+        $formContact->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
+        if ($formContact->isSubmitted() && $formContact->isValid()){
+            $data = $formContact->getData();
 
             $message = (new Email())
                 ->from($data['Email'])
                 ->to($_ENV['DATA_MAIL_FORM'])
-                ->subject('Provenant du site')
+                ->subject($data['Sujet'])
                 ->text('Emetteur : '.$data['Email'].' Son message '.$data["Message"], 'text/plain');
                 $mailer->send($message);
         }
 
         return $this->render('contact/contact.html.twig', [
-            'form' => $form->createView(),
+            'form' => $formContact->createView(),
             'title' => "La Nimes'alerie - Contactez nous"
         ]);
     }

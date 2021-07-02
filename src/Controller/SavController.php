@@ -15,22 +15,22 @@ class SavController extends AbstractController
     #[Route('/sav', name: 'app_SAV')]
     public function index(Request $request, MailerInterface $mailer)
     {
-        $form = $this->createForm(SavType::class);
-        $form->handleRequest($request);
+        $formSav = $this->createForm(SavType::class);
+        $formSav->handleRequest($request);
         
-        if($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
+        if($formSav->isSubmitted() && $formSav->isValid()){
+            $data = $formSav->getData();
             
             $message = (new Email())
                 ->from($data['Email'])
                 ->to($_ENV['DATA_MAIL_FORM'])
-                ->subject('en provenance du site')
+                ->subject($data['Sujet'])
                 ->text('from '.$data['Email'].' message : '.$data['Message'], 'text/plain');
                 $mailer->send($message);
         }
 
         return $this->render('sav/SAV.html.twig', [
-            'form' => $form->createView(),
+            'form' => $formSav->createView(),
             'title' => "la Nimes'alerie - SAV"
         ]);
     }
