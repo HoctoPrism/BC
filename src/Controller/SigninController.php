@@ -11,7 +11,7 @@ class SigninController extends AbstractController
     #[Route('/signin', name: 'app_signin')]
     public function index(): Response
     {
-        return $this->render('signin/signin.html.twig', [
+        return $this->render('content/signin.html.twig', [
   
         ]);
     }
