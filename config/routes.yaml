@@ -1,11 +1,6 @@
 index:
   path: /
   controller: App\Controller\DefaultController::index
-app_userAccount:
-  path: /useraccount/{title}
-  controller: App\Controller\ContentController::useraccount
-  defaults:
-    title : "Compte utilisateur"
 # config/routes/dev/framework.yaml
 _errors:
     resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
