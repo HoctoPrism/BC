@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<title>La Nimes'alerie - Page Produit</title>
+        <!-- Descriptif rapide -->
+        {% include "inc/quickDescription.html.twig" %}
+        <!-- description complète-->
+        {% include "inc/fullDescription.html.twig" %}
+      <!-- Avis sur le produit -->
+      <section class="container-fluid">
+          <div class="row bg-secondary text-white rounded-1 p-lg-5 m-lg-5 p-md-3 m-md-3 p-1 m-0">
+            <h3 class="col-12 fw-bold fs-3 text-center mb-md-5 mb-4">Avis sur le produit</h3>
+            <div class="col-lg-4 col-12 row">
+                <!-- REVIEW ONE -->
+                {% include "inc/productReview.html.twig" %}
+            </div>
+            <div class="col-lg-4 col-12 row">
+                <!-- REVIEW TWO -->
+                {% include "inc/productReview.html.twig" %}
+            </div>
+            <div class="col-lg-4 col-12 row d-lg-flex d-none">
+                <!-- REVIEW THREE -->
+                {% include "inc/productReview.html.twig" %}
+            </div>
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <button type="button" class="btn btn-light text-secondary px-5 mt-md-5 mt-3">Voir Plus</button>
+            </div>
+          </div>
+      </section>
+      <section class="container-fluid text-secondary">
+        <h3 class="my-5 fw-bold text-center">Produits similaires</h3>
+        <div class="row row-cols-lg-7 justify-content-lg-center flex-nowrap text-secondary perso_overflow mb-5 g-0">
+            <div class="col">
+              <!-- SIMILAR PRODUCT ONE -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>       
+            <div class="col">
+              <!-- SIMILAR PRODUCT TWO -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>
+            <div class="col">
+              <!-- SIMILAR PRODUCT THREE -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>
+            <div class="col">
+              <!-- SIMILAR PRODUCT FOUR -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>
+            <div class="col">
+              <!-- SIMILAR PRODUCT FIVE -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>
+            <div class="col">
+              <!-- SIMILAR PRODUCT SIX -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>
+            <div class="col">
+              <!-- SIMILAR PRODUCT SEVEN -->
+              {% include "inc/similarProduct.html.twig" %}
+            </div>
+        </div>
+      </section>
+{% endblock %}

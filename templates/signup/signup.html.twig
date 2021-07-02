@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<title>La Nimes'alerie - Inscription</title>
+    <h2 class="mt-5 text-center text-secondary">Vous inscrire</h2>
+    <div class="d-flex flex-column align-items-center my-5 text-secondary">
+        <form for="signin" class="d-flex flex-column">
+            <div class="d-flex align-items-center justify-content-between my-4 fs-5">
+                <a href="{{ path ('app_signin') }}" class="text-warning">Se connecter</a>
+                <div>S'inscrire</div>
+            </div>
+            <div class="mb-3">
+                <label for="EmailSignUp" class="form-label">Adresse mail</label>
+                <input type="email" class="form-control" id="EmailSignUp" name="EmailSignUp" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="PasswordSignup" class="form-label">Votre mot de passe</label>
+                <input type="password" class="form-control" id="PasswordSignup" name="PasswordSignup">
+            </div>
+            <p>Vos informations personnellles : </p>
+            <div class="d-flex justify-content-between">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Homme
+                    </label>
+                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Femme
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="firstnameUser" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="firstnameUser" name="firstnameUser">
+            </div>
+            <div class="mb-3">
+                <label for="lastnameUser" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="lastnameUser" name="lastnameUser">
+            </div>
+            <div class="mb-3">
+                <label for="birthUser" class="form-label">Date de naissance</label>
+                <input type="date" class="form-control text-secondary" id="birthUser" name="birthUser">
+            </div>
+            <div class="mb-3 ">
+                <label for="countrySignup" class="form-label">Pays</label>
+                <select class="form-select text-secondary" aria-label="countrySignup" name="countrySignup">
+                    <option value="France">France</option>
+                    <option value="Belgique">Belgique</option>
+                    <option value="Suisse">Suisse</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-warning text-white">Envoyer</button>
+        </form>
+    </div>
+{% endblock %}
+
+
