@@ -7,14 +7,14 @@
       <div class="px-md-4 px-0 fs-4 fw-bold"><a href="/" class="text-warning ">La Nîmes'alerie</a></div>
     </div>
     <div class="col-5 d-md-flex align-items-center justify-content-center d-none">
-      <input type="search" value="" placeholder="Chercher un produit, une marque..." class="bg-secondary border-0 w-100 perso_search ps-3 text-white" id="search_header_bar">
-      <button type="submit" class="btn-warning perso_button"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2rem" height="2rem" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z" fill="white"/></svg></button>
+      <input type="search" placeholder="Chercher un produit, une marque..." class="bg-secondary border-0 w-100 perso_search ps-3 text-white" id="search_header_bar">
+      <button type="submit" class="btn-warning perso_button p_btn_search"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2rem" height="2rem" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z" fill="white"/></svg></button>
     </div>
     <div class="col-md-3 col-4 d-flex align-items-center justify-content-around perso_link_dark fs-5">
       <div class="dropdown d-flex">
         <div class="text-center" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-            <a href="{{ path ('app_signin') }}"><svg class="m-md-0 m-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="50" height="50" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M12 11a4 4 0 1 1 0-8a4 4 0 0 1 0 8z" stroke="#626262" stroke-width="2" stroke-linecap="round" class="il-md-length-40 il-md-duration-3 il-md-delay-2"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke="#626262" stroke-width="2" stroke-linecap="round" class="il-md-length-25 il-md-duration-2 il-md-delay-0"/></g></svg></a>
-            <p class="label_icon_navbar"><a href="{{ path ('app_signin') }}">Compte</a></p>
+            <a href="{{ path ('app_login') }}"><svg class="m-md-0 m-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="50" height="50" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M12 11a4 4 0 1 1 0-8a4 4 0 0 1 0 8z" stroke="#626262" stroke-width="2" stroke-linecap="round" class="il-md-length-40 il-md-duration-3 il-md-delay-2"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke="#626262" stroke-width="2" stroke-linecap="round" class="il-md-length-25 il-md-duration-2 il-md-delay-0"/></g></svg></a>
+            <p class="label_icon_navbar"><a href="{{ path ('app_login') }}">Compte</a></p>
         </div>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <div class="dropdown-item">
@@ -22,21 +22,22 @@
                 <form for="signin" class="d-flex flex-column colorLoginDiv">
                     <div class="d-flex align-items-center justify-content-between my-4 fs-5 hoverLogin">
                         <div>Se connecter</div>
-                        <a href="{{ path ('app_signup') }}">S'inscrire</a>
+                        <a href="{{ path ('app_register') }}">S'inscrire</a>
                     </div>
                     <div class="mb-3">
-                        <label for="EmailSignin" class="form-label">Adresse mail</label>
-                        <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+                        <label for="emailuser" class="form-label">Adresse mail</label>
+                        <input type="email" class="form-control" id="emailuser" name="emailuser" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="PasswordSignin" class="form-label">Votre mot de passe</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="pwduser" class="form-label">Votre mot de passe</label>
+                        <input type="password" class="form-control" name="pwduser" id="pwduser">
                     </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="keepConnection">
                         <label class="form-check-label" for="keepConnection">Rester connecté</label>
                     </div>
-                    <div class="mb-2"><a href="{{ path ('app_signin') }}">Mot de passe oublié ?</a></div>
+                    <div class="mb-2"><a href="{{ path ('app_login') }}">Mot de passe oublié ?</a></div>
                     <button type="submit" class="btn btn-warning text-white">Envoyer</button>
                 </form>
             </div>
@@ -89,7 +90,7 @@
       </div>
       <div class="col-10 d-flex p-0 d-md-none perso_block_nav_mobile">
         <input type="search" value="" placeholder="Chercher un produit, une marque..." class="border-0 w-100 perso_search ps-2 perso_search_color_2" id="search_header_bar">
-        <button type="submit" class="btn-warning perso_button"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2rem" height="2rem" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z" fill="white"/></svg></button>
+        <button type="submit" class="btn-warning perso_button p_btn_search"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2rem" height="2rem" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z" fill="white"/></svg></button>
       </div>
     </div>
   </nav>
