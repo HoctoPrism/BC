@@ -242,7 +242,22 @@ li {
     -webkit-box-shadow: 0 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
             box-shadow: 0 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
 }
-
+.p_checkbox:checked {
+    background-color: #ffd6a0 !important;
+    color: white !important;
+    border-color: #ffd6a0 !important;
+    -webkit-box-shadow: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+}
+.p_checkbox:focus {
+    border-color: #ffd6a0 !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+}
+.pointer {
+    cursor: pointer;
+}
 /*
 *
     *CSS POUR LA PARTIE ESPACE

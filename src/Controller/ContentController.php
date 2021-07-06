@@ -11,7 +11,7 @@ class ContentController extends AbstractController{
         return $this->render('content/404.html.twig');
     }
 
-    #[Route('/account', name: 'app_userAccount')]
+    #[Route('/account', name: 'app_account')]
     public function useraccount(): Response{
         return $this->render('content/userAccount.html.twig');
     }
@@ -26,7 +26,6 @@ class ContentController extends AbstractController{
     public function mention(): Response
     {
         return $this->render('content/mentions.html.twig');
-    }
-    
+    }  
 };
 ?>

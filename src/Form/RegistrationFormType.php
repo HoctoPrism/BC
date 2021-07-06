@@ -47,7 +47,6 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('firstnameuser')
             ->add('lastnameuser')
-            ->add('phonemobileuser')
             ->add('birthuser', DateType::class, [
                 'widget' => 'single_text',
                 // this is actually the default format for single_text

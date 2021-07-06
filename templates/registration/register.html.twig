@@ -28,24 +28,20 @@
             <p>Vos informations personnelles : </p>
             {{ form_widget(registrationForm.ismaleuser, {'attr': {'class': 'form-select mb-3 d-flex justify-content-evenly'}}) }}
             <div class="mb-3"> <!-- Input du form pour Prénom -->
-                {{ form_label(registrationForm.firstnameuser, "Votre Prénom", {'attr': {'class': 'form-label'}}) }}
+                {{ form_label(registrationForm.firstnameuser, "Votre prénom", {'attr': {'class': 'form-label'}}) }}
                 {{ form_widget(registrationForm.firstnameuser, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="mb-3"> <!-- Input du form pour Nom -->
-                {{ form_label(registrationForm.lastnameuser, "Votre Nom", {'attr': {'class': 'form-label'}}) }}
+                {{ form_label(registrationForm.lastnameuser, "Votre nom", {'attr': {'class': 'form-label'}}) }}
                 {{ form_widget(registrationForm.lastnameuser, {'attr': {'class': 'form-control'}}) }}
             </div>
-            <div class="mb-3"> <!-- Input du form pour le numéro de téléphone -->
-                {{ form_label(registrationForm.phonemobileuser, "Votre Numéro de Téléphone", {'attr': {'class': 'form-label'}}) }}
-                {{ form_widget(registrationForm.phonemobileuser, {'attr': {'class': 'form-control'}}) }}
-            </div>
             <div class="mb-3"> <!-- Input du form pour la date de naissance -->
-                {{ form_label(registrationForm.birthuser, "Votre Date de Naissance", {'attr': {'class': 'form-label'}}) }}
+                {{ form_label(registrationForm.birthuser, "Votre date de naissance", {'attr': {'class': 'form-label'}}) }}
                 {{ form_widget(registrationForm.birthuser, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="mb-3">
-                {{ form_widget(registrationForm.agreeTerms) }}
-                {{ form_label(registrationForm.agreeTerms, "Accepter les termes d'utilisation") }}
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input p_checkbox'}}) }}
+                <a href=" {{ path ('app_cgu') }} ">{{ form_label(registrationForm.agreeTerms, "Accepter les termes d'utilisation") }}</a>
             </div>
 
             <button type="submit" class="btn btn-warning text-white">Envoyer</button>

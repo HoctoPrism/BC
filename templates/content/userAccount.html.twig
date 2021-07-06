@@ -9,7 +9,7 @@
             <a href="#"><div class="text-secondary fs-5 p-1">Mes paramètres</div></a>
         </div>
         <div class="col-10 row">
-            <?php  /* include("userAccountInfo.php"); */  ?>
+            {% include("inc/userAccountInfo.html.twig") %}
             <div class="text-secondary text-center my-5">
                 <h2 class="fs-1">Commande en cours</h2>
                 <div class="fs-2">0</div>
@@ -42,12 +42,12 @@
                                 <div class="my-2">Mode de paiement : <strong>Carte bancaire</strong></div>
                                 <div class="my-2">Mode de livraison : <strong>Livraison Chronopost Express (13h)</strong></div>
                                 <div class="d-flex row align-items-center justify-content-center border-top">
-                                    <div class="col-7"><img src="img/croquette_chat.png" alt="croquette de chat"></div>
+                                    <div class="col-7"><img src="../images/croquette_chat.png" alt="croquette de chat"></div>
                                     <div class="col-2 text-end">x1</div>
                                     <div class="col-3 text-end">59€90</div>
                                 </div>
                                 <div class="d-flex row align-items-center justify-content-center border-top">
-                                    <div class="col-7"><img src="img/croquette_chien.png" alt="croquette de chien"></div>
+                                    <div class="col-7"><img src="../images/croquette_chien.png" alt="croquette de chien"></div>
                                     <div class="col-2 text-end">x1</div>
                                     <div class="col-3 text-end">119€90</div>
                                 </div>
