@@ -26,7 +26,7 @@
                 perso
             -->
             <p>Vos informations personnelles : </p>
-            {{ form_widget(registrationForm.ismaleuser, {'attr': {'class': 'form-select mb-3 d-flex justify-content-evenly'}}) }}
+            {{ form_widget(registrationForm.gender, {'attr': {'class': 'form-select mb-3 d-flex justify-content-evenly'}}) }}
             <div class="mb-3"> <!-- Input du form pour Prénom -->
                 {{ form_label(registrationForm.firstnameuser, "Votre prénom", {'attr': {'class': 'form-label'}}) }}
                 {{ form_widget(registrationForm.firstnameuser, {'attr': {'class': 'form-control'}}) }}
