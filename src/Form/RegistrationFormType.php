@@ -52,7 +52,7 @@ class RegistrationFormType extends AbstractType
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
             ])
-            ->add('ismaleuser', ChoiceType::class, [
+            ->add('gender', ChoiceType::class, [
                 'choices' => [
                     'Homme' => 'Homme',
                     'Femme' => 'Femme',

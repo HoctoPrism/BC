@@ -42,11 +42,11 @@ class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
     private $lastnameuser;
 
     /**
-     * @var bool|null
+     * @var string|null
      *
-     * @ORM\Column(name="isMaleUser", type="boolean", nullable=true)
+     * @ORM\Column(name="gender", type="string", length=40, nullable=true)
      */
-    private $ismaleuser;
+    private $gender;
 
     /**
      * @var string|null
@@ -65,7 +65,7 @@ class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string|null
      *
-     * @ORM\Column(name="pwdUser", type="string", length=50, nullable=true)
+     * @ORM\Column(name="pwdUser", type="string", length=255, nullable=true)
      */
     private $pwduser;
 
@@ -136,14 +136,14 @@ class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getIsmaleuser(): ?bool
+    public function getGender(): ?string
     {
-        return $this->ismaleuser;
+        return $this->gender;
     }
 
-    public function setIsmaleuser(?bool $ismaleuser): self
+    public function setGender(?string $gender): self
     {
-        $this->ismaleuser = $ismaleuser;
+        $this->gender = $gender;
 
         return $this;
     }

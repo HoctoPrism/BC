@@ -4,41 +4,59 @@
     <!-- PREMIERE PARTIE -->
     <div class="col-5 mx-3">
         <div class="mb-3">
-            <label for="EmailSignin" class="form-label">Adresse mail</label>
-            <input type="email" class="form-control" id="EmailSignin" aria-describedby="emailHelp">
+            <label for="emailuser" class="form-label">Adresse mail</label>
+            <input type="email" class="form-control" id="emailuser" aria-describedby="emailuser" value="{{ app.user.emailuser }}">
         </div>
         <div class="mb-3">
-            <label for="PasswordSignup" class="form-label">Votre mot de passe</label>
-            <input type="password" class="form-control" id="PasswordSignup">
+            <label for="pwduser" class="form-label">Votre mot de passe</label>
+            <input type="password" class="form-control" id="pwduser">
         </div>
+        {% if app.user.gender == "Homme" %}
         <div class="d-flex">
             <div class="form-check me-3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                <label class="form-check-label" for="flexRadioDefault1">
+                <input class="form-check-input" type="radio" name="gender" id="gender1" checked>
+                <label class="form-check-label" for="gender1">
                     Homme
                 </label>
                 </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="gender" id="gender2">
+                <label class="form-check-label" for="gender2">
                     Femme
                 </label>
             </div>
         </div>
+        {% endif %}
+        {% if app.user.gender == "Femme" %}
+        <div class="d-flex">
+            <div class="form-check me-3">
+                <input class="form-check-input" type="radio" name="gender" id="gender1">
+                <label class="form-check-label" for="gender1">
+                    Homme
+                </label>
+                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="gender2" checked>
+                <label class="form-check-label" for="gender2">
+                    Femme
+                </label>
+            </div>
+        </div>
+        {% endif %}
     </div>
     <!-- SECONDE PARTIE -->
     <div class="col-5 mx-3">
         <div class="mb-3">
-            <label for="firstnameUser" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="firstnameUser">
+            <label for="firstnameuser" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="firstnameuser" value="{{ app.user.firstnameuser }}">
         </div>
         <div class="mb-3">
-            <label for="lastnameUser" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="lastnameUser">
+            <label for="lastnameuser" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="lastnameuser" value="{{ app.user.lastnameuser }}">
         </div>
         <div class="mb-3">
-            <label for="birthUser" class="form-label">Date de naissance</label>
-            <input type="date" class="form-control" id="birthUser">
+            <label for="birthuser" class="form-label">Date de naissance</label>
+            <input type="date" class="form-control" id="birthuser" value="{{ app.user.birthuser|date('Y-m-d') }}">
         </div>
     </div>
     <div class="d-flex justify-content-center my-3"><input type="submit" class="btn btn-warning text-white" value="Valider"></input></div>
