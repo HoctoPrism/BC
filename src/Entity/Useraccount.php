@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * Useraccount
@@ -10,8 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="useraccount")
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\UseraccountRepository")
+ * @UniqueEntity(fields={"emailuser"}, message="There is already an account with this emailuser")
  */
-class Useraccount
+class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @var int
@@ -92,7 +97,17 @@ class Useraccount
      */
     private $nborderuser;
 
-    public function getIduser(): ?int
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+    public function getUserIdentifier(): ?int
     {
         return $this->iduser;
     }
@@ -145,6 +160,18 @@ class Useraccount
         return $this;
     }
 
+    public function getUsername(): ?string
+    {
+        return $this->emailuser;
+    }
+
+    public function setUsername(?string $emailuser): self
+    {
+        $this->emailuser = $emailuser;
+
+        return $this;
+    }
+
     public function getBirthuser(): ?\DateTimeInterface
     {
         return $this->birthuser;
@@ -156,13 +183,15 @@ class Useraccount
 
         return $this;
     }
-
-    public function getPwduser(): ?string
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): ?string
     {
         return $this->pwduser;
     }
 
-    public function setPwduser(?string $pwduser): self
+    public function setPassword(?string $pwduser): self
     {
         $this->pwduser = $pwduser;
 
@@ -217,5 +246,45 @@ class Useraccount
         return $this;
     }
 
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
 
 }

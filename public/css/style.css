@@ -41,6 +41,20 @@ li {
     height: 2.5rem;
     font-style: italic;
 }
+.perso_search:focus{
+    color: #212529;
+    border-color: #ffd6a0 !important;
+    outline: 0;
+    -webkit-box-shadow: -0.25rem 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
+            box-shadow: -0.25rem 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
+}
+.perso_search:focus ~ .p_btn_search {
+    color: #212529;
+    border-color: #ffd6a0 !important;
+    outline: 0;
+    -webkit-box-shadow: 0.25rem 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
+            box-shadow: 0.25rem 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
+}
 .perso_search_color_2 {
     background-color: rgb(250, 250, 250);
     color: #505160;
@@ -219,6 +233,30 @@ li {
 }
 .sliderText {
     font-size: 1.8rem;
+}
+.activeForm:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #ffd6a0 !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
+            box-shadow: 0 0 0 0.25rem rgba(252, 204, 102, 0.25) !important;
+}
+.p_checkbox:checked {
+    background-color: #ffd6a0 !important;
+    color: white !important;
+    border-color: #ffd6a0 !important;
+    -webkit-box-shadow: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+}
+.p_checkbox:focus {
+    border-color: #ffd6a0 !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+}
+.pointer {
+    cursor: pointer;
 }
 /*
 *
