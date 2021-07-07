@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-5 col-12">
         <div class="row">
             <div class="col-12">
-                <h1 class="fw-bold fs-5 text-center p-0 mb-5 d-block d-md-none">Croquette Vita-Plus stérilisé au poulet pour chat adulte stérilisé - 3Kg</h1>
+                <h1 class="fw-bold fs-5 text-center p-0 mb-5 d-block d-md-none">{{ product_name }} - {{ product_quantity|round }}</h1>
             </div>
             <div class="col-12">
                 <img src="{{ asset ('images/photo_produit/7613033136351_PHOTOSITE_20200324_164154_0.jpg') }}" alt="photo croquette" class="img-fluid perso_width_img_produit">
@@ -18,7 +18,7 @@
     <div class="col-lg-8 col-md-7 col-12">
         <div class="row">
             <div class="col-12">
-                <h1 class="fw-bold fs-4 d-md-block d-none">Croquette Vita-Plus stérilisé au poulet pour chat adulte stérilisé - 3Kg</h1>
+                <h1 class="fw-bold fs-4 d-md-block d-none">{{ product_name }} - {{ product_quantity|round }}Kg</h1>
             </div>
             <div class="col-12 row align-items-center mt-4">
                 <div class="col-lg-5 col-12 d-flex align-items-center flex-md-row flex-column">
@@ -43,11 +43,11 @@
                 </div>
                 <div class="col-2 my-lg-0 my-2">compteur</div>
                 <div class="col-5 d-flex align-items-end justify-content-center my-lg-0 my-2">
-                    <div class="fs-1 fw-bold text-warning">50 €</div>
-                    <div>TTC</div>
+                    <div class="fs-1 fw-bold text-warning">{{ product_price * 1.2}}€<span class="text-secondary fs-6 fw-light">TTC</span></div>
+                    
                 </div>
             </div>
-            <div class="col-12 perso_stock_color fs-3 fw-bold">en stock</div>
+            <div class="col-12 perso_stock_color fs-5 fw-bold">en stock</div>
             <div class="col-12">
                 <div class="d-flex mt-4">
                     <img src="{{ asset ('icon/produit/Group-camion.svg') }}" alt="logo camion">
@@ -62,13 +62,13 @@
                 <button type="button" class="btn btn-warning text-white btn-lg mt-4 fw-bold">Ajouter au Panier</button>
             </div>
             <div class="col-12 fw-bold mt-5 fs-5 d-lg-block d-none">
-                Croquettes au poulet avec de la L-carnitine et un apport calorique réduit pour le maintien du poids idéal des chats mature âgés de 7 ans et +. La formule contient des protéines de haute qualité, des oméga-6 et de la vitamine E pour un pelage brillant et une peau en bonne santé
+                {{ product_q_descript }}            
             </div>
             <div class="col-12 d-lg-flex d-none justify-content-end">
                 <button type="button" class="btn btn-warning text-white btn-lg mt-4 fw-bold">Ajouter au Panier</button>
             </div>
         </div>
     </div>
-    <div class="col-12 fw-bold mt-5 fs-5 d-lg-none d-block text-center">Croquettes au poulet avec de la L-carnitine et un apport calorique réduit pour le maintien du poids idéal des chats mature âgés de 7 ans et +. La formule contient des protéines de haute qualité, des oméga-6 et de la vitamine E pour un pelage brillant et une peau en bonne santé</div>
+    <div class="col-12 fw-bold mt-5 fs-5 d-lg-none d-block text-center"> {{ product_q_descript}} </div>
 </section>
 {% endblock %}

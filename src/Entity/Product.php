@@ -25,7 +25,7 @@ class Product
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nameProduct", type="string", length=50, nullable=true)
+     * @ORM\Column(name="nameProduct", type="string", length=100, nullable=true)
      */
     private $nameproduct;
 
@@ -94,6 +94,21 @@ class Product
      * })
      */
     private $idcategory;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $descriptionProduct2;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $descriptionProduct3;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $descriptionProduct4;
 
     public function getIdproduct(): ?int
     {
@@ -216,6 +231,42 @@ class Product
     public function setIdcategory(?Category $idcategory): self
     {
         $this->idcategory = $idcategory;
+
+        return $this;
+    }
+
+    public function getDescriptionProduct2(): ?string
+    {
+        return $this->descriptionProduct2;
+    }
+
+    public function setDescriptionProduct2(?string $descriptionProduct2): self
+    {
+        $this->descriptionProduct2 = $descriptionProduct2;
+
+        return $this;
+    }
+
+    public function getDescriptionProduct3(): ?string
+    {
+        return $this->descriptionProduct3;
+    }
+
+    public function setDescriptionProduct3(?string $descriptionProduct3): self
+    {
+        $this->descriptionProduct3 = $descriptionProduct3;
+
+        return $this;
+    }
+
+    public function getDescriptionProduct4(): ?string
+    {
+        return $this->descriptionProduct4;
+    }
+
+    public function setDescriptionProduct4(?string $descriptionProduct4): self
+    {
+        $this->descriptionProduct4 = $descriptionProduct4;
 
         return $this;
     }
