@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <section class="row row-cols-md-2 row-cols-1 my-5">
+        <div class="col d-flex align-items-center flex-column justify-content-center">
+            <div class="fs-2 text-start-lg text-center">{{controller_name}}</div>
+            <div class="fw-bold fs-1 text-warning">:(</div>
+        </div>
+        <img src="{{asset ('images/cyring-man.gif')}}" alt="crying man gif" class="col py-5">
+    </section>
+{% endblock %}
