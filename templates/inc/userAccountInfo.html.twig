@@ -3,6 +3,15 @@
     <h2 class="col-12 text-center my-5">Informations personnelles</h2>
     <!-- PREMIERE PARTIE -->
     <div class="col-5 mx-3">
+        {{ form_start(ModifyForm, {'attr': {'class': 'd-flex flex-column'}, 'method': 'POST'}) }}
+        <div class="mb-3"> <!-- Input du form pour l'email -->
+            {{ form_label(ModifyForm.emailuser, "Adresse mail", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(ModifyForm.emailuser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_end(ModifyForm) }}
+
+
+
         <div class="mb-3">
             <label for="emailuser" class="form-label">Adresse mail</label>
             <input type="email" class="form-control" id="emailuser" aria-describedby="emailuser" value="{{ app.user.emailuser }}">

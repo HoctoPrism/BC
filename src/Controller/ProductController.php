@@ -4,18 +4,65 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Form\AddProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class ProductController extends AbstractController
 {
+    #[Route('/product/update/{idproduct}', name: 'app_updateProduct')]
+    public function updateProduct(ValidatorInterface $validator, $idproduct): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($idproduct);
 
-    #[Route('/product/{idproduct}', name: 'app_product')]
-    public function displayProduct($idproduct, ?Category $idcategory){
+        $product->setSaveur("humain");
+
+        $error = $validator->validate($product);
+
+        if (count($error) > 0){
+            return new Response((string) $error, 400);
+        } 
+
+        else {
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute("app_oneProduct", [
+                'idproduct' => $product->getIdproduct()
+            ]);
+        }
+    }
+
+    #[Route('/product/delete/{idproduct}', name: 'app_deleteProduct')]
+    public function deleteProduct(ValidatorInterface $validator, $idproduct): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($idproduct);
+
+        $error = $validator->validate($product);
+
+        if (count($error) > 0){
+            return new Response((string) $error, 400);
+        } 
+
+        else {
+            $entityManager->remove($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute("app_listProduct");
+        }
+    }
+
+    #[Route('/product/{idproduct}', name: 'app_oneProduct')]
+    public function displayProduct($idproduct, ?Category $idcategory)
+    {
         $product = $this->getDoctrine()
                     ->getRepository(Product::class)
                     ->find($idproduct);
@@ -36,49 +83,42 @@ class ProductController extends AbstractController
 
         else {
             return $this->render('product/product.html.twig', [
-                'product_name' => $product->getNameproduct(),
-                'product_brand' => $product->getBrandproduct(),
-                'product_quantity' => $product->getQtyproduct(),
-                'product_price' => $product->getHtproduct(),
-                'product_q_descript' => $product->getQuickdescript(),
-                'product_descript' =>$product->getDescriptionproduct(),
-                'product_descript2' =>$product->getDescriptionproduct2(),
-                'product_descript3' =>$product->getDescriptionproduct3(),
-                'product_descript4' =>$product->getDescriptionproduct4(),
-                'product_compo' => $product->getComposition(),
-                'product_saveur' => $product->getSaveur(),
-                /* 'product_category' => $product_cat->getNamecategory() */
+                'product' => $product
             ]);
         }
     }
 
-    #[Route('/addProduct', name: 'app_addProduct')]
-    public function addProduct(ValidatorInterface $validator): Response
+    #[Route('/product/', name: 'app_listProduct')]
+    public function listProduct(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->findAll();
 
+        return $this->render('product/listproduct.html.twig', [
+            'products' => $product
+        ]);        
+    }
+
+    #[Route('/addproduct', name: 'app_addProduct')]
+    public function newProduct(Request $request): Response
+    {
         $product = new Product();
-        $product->setNameproduct("Chips");
-        $product->setBrandproduct("MEGA");
-        $product->setDescriptionproduct("description compète du produit");
-        $product->setHtproduct("20");
-        $product->setQtyproduct("0.2");
-        $product->setIsactive(1);
-        $product->setQuickdescript("petit description des chips");
-        $product->setSaveur("caca");
-        $product->setComposition("tu veux pas savoir");
+        $form = $this->createForm(AddProductType::class, $product);
+        $form->handleRequest($request);
 
-        $error = $validator->validate($product);
+        if ($form->isSubmitted() && $form->isValid()) {      
 
-        if (count($error) > 0){
-            return new Response((string) $error, 400);
-        } 
-
-        else {
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return new Response ('le produit suivant a été ajouté : '.$product->getNameproduct());
+            return $this->redirectToRoute("app_oneProduct", [
+                'idproduct' => $product->getIdproduct()
+            ]);
         }
+
+        return $this->render('product/addProduct.html.twig', [
+            'addProductForm' => $form->createView(),
+        ]);
     }
 }
