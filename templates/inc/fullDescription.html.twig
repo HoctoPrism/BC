@@ -2,10 +2,10 @@
 <section class="container-fluid text-secondary">
     <div class="mx-lg-5 mx-1">
         <h2 class="my-5 fs-1 fw-bold">Description</h2>
-    <p>{{ product_descript }}</p>
-    <p>{{ product_descript2 }}</p>
-    <p>{{ product_descript3 }}</p>
-    <p>{{ product_descript4 }}</p>
+    <p>{{ product.descriptionproduct }}</p>
+    <p>{{ product.descriptionproduct2 }}</p>
+    <p>{{ product.descriptionproduct3 }}</p>
+    <p>{{ product.descriptionproduct4 }}</p>
     </div>
     <div class="accordion accordion-flush mx-lg-5 mx-2 my-5" id="accordionExample">
         <div class="accordion-item border-0">
@@ -16,10 +16,10 @@
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <p><strong>MARQUE :</strong> {{ product_brand }}</p>
-                <p><strong>SAVEUR :</strong> {{ product_saveur|capitalize }}</p>
-                <p><strong>TYPE D'ALIMENT :</strong> {# {{ product_category }} #}</p>
-                <p><strong>TAILLE :</strong> {{product_quantity}} kg</p>
+                <p><strong>MARQUE :</strong> {{ product.brandproduct }}</p>
+                <p><strong>SAVEUR :</strong> {{ product.saveur|capitalize }}</p>
+                <p><strong>TYPE D'ALIMENT :</strong> {# {{ product.idcategory }} #}</p>
+                <p><strong>TAILLE :</strong> {{product.qtyproduct }} kg</p>
             </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body perso_accordion_size">
-                {{ product_compo }}
+                {{ product.composition }}
             </div>
             </div>
         </div>

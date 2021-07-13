@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<title></title>
+    <section class="d-flex flex-column py-5 text-white color_form">
+        <div class="text-center mb-5">
+            <h1>Ajouter un produit</h1>
+            <p>Vous pouvez ajouter un nouveau produit via le formulaire ci dessous.</p>
+        </div>
+        {{ form_start(addProductForm, {'attr': {'class': 'd-flex flex-column'}, 'method': 'POST'}) }}
+            <div class="row row-cols-2 m-4 p-3 text-white bg-secondary rounded-3">
+                <div class="col-6">
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.nameproduct, "Nom du produit", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.nameproduct, {'attr': {'class': 'form-control w-100 p-2 rounded-2 bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.brandproduct, "Marque du produit", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.brandproduct, {'attr': {'class': 'form-control w-100 p-2 rounded-2 bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.quickdescript, "Description rapide du produit : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.quickdescript, {'attr': {'class': 'form-control mb-3 w-100 p-2 rounded-2 text-secondary bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.htproduct, "Prix HT du produit : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.htproduct, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.qtyproduct, "Poids du produit en kg : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.qtyproduct, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.saveur, "Saveur du produit : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.saveur, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.isactive, "Produit active ? : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.isactive, {'attr': {'class': 'form-check-input p_checkbox'}}) }}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.descriptionproduct, "Première partie de la description : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.descriptionproduct, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.descriptionProduct2, "Deuxième partie de la description : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.descriptionProduct2, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.descriptionProduct3, "Troisième partie de la description : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.descriptionProduct3, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.descriptionProduct4, "Quatrième partie de la description : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.descriptionProduct4, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(addProductForm.composition, "Composition du produit : ", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(addProductForm.composition, {'attr': {'class': 'form-control bg-light text-secondary'}}) }}
+                    </div>
+                </div>
+            </div>
+            <!-- Le bouton envoyé -->
+            <div class="d-flex align-items-center justify-content-center">{{ form_widget(addProductForm.Envoyer, {'attr': {'class': 'btn btn-warning text-white w-25 align-self-center mb-4'}}) }}</div>
+        {{ form_end(addProductForm) }}
+    </section>
+{% endblock %}

@@ -41,6 +41,13 @@ li {
     height: 2.5rem;
     font-style: italic;
 }
+.color_product_list_admin a {
+    background-color: #ffddb0 !important;
+    color: #55555e;
+}
+.color_form {
+    background-color: #3e3f4b !important;
+}
 .perso_search:focus{
     color: #212529;
     border-color: #ffd6a0 !important;
