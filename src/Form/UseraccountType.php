@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class MyAccountType extends AbstractType
+class UseraccountType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -54,7 +54,6 @@ class MyAccountType extends AbstractType
             ->add('phoneuser')
             ->add('phonemobileuser')
             ->add('nborderuser')
-            ->add('roles')
             ->add('isVerified')
         ;
     }

@@ -5,14 +5,17 @@ namespace App\Controller;
 use App\Entity\Brand;
 use App\Form\BrandType;
 use App\Repository\BrandRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
-#[Route('/brand')]
+#[Route('/brand')] //comme un prefixe de route ici, on peut définir un droit
 class BrandController extends AbstractController
 {
+
     #[Route('/', name: 'brand_index', methods: ['GET'])]
     public function index(BrandRepository $brandRepository): Response
     {
@@ -21,9 +24,13 @@ class BrandController extends AbstractController
         ]);
     }
 
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/new', name: 'brand_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $brand = new Brand();
         $form = $this->createForm(BrandType::class, $brand);
         $form->handleRequest($request);

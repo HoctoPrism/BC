@@ -2,123 +2,81 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Entity\Product;
-use App\Form\AddProductType;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\HttpFoundation\Request;
 
-
+#[Route('/product')]
 class ProductController extends AbstractController
 {
-    #[Route('/product/update/{idproduct}', name: 'app_updateProduct')]
-    public function updateProduct(ValidatorInterface $validator, $idproduct): Response
+    #[Route('/', name: 'product_index', methods: ['GET'])]
+    public function index(ProductRepository $productRepository): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($idproduct);
-
-        $product->setSaveur("humain");
-
-        $error = $validator->validate($product);
-
-        if (count($error) > 0){
-            return new Response((string) $error, 400);
-        } 
-
-        else {
-            $entityManager->persist($product);
-            $entityManager->flush();
-
-            return $this->redirectToRoute("app_oneProduct", [
-                'idproduct' => $product->getIdproduct()
-            ]);
-        }
+        return $this->render('product/index.html.twig', [
+            'products' => $productRepository->findAll(),
+        ]);
     }
 
-    #[Route('/product/delete/{idproduct}', name: 'app_deleteProduct')]
-    public function deleteProduct(ValidatorInterface $validator, $idproduct): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($idproduct);
-
-        $error = $validator->validate($product);
-
-        if (count($error) > 0){
-            return new Response((string) $error, 400);
-        } 
-
-        else {
-            $entityManager->remove($product);
-            $entityManager->flush();
-
-            return $this->redirectToRoute("app_listProduct");
-        }
-    }
-
-    #[Route('/product/{idproduct}', name: 'app_oneProduct')]
-    public function displayProduct($idproduct, ?Category $idcategory)
-    {
-        $product = $this->getDoctrine()
-                    ->getRepository(Product::class)
-                    ->find($idproduct);
-
-/*         $category = $this->getDoctrine()
-                    ->getRepository(Category::class)
-                    ->find($idcategory);              
-
-        if($product->getIdcategory() == $category->getIdcategory()){
-            $product_cat = $category->getNamecategory();
-        } */
-        
-        if(!$product){
-            return $this->render('bundles/TwigBundle/Exception/error400.html.twig', [
-                'controller_name' => "Le produit demandé n'existe pas",
-            ]);
-        }
-
-        else {
-            return $this->render('product/product.html.twig', [
-                'product' => $product
-            ]);
-        }
-    }
-
-    #[Route('/product/', name: 'app_listProduct')]
-    public function listProduct(): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->findAll();
-
-        return $this->render('product/listproduct.html.twig', [
-            'products' => $product
-        ]);        
-    }
-
-    #[Route('/addproduct', name: 'app_addProduct')]
-    public function newProduct(Request $request): Response
+    #[Route('/super/nouveau', name: 'product_new', methods: ['GET', 'POST'])]
+    public function new(Request $request): Response
     {
         $product = new Product();
-        $form = $this->createForm(AddProductType::class, $product);
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {      
-
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute("app_oneProduct", [
-                'idproduct' => $product->getIdproduct()
-            ]);
+            return $this->redirectToRoute('product_index');
         }
 
-        return $this->render('product/addProduct.html.twig', [
-            'addProductForm' => $form->createView(),
+        return $this->render('product/new.html.twig', [
+            'product' => $product,
+            'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('/{idproduct}', name: 'product_show', methods: ['GET'])]
+    public function show(Product $product): Response
+    {
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
+
+    #[Route('/{idproduct}/super/edit', name: 'product_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Product $product): Response
+    {
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('product_index');
+        }
+
+        return $this->render('product/edit.html.twig', [
+            'product' => $product,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/{idproduct}', name: 'product_delete', methods: ['POST'])]
+    public function delete(Request $request, Product $product): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$product->getIdproduct(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($product);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('product_index');
     }
 }

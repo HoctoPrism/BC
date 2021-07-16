@@ -1,12 +1,16 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
+
 {% block body %}
+
 <title>La Nimes'alerie - liste des catégories</title>
 <section class="container-fluid g-0">
     <h1 class="text-secondary fw-bold text-center my-5">Liste des catégories</h1>
-    <div class="d-flex justify-content-center align-items-center flex-column">
-        <div>Vous pouvez ajouter une catégorie</div>
-        <a href="{{ path('app_addCategory') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter une catégorie</a>
-    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <div>Vous pouvez ajouter une catégorie</div>
+            <a href="{{ path('category_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter une catégorie</a>
+        </div>
+    {% endif %}
     <div class="align-items-center justify-content-center m-5 mt-2">
         {% for animal in categories %}
             {% if animal.idcategoryparent is empty %}
@@ -20,8 +24,12 @@
                                     {% if subCategory.idcategoryparent is not empty and mainCategory.idcategory == subCategory.idcategoryparent.idcategory %}
                                         <div class="d-flex">
                                             <div>{{ subCategory.namecategory|upper }}</div>
-                                            <a href="{{ path('app_deleteCategory', {'idcategory': subCategory.idcategory}) }}" class="text-secondary bg-white rounded-3 px-2 mx-2">D</a>
-                                            <a href="{{ path('app_updateCategory', {'idcategory': subCategory.idcategory}) }}" class="text-secondary bg-white rounded-3 px-2 mx-2">M</a>
+                                            {% if is_granted('ROLE_ADMIN') %}
+                                                {% if subCategory.idcategory is not empty %}
+                                                    {{ include('category/_delete_form.html.twig') }}
+                                                {% endif %}
+                                                <a href="{{ path('category_edit', {'idcategory': subCategory.idcategory}) }}" class="text-secondary bg-white rounded-3 px-2 mx-2">M</a>
+                                            {% endif %}
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -33,4 +41,5 @@
         {% endfor %}
     </div>
 </section>
+
 {% endblock %}

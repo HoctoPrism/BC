@@ -1,12 +1,15 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
+
 {% block body %}
 <title>La Nimes'alerie - liste des produits</title>
 <section class="container-fluid g-0">
     <h1 class="text-secondary fw-bold text-center my-5">Liste de produits</h1>
-    <div class="d-flex justify-content-center align-items-center flex-column">
-        <div>Vous pouvez ajouter un produit</div>
-        <a href="{{ path('app_addProduct') }}" class="text-white bg-danger p-3 rounded-2 mb-5" >Ajouter un produit</a>
-    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <div>Vous pouvez ajouter un produit</div>
+            <a href="{{ path('product_new') }}" class="text-white bg-danger p-3 rounded-2 mb-5" >Ajouter un produit</a>
+        </div>
+    {% endif %}
     <div class="align-items-center justify-content-center m-5">
     {% for product in products %}
         <div class="text-white row row-cols-2 bg-secondary rounded-3 p-3 d-flex col-12 m-1">
@@ -22,10 +25,17 @@
                 <div class="mb-2"><strong>description rapide du produit : </strong>{{ product.quickdescript }}</div>
                 <div class="mb-2"><strong>description du produit : </strong>{{ product.descriptionproduct }}</div>
             </div>
-            <div class="col-12 py-2 d-flex">
-                <div class="color_product_list_admin"><a href="{{ path('app_oneProduct', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 me-1 fw-bold" >Voir la suite</a></div>
-                <div class="color_product_list_admin"><a href="{{ path('app_deleteProduct', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 me-1 fw-bold" >Supprimer un produit</a></div>
-                <div class="color_product_list_admin"><a href="{{ path('app_updateProduct', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 ms-1 fw-bold" >Modifier un produit</a></div>
+            <div class="col-12 py-2 d-flex align-items-center">
+                <div class="color_product_list_admin"><a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 me-1 fw-bold" >Voir la suite</a></div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="color_product_list_admin"><a href="{{ path('product_edit', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 me-1 fw-bold" >Modifier</a></div>
+
+                    <form class="align-self-end" method="post" action="{{ path('product_delete', {'idproduct': product.idproduct}) }}" onsubmit="return confirm('êtes vous sur de vouloir supprimer le produit ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.idproduct) }}">
+                        <button class="btn rounded-2 fw-bold delete_button">Supprimer</button>
+                    </form>
+
+                {% endif %}
             </div>
         </div>
     {% endfor %}

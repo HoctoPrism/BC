@@ -21,5 +21,30 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    app.menu_builder:
+        class: App\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    # Ici on définit le chemin pour afficher la navbar du header
+    app.header_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createNavHeader]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: header } # The alias is what is used to retrieve the menu
+            
+    # Ici on définit le chemin pour afficher la navbar du footer
+    app.footer_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createNavFooter]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: footer } # The alias is what is used to retrieve the menu
+
+    # Ici on définit le chemin pour afficher la navbar des réseaux sociaux du footer
+    app.network_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createSocialNetwork]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: network } # The alias is what is used to retrieve the menu

@@ -45,6 +45,11 @@ li {
     background-color: #ffddb0 !important;
     color: #55555e;
 }
+.delete_button {
+    background-color: #ffddb0 !important;
+    color: #55555e !important;
+    height: 3.2rem !important;
+}
 .color_form {
     background-color: #3e3f4b !important;
 }

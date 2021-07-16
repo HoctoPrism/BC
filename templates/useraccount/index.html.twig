@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Nimes'alerie - Mon Compte{% endblock %}
+
+{% block body %}
+<section class="container-fluid row row-cols-2">
+    <div class="col-2 p-3">
+        <a href="#"><div class="text-secondary fs-5 p-1">Mes informations</div></a>
+        <a href="#"><div class="text-secondary fs-5 p-1">Mes commandes</div></a>
+        <a href="#"><div class="text-secondary fs-5 p-1">Mes paniers</div></a>
+        <a href="#"><div class="text-secondary fs-5 p-1">Bon d'achat et avoirs</div></a>
+        <a href="#"><div class="text-secondary fs-5 p-1">Mes paramètres</div></a>
+    </div>
+    <div class="col-10 row">
+
+        {% if app.user.emailuser == iduser.emailuser %}
+            <div class="color_product_list_admin"><a href="{{ path('useraccount_edit', {'emailuser': app.user.emailuser}) }}" class="p-3 rounded-2 me-1 fw-bold" >Modifier</a></div>
+        {% endif %}
+        
+        <div class="text-secondary text-center my-5">
+            <h2 class="fs-1">Commande en cours</h2>
+            <div class="fs-2">0</div>
+        </div>
+        <div class="text-secondary">
+            <h2 class="fs-1 text-center mb-5">Historique des commandes</h2>
+            <!-- PREMIER ITEM -->
+            <div>
+                <div class="d-flex row text-center p-3">
+                    <div class="col-1">#1</div>
+                    <div class="col-3">N°ME8846A</div>
+                    <div class="col-3">197€80 TTC</div>
+                    <div class="col-3">Expédiée le 13/02/2017</div>
+                    <div class="accordion accordion-flush col-2" id="accordionFlush1">
+                        <h2 class="accordion-header d-flex justify-content-center align-items-center" id="flush-heading1">
+                            <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary d-flex colorTrigger" id="colorTrigger1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                                <div>Détails</div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FDAB91" class="bi bi-caret-down mx-3" id="fadeColorBill" viewBox="0 0 16 16">
+                                    <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                                </svg>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#flush-heading1">
+                        <div class="accordion-body">
+                            <div class="my-2">Mode de paiement : <strong>Carte bancaire</strong></div>
+                            <div class="my-2">Mode de livraison : <strong>Livraison Chronopost Express (13h)</strong></div>
+                            <div class="d-flex row align-items-center justify-content-center border-top">
+                                <div class="col-7"><img src="../images/croquette_chat.png" alt="croquette de chat"></div>
+                                <div class="col-2 text-end">x1</div>
+                                <div class="col-3 text-end">59€90</div>
+                            </div>
+                            <div class="d-flex row align-items-center justify-content-center border-top">
+                                <div class="col-7"><img src="../images/croquette_chien.png" alt="croquette de chien"></div>
+                                <div class="col-2 text-end">x1</div>
+                                <div class="col-3 text-end">119€90</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4">
+                                <div class="d-flex justify-content-between my-1 p-2">
+                                    <div>Frais de port</div>
+                                    <div>17€99</div>
+                                </div>
+                                <div class="d-flex justify-content-between my-1 bg-warning p-2 text-white fw-bold">
+                                    <div>Total de la commande</div>
+                                    <div>197€80</div>
+                                </div>
+                                <div class="text-end"><a href="#" class="text-secondary">Télécharger la facture</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- DEUXIEME ITEM -->
+            <div>
+                <div class="d-flex row text-center p-3">
+                    <div class="col-1">#2</div>
+                    <div class="col-3">N°ME826MA</div>
+                    <div class="col-3">102€89 TTC</div>
+                    <div class="col-3">Expédiée le 21/01/2017</div>
+                    <div class="accordion accordion-flush col-2" id="accordionFlush2">
+                        <h2 class="accordion-header d-flex justify-content-center align-items-center" id="flush-heading2">
+                            <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary d-flex colorTrigger" id="colorTrigger2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+                                <div>Détails</div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FDAB91" class="bi bi-caret-down mx-3" id="fadeColorBill" viewBox="0 0 16 16">
+                                    <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                                </svg>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#flush-heading2">
+                        <div class="accordion-body">
+                            <div class="my-2">Mode de paiement : <strong>Carte bancaire</strong></div>
+                            <div class="my-2">Mode de livraison : <strong>Livraison Colissimo</strong></div>
+                            <div class="d-flex row align-items-center justify-content-center border-top">
+                                <div class="col-7"><img src="img/croquette_chat.png" alt="croquette de chat"></div>
+                                <div class="col-2 text-end">x1</div>
+                                <div class="col-3 text-end">99€90</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4">
+                                <div class="d-flex justify-content-between my-1 p-2">
+                                    <div>Frais de port</div>
+                                    <div>2€99</div>
+                                </div>
+                                <div class="d-flex justify-content-between my-1 bg-warning p-2 text-white fw-bold">
+                                    <div>Total de la commande</div>
+                                    <div>102€89</div>
+                                </div>
+                                <div class="text-end"><a href="#" class="text-secondary">Télécharger la facture</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
