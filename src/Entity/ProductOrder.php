@@ -6,9 +6,10 @@ use App\Repository\ProductOrderRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
+
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=ProductOrderRepository::class)
+ * @ApiResource()
  */
 class ProductOrder
 {
@@ -25,20 +26,20 @@ class ProductOrder
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=product::class, inversedBy="productOrders")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="productOrders")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idProduct", referencedColumnName="idProduct")
      * })
      */
-    private $product;
+    private $productid;
 
     /**
-     * @ORM\ManyToOne(targetEntity=orders::class, inversedBy="productOrders")
+     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="productOrders")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idOrder", referencedColumnName="idOrder")
      * })
      */
-    private $order;
+    private $orderid;
 
     public function getId(): ?int
     {
@@ -57,26 +58,26 @@ class ProductOrder
         return $this;
     }
 
-    public function getIdproduct(): ?product
+    public function getIdproduct(): ?Product
     {
-        return $this->product;
+        return $this->productid;
     }
 
-    public function setIdproduct(?product $product): self
+    public function setIdproduct(?Product $productid): self
     {
-        $this->product = $product;
+        $this->productid = $productid;
 
         return $this;
     }
 
-    public function getIdorder(): ?orders
+    public function getIdorder(): ?Orders
     {
-        return $this->order;
+        return $this->orderid;
     }
 
-    public function setIdorder(?orders $order): self
+    public function setIdorder(?Orders $orderid): self
     {
-        $this->order = $order;
+        $this->orderid = $orderid;
 
         return $this;
     }

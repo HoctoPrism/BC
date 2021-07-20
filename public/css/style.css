@@ -110,13 +110,7 @@ li {
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
 }
-.title_img_carousel {
-    position: relative;
-    top: 10%;
-    left: 9%;
-    font-size: 3rem;
-    color: white;
-}
+
 .perso_svg {
     height: 5rem;
     width: auto;
@@ -141,6 +135,11 @@ li {
 .footer {
     z-index: 2;
 }
+/*
+*
+    *CSS POUR LE CAROUSEL
+*
+*/
 .img-banniere-1 {
     background-image: url('../images/chat_yeux_bleus.jpg');
     background-size: cover;
@@ -165,6 +164,19 @@ li {
     position: absolute;
     height: 40rem;
 }
+.title_img_carousel {
+    position: relative;
+    top: 10%;
+    left: 9%;
+    font-size: 3rem;
+    color: white;
+}
+/**********************/
+/*
+*
+    *CSS POUR LE FOOTER
+*
+*/
 .perso_icon_paiement {
     height: 2rem;
 }
@@ -267,8 +279,33 @@ li {
     -webkit-box-shadow: 0 0 0 0 !important;
             box-shadow: 0 0 0 0 !important;
 }
+.flex-1 {
+    flex: 1;
+}
+.flex-0 {
+    flex: 0 0 auto;
+}
 .pointer {
     cursor: pointer;
+}
+.product_img_size {
+    max-height: 10rem;
+    width: 100%;
+}
+.p_product_list_name {
+    height: 3rem;
+}
+.p_borders {
+    box-shadow: 0 0 0.08rem #505160 ;
+}
+.p_product_list_round {
+    border-radius: 0.8rem 0.8rem 0.3rem 0.3rem !important;
+}
+.p_edit_button {
+    background-color: #a6dda9;
+}
+.p_del_button {
+    background-color: #d68585;
 }
 /*
 *
@@ -433,6 +470,10 @@ li {
     }
     .sliderText {
         font-size: 1rem;
+    }
+    .product_img_size {
+        height: 100%;
+        width: 4rem;
     }
 }
 @media (min-width: 575.99px) {

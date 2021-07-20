@@ -1,35 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Brand index{% endblock %}
+{% block title %}La Nimes'alerie - Nos marques{% endblock %}
 
 {% block body %}
-    <h1>Brand index</h1>
+    <section class="container-fluid text-secondary my-5 g-0">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NameBrand</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for brand in brands %}
-            <tr>
-                <td>{{ brand.id }}</td>
-                <td>{{ brand.nameBrand }}</td>
-                <td>
-                    <a href="{{ path('brand_show', {'id': brand.id}) }}">show</a>
-                    <a href="{{ path('brand_edit', {'id': brand.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="text-center d-flex flex-column align-items-center">
 
-    <a href="{{ path('brand_new') }}">Create new</a>
+            <h1 class="text-warning fw-bold mb-4">Toutes nos marques</h1>
+            <p class="w-75">
+                Chez La Nimes'alerie vous trouverez tout pour la santé et le bien-être de vos animaux de compagnie. Cet engagement nous le prenons et le respectons au travers de la sélection des meilleures marques présentes dans nos magasins.
+            </p>
+            <p class="w-75">
+                Les marques partenaires : Ces marques sont sélectionnées par nos experts produits, au travers de critères qualités extrêmement rigoureux toujours dans le but de vous proposer le meilleur choix de produits de qualités pour vos animaux de compagnie.
+            </p>
+        </div>
+
+        <div class="row row-cols-6 justify-content-center">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-12 d-flex justify-content-center align-items-center flex-column mt-4">
+                    <div>Vous pouvez ajouter une marque</div>
+                    <a href="{{ path('brand_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter une marque</a>
+                </div>
+                {% for brand in brands %}
+                <div class="col color_form text-white m-2 g-0 rounded-3" style="width: 10rem;">
+                    
+                    <a href="{{ path('brand_show', {'id': brand.id}) }}">
+                        <div class="d-flex justify-content-center card border-0 rounded-0 rounded-top align-items-center bg-light text-white p-2 h-75">
+                            <img src="{{ asset('upload/' ~ brand.Logo) }}" class="img-fluid" alt="{{ brand.nameBrand }}">
+                        </div>
+                    </a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="text-center p-2">
+                            <a href="{{ path('brand_edit', {'id': brand.id}) }}"class="text-white">Modifier</a>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% else %}
+                    <div>Aucun élément trouvé</div>
+                {% endfor %}
+                
+            {% else %}
+                {% for brand in brands %}
+                <div class="col text-white rounded-3 m-2 g-0" style="width: 10rem;">
+
+                    <a href="{{ path('brand_show', {'id': brand.id}) }}">
+                        <div class="d-flex justify-content-center align-items-center card bg-light text-white p-2 h-75">
+                            <img src="{{ asset('upload/' ~ brand.Logo) }}" class="card-img" alt="{{ brand.nameBrand }}">
+                        </div>
+                    </a>
+
+                </div>
+                {% endfor %}
+            {% endif %} 
+            
+        </div>
+            
+    </section>
 {% endblock %}

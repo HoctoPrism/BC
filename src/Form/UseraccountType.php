@@ -11,14 +11,16 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UseraccountType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstnameuser')
-            ->add('lastnameuser')
+            ->add('firstnameuser', TextType::class)
+            ->add('lastnameuser', TextType::class)
             ->add('gender', ChoiceType::class, [
                 'choices' => [
                     'Homme' => 'Homme',
@@ -27,7 +29,7 @@ class UseraccountType extends AbstractType
 /*                 "expanded" => true,
                 'choice_attr' => function(){ return ['class' => 'form-check-input'];} */
             ])
-            ->add('emailuser')
+            ->add('emailuser', TextType::class)
             ->add('birthuser', DateType::class, [
                 'widget' => 'single_text',
                 // this is actually the default format for single_text
@@ -51,10 +53,11 @@ class UseraccountType extends AbstractType
                 ],
             ])
             ->add('vauncheruser')
-            ->add('phoneuser')
-            ->add('phonemobileuser')
+            ->add('phoneuser', TelType::class, [
+                'required' => false
+            ])
+            ->add('phonemobileuser', TelType::class)
             ->add('nborderuser')
-            ->add('isVerified')
         ;
     }
 

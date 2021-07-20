@@ -2,19 +2,26 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Orders
  *
- * @ApiResource()
  * @ORM\Table(name="orders", indexes={@ORM\Index(name="idAdress", columns={"idAdress"}), @ORM\Index(name="idPayment", columns={"idPayment"}), @ORM\Index(name="idUser", columns={"idUser"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
+ * 
+ * @ApiResource(attributes={
+ *   "normalization_context"={"groups"={"read"}},
+ *   "denormalization_context"={"groups"={"write"}},
+ * })
+ * 
  */
+
 class Orders
 {
     /**
@@ -23,6 +30,8 @@ class Orders
      * @ORM\Column(name="idOrder", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"read"})
+     * 
      */
     private $idorder;
 
@@ -30,6 +39,7 @@ class Orders
      * @var int|null
      *
      * @ORM\Column(name="promoOrder", type="integer", nullable=true)
+     * @Groups({"read", "write"})
      */
     private $promoorder;
 
@@ -37,6 +47,7 @@ class Orders
      * @var \DateTime|null
      *
      * @ORM\Column(name="orderDate", type="date", nullable=true)
+     * @Groups({"read", "write"})
      */
     private $orderdate;
 
@@ -47,6 +58,7 @@ class Orders
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idAdress", referencedColumnName="idAdress")
      * })
+     * @Groups({"read", "write"})
      */
     private $idadress;
 
@@ -57,6 +69,7 @@ class Orders
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idUser", referencedColumnName="idUser")
      * })
+     * @Groups({"read", "write"})
      */
     private $iduser;
 
@@ -67,6 +80,7 @@ class Orders
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idPayment", referencedColumnName="idPayment")
      * })
+     * @Groups({"read", "write"})
      */
     private $idpayment;
 
@@ -82,11 +96,13 @@ class Orders
      *     @ORM\JoinColumn(name="idStatus", referencedColumnName="idStatus")
      *   }
      * )
+     * @Groups({"read", "write"})
      */
     private $idstatus;
 
     /**
-     * @ORM\OneToMany(targetEntity=ProductOrder::class, mappedBy="idorder")
+     * @ORM\OneToMany(targetEntity=ProductOrder::class, mappedBy="orderid")
+     * @Groups({"read", "write"})
      */
     private $productOrders;
 

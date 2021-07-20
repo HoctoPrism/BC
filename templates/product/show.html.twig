@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}La Nimes'alerie - {{ product.nameproduct }}{% endblock %}
 
 {% block body %}
-<title>La Nimes'alerie - {{ product.nameproduct }}</title>
 <!-- Descriptif rapide -->
 {% include "inc/quickDescription.html.twig" %}
 <!-- description complète-->
