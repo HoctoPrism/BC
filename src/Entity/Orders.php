@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Orders
  *
- * @ORM\Table(name="orders", indexes={@ORM\Index(name="idAdress", columns={"idAdress"}), @ORM\Index(name="idPayment", columns={"idPayment"}), @ORM\Index(name="idProduct", columns={"idProduct"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ApiResource()
+ * @ORM\Table(name="orders", indexes={@ORM\Index(name="idAdress", columns={"idAdress"}), @ORM\Index(name="idPayment", columns={"idPayment"}), @ORM\Index(name="idUser", columns={"idUser"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
  */
@@ -49,16 +51,6 @@ class Orders
     private $idadress;
 
     /**
-     * @var \Product
-     *
-     * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idProduct", referencedColumnName="idProduct")
-     * })
-     */
-    private $idproduct;
-
-    /**
      * @var \Useraccount
      *
      * @ORM\ManyToOne(targetEntity="Useraccount")
@@ -94,11 +86,17 @@ class Orders
     private $idstatus;
 
     /**
+     * @ORM\OneToMany(targetEntity=ProductOrder::class, mappedBy="idorder")
+     */
+    private $productOrders;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->idstatus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productOrders = new ArrayCollection();
     }
 
     public function getIdorder(): ?int
@@ -138,18 +136,6 @@ class Orders
     public function setIdadress(?Address $idadress): self
     {
         $this->idadress = $idadress;
-
-        return $this;
-    }
-
-    public function getIdproduct(): ?Product
-    {
-        return $this->idproduct;
-    }
-
-    public function setIdproduct(?Product $idproduct): self
-    {
-        $this->idproduct = $idproduct;
 
         return $this;
     }
@@ -198,6 +184,36 @@ class Orders
     public function removeIdstatus(Status $idstatus): self
     {
         $this->idstatus->removeElement($idstatus);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProductOrder[]
+     */
+    public function getProductOrders(): Collection
+    {
+        return $this->productOrders;
+    }
+
+    public function addProductOrder(ProductOrder $productOrder): self
+    {
+        if (!$this->productOrders->contains($productOrder)) {
+            $this->productOrders[] = $productOrder;
+            $productOrder->setIdorder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductOrder(ProductOrder $productOrder): self
+    {
+        if ($this->productOrders->removeElement($productOrder)) {
+            // set the owning side to null (unless already changed)
+            if ($productOrder->getIdorder() === $this) {
+                $productOrder->setIdorder(null);
+            }
+        }
 
         return $this;
     }

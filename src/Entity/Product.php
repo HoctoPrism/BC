@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Product
  *
+ * @ApiResource()
  * @ORM\Table(name="product", indexes={@ORM\Index(name="idCategory", columns={"idCategory"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -109,6 +113,16 @@ class Product
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $descriptionProduct4;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProductOrder::class, mappedBy="idproduct")
+     */
+    private $productOrders;
+
+    public function __construct()
+    {
+        $this->productOrders = new ArrayCollection();
+    }
 
     public function getIdproduct(): ?int
     {
@@ -267,6 +281,36 @@ class Product
     public function setDescriptionProduct4(?string $descriptionProduct4): self
     {
         $this->descriptionProduct4 = $descriptionProduct4;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProductOrder[]
+     */
+    public function getProductOrders(): Collection
+    {
+        return $this->productOrders;
+    }
+
+    public function addProductOrder(ProductOrder $productOrder): self
+    {
+        if (!$this->productOrders->contains($productOrder)) {
+            $this->productOrders[] = $productOrder;
+            $productOrder->setIdproduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductOrder(ProductOrder $productOrder): self
+    {
+        if ($this->productOrders->removeElement($productOrder)) {
+            // set the owning side to null (unless already changed)
+            if ($productOrder->getIdproduct() === $this) {
+                $productOrder->setIdproduct(null);
+            }
+        }
 
         return $this;
     }

@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Imageproduct
  *
+ * @ApiResource()
  * @ORM\Table(name="imageproduct", indexes={@ORM\Index(name="idProduct", columns={"idProduct"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\ImageproductRepository")
