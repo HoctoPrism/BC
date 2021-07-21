@@ -31,7 +31,7 @@ services:
         factory: ["@app.menu_builder", createNavHeader]
         arguments: ["@request_stack"]
         tags:
-            - { name: knp_menu.menu, alias: header } # The alias is what is used to retrieve the menu
+            - { name: knp_menu.menu, alias: header }
             
     # Ici on définit le chemin pour afficher la navbar du footer
     app.footer_menu:
@@ -39,7 +39,7 @@ services:
         factory: ["@app.menu_builder", createNavFooter]
         arguments: ["@request_stack"]
         tags:
-            - { name: knp_menu.menu, alias: footer } # The alias is what is used to retrieve the menu
+            - { name: knp_menu.menu, alias: footer }
 
     # Ici on définit le chemin pour afficher la navbar des réseaux sociaux du footer
     app.network_menu:
@@ -47,4 +47,12 @@ services:
         factory: ["@app.menu_builder", createSocialNetwork]
         arguments: ["@request_stack"]
         tags:
-            - { name: knp_menu.menu, alias: network } # The alias is what is used to retrieve the menu
+            - { name: knp_menu.menu, alias: network }
+
+    # Ici on définit le chemin pour les catégories
+    app.categoryList_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createCategoryList]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: categoryList }
