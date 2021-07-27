@@ -75,17 +75,27 @@ class MenuBuilder
 
         foreach($animal as $category){
 
-            $cat->addChild($category['namecategory'], ['uri' => '/category/'.$category['idcategory']])->setAttribute('class', 'row row-cols-lg-5 row-cols-md-2 row-cols-1 bg-secondary text-white rounded-3 p-3 m-3 d-flex justify-content-between align-items-center')->setLinkAttribute('class', 'col-12 col-md-12 col-lg-12 mb-3 fw-bold text-white text-center');
+            $cat->addChild($category['namecategory'], ['uri' => '/category/'.$category['idcategory']])
+                ->setAttribute('class', 'row row-cols-lg-5 row-cols-md-2 row-cols-1 bg-secondary text-white rounded-3 p-3 m-3 d-flex justify-content-between align-items-center')
+                ->setLinkAttribute('class', 'col-12 col-md-12 col-lg-12 mb-3 fw-bold text-white text-center');
+
             $catPrime = $categoryRepository->findCatSubMenu($category['idcategory']);
 
             foreach ($catPrime as $primary) {
 
-                $cat[$category['namecategory']]->addChild($primary['namecategory'], ['uri' => '/category/'.$primary['idcategory']])->setAttribute('class', 'col d-flex flex-column align-items-lg-center py-2 py-lg-0')->setLinkAttribute('class', 'fs-6 fw-bold text-warning');
+                $cat[$category['namecategory']]
+                    ->addChild($primary['namecategory'], ['uri' => '/category/'.$primary['idcategory']])
+                    ->setAttribute('class', 'col d-flex flex-column align-items-lg-center py-2 py-lg-0')
+                    ->setLinkAttribute('class', 'fs-6 fw-bold text-warning');
+
                 $catSub = $categoryRepository->findCatSubMenu($primary['idcategory']);
                 
                 foreach ($catSub as $secondary) {
 
-                    $cat[$category['namecategory']][$primary['namecategory']]->addChild($secondary['namecategory'], ['uri' => '/category/'.$secondary['idcategory']])->setLinkAttribute('class', 'd-flex text-white align-items-center justify-content-between');
+                    $cat[$category['namecategory']][$primary['namecategory']]
+                        ->addChild($secondary['namecategory'], ['uri' => '/category/'.$secondary['idcategory']])
+                        ->setLinkAttribute('class', 'd-flex text-white align-items-center justify-content-between');
+
                     $categoryRepository->findCatSubMenu($secondary['idcategory']);
                 }
             }

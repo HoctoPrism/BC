@@ -5,7 +5,6 @@
 {% block body %}
     <section class="container-fluid g-0">
         <h1 class="text-secondary fw-bold text-center my-5">Liste des catégories</h1>
-        {{ knp_menu_render('categoryList') }}
         {% if is_granted('ROLE_ADMIN') %}
             <div class="d-flex justify-content-center align-items-center flex-column">
                 <div>Vous pouvez ajouter une catégorie</div>

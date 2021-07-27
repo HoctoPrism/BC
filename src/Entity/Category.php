@@ -34,7 +34,7 @@ class Category
     /**
      * @var \Category
      *
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idCategoryParent", referencedColumnName="idCategory")
      * })
