@@ -19,18 +19,6 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    public function getNameProduct($value): ?Product
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.idProduct = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
     /*
     public function findByExampleField($value)
     {
@@ -45,15 +33,24 @@ class ProductRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Product
+    public function orderProductByCategory($value): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.idcategory = :val')
             ->setParameter('val', $value)
+            ->setMaxResults(4)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
         ;
     }
-    */
+
+    public function tendance(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
+        ;
+    }
+
 }

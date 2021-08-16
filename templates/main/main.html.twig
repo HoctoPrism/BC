@@ -1,24 +1,20 @@
 {% extends "base.html.twig" %}
 {% block title %}La Nimes'alerie - Accueil{% endblock %}
 {% block body %}
+
   <!-- BANNIERE -->
   {% include "inc/slider.html.twig" %}
+  
   <!-- TENDANCES -->
-  <section class="container-fluid">
-      <h2 class="fw-bold fs-1 text-secondary col-12 text-center my-md-5 my-3">tendances</h2>
-      <!-- tendance chat -->
-      {% include "inc/catHighlight.html.twig" %}
-      <!-- tendance chien -->
-      {% include "inc/dogHighlight.html.twig" %}
-      <!-- tendance Rongeur -->
-      {% include "inc/rodentHighlight.html.twig" %}
-      <!-- tendance Oiseau -->
-      {% include "inc/birdHighlight.html.twig" %}
-    </section>
+  {% include "inc/tendance.html.twig" %}
+
   <!-- TEMOIGNAGE -->
   {% include "inc/testimony.html.twig" %}
+
   <!-- DESCRIPTIF DE L'ENTREPRISE -->
   {% include "inc/company.html.twig" %}
+
   <!-- HEADER POUR ALLER DANS L'ESPACE, ENFIN TON ANIMAL -->
   {% include "inc/spaceProgramButton.html.twig" %}
+
 {% endblock %}
