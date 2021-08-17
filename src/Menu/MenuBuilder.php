@@ -26,12 +26,12 @@ class MenuBuilder
         // setAttribute pour modifier li
         // setLinkAttribute pour modifier a
         $header->addChild('ACCUEIL', ['route' => 'index']);
-        $header->addChild('CHIEN', ['route' => 'app_main']);
-        $header->addChild('CHAT', ['route' => 'app_main']);
-        $header->addChild('RONGEUR', ['route' => 'app_main']);
-        $header->addChild('OISEAU', ['route' => 'app_main']);
-        $header->addChild('POISSON', ['route' => 'app_main']);
-        $header->addChild('REPTILE', ['route' => 'app_main']);
+        $header->addChild('CHIEN', ['route' => 'category_show', 'routeParameters' => ['idcategory' =>  12] ]);
+        $header->addChild('CHAT', ['route' => 'category_show', 'routeParameters' => ['idcategory' =>  12] ]);
+        $header->addChild('RONGEUR', ['route' => 'category_show', 'routeParameters' => ['idcategory' =>  12] ]);
+        $header->addChild('OISEAU', ['route' => 'category_show', 'routeParameters' => ['idcategory' =>  12] ]);
+        $header->addChild('POISSON', ['route' => 'category_show', 'routeParameters' => ['idcategory' =>  12] ]);
+        $header->addChild('REPTILE', ['route' => 'category_show', 'routeParameters' => ['idcategory' =>  12] ]);
 
         return $header;
     }
@@ -44,9 +44,9 @@ class MenuBuilder
         // setLinkAttribute pour modifier a
         $footer->addChild('A Propos de Nous', ['route' => 'index']);
         $footer->addChild('Nous Contacter', ['route' => 'app_contact']);
-        $footer->addChild('FAQ', ['route' => 'app_main']);
+        $footer->addChild('FAQ', ['route' => 'index']);
         $footer->addChild('Mentions Légales', ['route' => 'app_mentions']);
-        $footer->addChild('Confidentialité', ['route' => 'app_main']);
+        $footer->addChild('Confidentialité', ['route' => 'index']);
         $footer->addChild('Conditions Générales', ['route' => 'app_cgu']);
 
         return $footer;
