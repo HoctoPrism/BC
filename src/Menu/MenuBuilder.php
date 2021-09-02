@@ -21,7 +21,7 @@ class MenuBuilder
 
     public function createNavHeader(RequestStack $requestStack): ItemInterface
     {
-        $header = $this->factory->createItem('header')->setChildrenAttribute('class', 'col-lg-9 col-10 d-md-flex justify-content-between perso_link_dark fs-5 d-none');
+        $header = $this->factory->createItem('header')->setChildrenAttribute('class', 'col-lg-9 col-10 d-md-flex justify-content-between perso_link_dark fs-5 m-0 d-none');
         // setChildrenAttribute pour modifier l'ul
         // setAttribute pour modifier li
         // setLinkAttribute pour modifier a
@@ -69,15 +69,15 @@ class MenuBuilder
     public function createCategoryList(RequestStack $requestStack, CategoryRepository $categoryRepository): ItemInterface
     {
 
-        $cat = $this->factory->createItem('categoryList')->setChildrenAttribute('class', "align-items-center justify-content-center m-lg-4 m-2 mt-2");
+        $cat = $this->factory->createItem('categoryList')->setChildrenAttribute('class', "align-items-center justify-content-center p-0");
 
         $animal = $categoryRepository->findAnimalMenu();
 
         foreach($animal as $category){
 
             $cat->addChild($category['namecategory'], ['uri' => '/category/'.$category['idcategory']])
-                ->setAttribute('class', 'row row-cols-lg-5 row-cols-md-2 row-cols-1 bg-secondary text-white rounded-3 p-3 m-3 d-flex justify-content-between align-items-center')
-                ->setLinkAttribute('class', 'col-12 col-md-12 col-lg-12 mb-3 fw-bold text-white text-center');
+                ->setAttribute('class', 'bg-secondary text-white rounded-3 d-flex justify-content-between align-items-center')
+                ->setLinkAttribute('class', 'fw-bold text-white text-center');
 
             $catPrime = $categoryRepository->findCatSubMenu($category['idcategory']);
 
@@ -85,8 +85,8 @@ class MenuBuilder
 
                 $cat[$category['namecategory']]
                     ->addChild($primary['namecategory'], ['uri' => '/category/'.$primary['idcategory']])
-                    ->setAttribute('class', 'col d-flex flex-column align-items-lg-center py-2 py-lg-0')
-                    ->setLinkAttribute('class', 'fs-6 fw-bold text-warning');
+                    ->setAttribute('class', 'd-flex flex-column align-items-lg-center')
+                    ->setLinkAttribute('class', 'fw-bold text-warning');
 
                 $catSub = $categoryRepository->findCatSubMenu($primary['idcategory']);
                 

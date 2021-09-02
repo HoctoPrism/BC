@@ -42,12 +42,9 @@ document.querySelectorAll('li').forEach(element => {
     })
 });
 
-/**
- * 
- * en chantier
- * 
- */
-//on select les li générés par le knp pour supprimer les classes last
-document.querySelectorAll(/^.menu_level_/gm).forEach(element => {
-    element.classList.remove()
+//on select le menu selectioné dans le mega pour changer le bg
+document.querySelectorAll('li').forEach(element => {
+    element.querySelectorAll(".last").forEach(element2 => {
+        element2.classList.remove('last')
+    })
 });

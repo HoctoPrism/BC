@@ -19,31 +19,7 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    public function orderProductByCategory($value): array
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.idcategory = :val')
-            ->setParameter('val', $value)
-            ->setMaxResults(4)
-            ->getQuery()
-            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
-        ;
-    }
-
+    //allow to find product by their ranked (not yet included)
     public function tendance(): array
     {
         return $this->createQueryBuilder('p')
@@ -53,4 +29,14 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
+    //get a list of product by idCategory
+    public function getProductsByCategory($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.idcategory = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
+        ;
+    }
 }
