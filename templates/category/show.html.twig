@@ -7,120 +7,122 @@
     <h1 class="text-secondary m-4 text-center">{{ category.nameCategory|upper }}</h1>
 
     <!-- QUAND C'EST L'ID D'UN ANIMAL, AFFICHE TOUS LES PRODUITS LIES AUX ENFANTS -->
-    <section class="row row-cols-5 text-secondary g-0 my-4 mx-2">
+    {% if category.idcategoryparent is null %}
+        <section class="row row-cols-5 text-secondary g-0 my-4 mx-2">
 
-        {% for animalCat in categories %}
+            {% for animalCat in categories %}
 
-                {% if animalCat.idcategoryparent is not empty and category.idcategory == animalCat.idcategoryparent.idcategory %}
+                    {% if animalCat.idcategoryparent is not empty and category.idcategory == animalCat.idcategoryparent.idcategory %}
 
-                    {% for MainCat in categories %}
-                        
-                        {% if MainCat.idcategoryparent is not empty and animalCat.idcategory == MainCat.idcategoryparent.idcategory %}
+                        {% for MainCat in categories %}
                             
-                            {% for product in products %}
+                            {% if MainCat.idcategoryparent is not empty and animalCat.idcategory == MainCat.idcategoryparent.idcategory %}
+                                
+                                {% for product in products %}
 
-                                {% if product.idcategory.idcategory == MainCat.idcategory %}
+                                    {% if product.idcategory.idcategory == MainCat.idcategory %}
 
-                                    <div class="col">
-                                        <div class="d-flex flex-column justify-content-between p_borders rounded-3 m-2">
+                                        <div class="col">
+                                            <div class="d-flex flex-column justify-content-between p_borders rounded-3 m-2">
 
-                                            <div class="my-3 d-flex justify-content-center align-items-center">
-                                                <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2 ">
-                                                    <img src="{{ asset('upload/' ~ product.image1) }}" class="product_img_size flex-1" alt="{{ product.brandproduct }}">
-                                                </a>
-                                            </div>
-
-                                            <div class="text-center my-4 flex-0">
-                                                <div class="text-warning fw-bold">
-                                                    <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.brandproduct }}</a>
+                                                <div class="my-3 d-flex justify-content-center align-items-center">
+                                                    <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2 ">
+                                                        <img src="{{ asset('upload/' ~ product.image1) }}" class="product_img_size flex-1" alt="{{ product.brandproduct }}">
+                                                    </a>
                                                 </div>
-                                                <div class="mb-2 p_product_list_name">
-                                                    <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.nameproduct }}{% if product.qtyproduct != null %} - {{ product.qtyproduct }} kg{% endif %}</a>
-                                                </div>
-                                            </div>
-                            
-                                            <div class="row py-2 align-items-center justify-content-center bg-secondary g-0 p_product_list_round">
-                                                <a href="#" class="p-2 fw-bold text-white d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex align-items-center ms-2">
-                                                        <div class="bg-warning rounded-3 p-2">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
-                                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                                            </svg>
-                                                        </div>
+
+                                                <div class="text-center my-4 flex-0">
+                                                    <div class="text-warning fw-bold">
+                                                        <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.brandproduct }}</a>
                                                     </div>
-                                                    <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
-                                                </a>
-                                            </div>
+                                                    <div class="mb-2 p_product_list_name">
+                                                        <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.nameproduct }}{% if product.qtyproduct != null %} - {{ product.qtyproduct }} kg{% endif %}</a>
+                                                    </div>
+                                                </div>
+                                
+                                                <div class="row py-2 align-items-center justify-content-center bg-secondary g-0 p_product_list_round">
+                                                    <a href="#" class="p-2 fw-bold text-white d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center ms-2">
+                                                            <div class="bg-warning rounded-3 p-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
+                                                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
+                                                    </a>
+                                                </div>
 
+                                            </div>
+                                        </div>
+                                
+                                    {% endif %}
+
+                                {% endfor %}   
+                            
+                            {% endif %}
+
+                        {% endfor %}
+
+                    {% endif %}
+
+            {% endfor %}
+
+        </section>
+    {% endif %}
+    <!-- QUAND C'EST DIRECTEMENT L'ID DE LA DERNIERE CATEGORIE -->
+    {% if category.idcategoryparent is not null %}
+
+        <section class="row row-cols-5 text-secondary g-0 my-4 mx-2">
+        {% for product in products %}
+            {% if product.idcategory.idcategory == category.idcategory %}
+
+                    <div class="col">
+                        <div class="d-flex flex-column justify-content-between p_borders rounded-3 m-2">
+            
+                            <div class="my-3 d-flex justify-content-center align-items-center">
+                                <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2 ">
+                                    <img src="{{ asset('upload/' ~ product.image1) }}" class="product_img_size flex-1" alt="{{ product.brandproduct }}">
+                                </a>
+                            </div>
+            
+                            <div class="text-center my-4 flex-0">
+                                <div class="text-warning fw-bold">
+                                    <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.brandproduct }}</a>
+                                </div>
+                                <div class="mb-2 p_product_list_name">
+                                    <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.nameproduct }}{% if product.qtyproduct != null %} - {{ product.qtyproduct }} kg{% endif %}</a>
+                                </div>
+                            </div>
+            
+                            <div class="row py-2 align-items-center justify-content-center bg-secondary g-0 p_product_list_round">
+                                <a href="#" class="p-2 fw-bold text-white d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center ms-2">
+                                        <div class="bg-warning rounded-3 p-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg>
                                         </div>
                                     </div>
-                            
-                                {% endif %}
-
-                            {% endfor %}   
-                        
-                        {% endif %}
-
-                    {% endfor %}
-
-                {% endif %}
-
-        {% endfor %}
-
-
-
-    </section>
-    <!-- QUAND C'EST DIRECTEMENT L'ID DE LA DERNIERE CATEGORIE -->
-    {% for product in products %}
-    
-        {% if product.idcategory.idcategory == category.idcategory %}
-
-            <section class="row row-cols-5 text-secondary g-0 my-4 mx-2">
-        
-                <div class="col">
-                    <div class="d-flex flex-column justify-content-between p_borders rounded-3 m-2">
-        
-                        <div class="my-3 d-flex justify-content-center align-items-center">
-                            <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2 ">
-                                <img src="{{ asset('upload/' ~ product.image1) }}" class="product_img_size flex-1" alt="{{ product.brandproduct }}">
-                            </a>
-                        </div>
-        
-                        <div class="text-center my-4 flex-0">
-                            <div class="text-warning fw-bold">
-                                <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.brandproduct }}</a>
+                                    <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
+                                </a>
                             </div>
-                            <div class="mb-2 p_product_list_name">
-                                <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.nameproduct }}{% if product.qtyproduct != null %} - {{ product.qtyproduct }} kg{% endif %}</a>
-                            </div>
+            
                         </div>
-        
-                        <div class="row py-2 align-items-center justify-content-center bg-secondary g-0 p_product_list_round">
-                            <a href="#" class="p-2 fw-bold text-white d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center ms-2">
-                                    <div class="bg-warning rounded-3 p-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
-                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
-                            </a>
-                        </div>
-        
                     </div>
-                </div>
-            </section>   
-        {% endif %}
+                
+                
+            {% endif %}
+        {% endfor %}
+        </section>   
 
-    {% endfor %}
+    {% endif %} 
 
 <!--             <div class="col-12 d-flex flex-column align-items-center justify-content-center p-5">
                 <div class="fs-3">Aucun Produit trouvé</div>
                 <div class="fw-bold text-warning fs-1">:(</div>
                 <img src="{{ asset('images/cyring-man.gif') }}" alt="error">
             </div> -->
-
 
 {% endblock %}
 
