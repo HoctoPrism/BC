@@ -50,11 +50,13 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{idcategory}', name: 'category_show', methods: ['GET'])]
-    public function show(Category $category, ProductRepository $productRepository): Response
+    public function show(Category $category, CategoryRepository $categoryRepository,ProductRepository $productRepository): Response
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            'products' => $productRepository->getProductsByCategory( $category->getIdcategory() )
+            'categories' => $categoryRepository->findAll(),
+            'product' => $productRepository->getProductsByCategory( $category->getIdcategory() ),
+            'products' => $productRepository->findAll()
         ]);
     }
 
