@@ -24,5 +24,13 @@ class DefaultController extends AbstractController{
             'categories' => $categoryRepository->findAll(),
         ]);
     }  
+
+    #[Route('/headerMenu', name: 'headerMenu')]
+    public function CatHeaderMenu(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('inc/headerMenu.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }  
 }
 ?>
