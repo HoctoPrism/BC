@@ -14,21 +14,27 @@
             {% if animal.idcategoryparent is empty %}
 
                 <li>
-                    <a class="dropdown-item" href="/category/{{ animal.idcategory }}">{{ animal.namecategory|upper }}</a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item fs-5" id="CatPlusMinusEvent" href="/category/{{ animal.idcategory }}">{{ animal.namecategory|title }}</a>
+                        <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>
+                    </div>
                     <ul class="dropdown-menu dropdown-submenu">
 
                         {% for mainCategory in categories %}
                             {% if mainCategory.idcategoryparent is not empty and animal.idcategory == mainCategory.idcategoryparent.idcategory %}
 
                                 <li>
-                                    <a class="dropdown-item" href="/category/{{ mainCategory.idcategory }}">{{ mainCategory.namecategory|upper }}</a>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a class="dropdown-item fs-6" href="/category/{{ mainCategory.idcategory }}">{{ mainCategory.namecategory|title }}</a>
+                                        <div id="CatPlusMinus" class="text-warning fs-6 fw-bold pe-3"></div>
+                                    </div>
                                     <ul class="dropdown-menu dropdown-submenu">
 
                                         {% for subCategory in categories %}
                                             {% if subCategory.idcategoryparent is not empty and mainCategory.idcategory == subCategory.idcategoryparent.idcategory %}
 
                                                 <li>
-                                                    <a class="dropdown-item" href="/category/{{ subCategory.idcategory }}">{{ subCategory.namecategory|upper }}</a>
+                                                    <a class="dropdown-item" href="/category/{{ subCategory.idcategory }}">{{ subCategory.namecategory|title }}</a>
                                                 </li>
 
                                             {% endif %}
@@ -74,32 +80,43 @@
         {% for animal in categories %}
             {% if animal.idcategoryparent is empty %}
 
-                <div class="px-3 p_accordion_mega">
-                    <a class="text-secondary fs-3 border-none" 
-                       href="#"
-                       data-bs-toggle="collapse" 
-                       data-bs-target="#flush-collapse{{animal.idcategory}}" 
-                       aria-expanded="false" 
-                       aria-controls="flush-collapse{{animal.idcategory}}">
-                       {{ animal.namecategory|title }}
-                    </a>
+                <div class="ps-3 p_accordion_mega">
+
+                    <div class="d-flex flex-column my-1" id="CatPlusMinusEvent">
+                     
+                        <a  class="text-secondary fs-5 d-flex justify-content-between" 
+                            href="#"
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#flush-collapse{{animal.idcategory}}" 
+                            aria-expanded="false" 
+                            aria-controls="flush-collapse{{animal.idcategory}}"
+                            >
+                            <div>{{ animal.nameCategory|title }}</div>
+                            <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>
+                        </a>
+                      
+                    </div>
 
                     <div id="flush-collapse{{animal.idcategory}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
 
-                        <a class="fw-bold text-warning px-4 fs-5" href="/category/{{ animal.idcategory }}">Tous les produits</a>
+                        <a class="fw-bold text-warning ps-4 fs-5" href="/category/{{ animal.idcategory }}">Tous les produits</a>
 
                         {% for mainCategory in categories %}
                             {% if mainCategory.idcategoryparent is not empty and animal.idcategory == mainCategory.idcategoryparent.idcategory %}
 
-                                <div class="d-flex flex-column bg-secondary my-1">
-                                    <a  class="accordion-item px-4 text-secondary fs-5" 
+                                <div class="d-flex flex-column my-1">
+                              
+                                    <a  class="ps-4 text-secondary fs-5 d-flex justify-content-between" 
                                         href="#"
                                         data-bs-toggle="collapse" 
                                         data-bs-target="#flush-collapse{{mainCategory.idcategory}}" 
                                         aria-expanded="false" 
-                                        aria-controls="flush-collapse{{mainCategory.idcategory}}">
-                                        {{ mainCategory.nameCategory|title }}
+                                        aria-controls="flush-collapse{{mainCategory.idcategory}}"
+                                        id="CatPlusMinusEvent">
+                                        <div>{{ mainCategory.nameCategory|title }}</div>
+                                        <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>  
                                     </a>
+                                   
                                 </div>
 
                                 <div id="flush-collapse{{mainCategory.idcategory}}" class="accordion-collapse collapse" data-bs-parent="#flush-collapse{{animal.idcategory}}">

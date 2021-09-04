@@ -48,3 +48,26 @@ document.querySelectorAll('li').forEach(element => {
         element2.classList.remove('last')
     })
 });
+
+//on select les div pour y ajouter un plus ou un moins selon si ils sont cliqués ou non
+document.querySelectorAll('#CatPlusMinus').forEach(element => {
+
+    element.classList.add('p_plus');
+
+    document.getElementById('CatPlusMinusEvent').addEventListener("click", e =>{
+
+        if (element.classList.contains('p_plus')){
+            element.classList.remove('p_plus')
+            element.classList.add('p_minus')
+        }
+
+        if (element.classList.contains('p_minus')) {
+            element.classList.remove('p_minus')
+            element.classList.add('p_plus')
+        }
+
+    })
+
+});
+
+    

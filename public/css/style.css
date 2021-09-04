@@ -102,6 +102,12 @@ li {
 .p_accordion_mega {
     width: 25rem !important;
 }
+.p_plus::before {
+    content: "+";
+}
+.p_minus::before {
+    content: "-";
+}
 
 .perso_svg {
     height: 3rem !important;
