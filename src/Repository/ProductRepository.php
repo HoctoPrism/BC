@@ -39,4 +39,42 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
         ;
     }
+
+    //chercher un produit dans la barre de recherche
+    public function searchProduct($value)
+    {
+        $object = $this->createQueryBuilder('p')
+            ->leftjoin('p.idcategory', "c");
+
+        if (!is_null($value['searchText']) || empty($value['categories'])) {
+            $object->andWhere('p.nameproduct LIKE :val')
+            ->setParameter('val', '%'.$value['searchText'].'%');
+        };
+
+        if (!is_null($value['categories'])) {
+            $object->andWhere('c IN (:nameCat)')
+            ->setParameter('nameCat', $value['categories']);
+        };
+
+      /* dump($object->getQuery()->getSQL()); */
+        return $object->getQuery()->getResult();
+    }
+
+    public function searchProductsByName(string $query)
+    {
+
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->where(
+            $qb->expr()->andX(
+                $qb->expr()->orX(
+                    $qb->expr()->like('p.nameproduct', ':query')
+                )
+            )
+        )
+            ->setParameter('query', '%' . $query . '%');
+            
+        return $qb->getQuery()->getResult();
+    }
+
 }

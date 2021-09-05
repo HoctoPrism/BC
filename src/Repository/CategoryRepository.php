@@ -37,6 +37,13 @@ class CategoryRepository extends ServiceEntityRepository
             ->orderBy('c.idcategory', 'ASC')
             ->getQuery()
             ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
+    }    
+    public function filterCategory($value){
+        return dump($this->createQueryBuilder('c')
+            ->where('c.idcategory = :idcategory')
+            ->setParameter('idcategory', $value)
+            ->getQuery()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY));
     }
 /*     public function findCatSubMenu(){
         return $this->createQueryBuilder('c')
