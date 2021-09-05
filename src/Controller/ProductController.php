@@ -16,9 +16,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/product')]
 class ProductController extends AbstractController
 {
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/', name: 'product_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
