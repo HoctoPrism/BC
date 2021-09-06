@@ -16,11 +16,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-    #[Route('/', name: 'category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    #[Route('/', name: 'category_index', methods: ['GET', 'POST'])]
+    public function index(CategoryRepository $categoryRepository, ProductRepository $productRepository, Request $request): Response
     {
+        $form = $this->createForm(FormSearchType::class);
+        $form->handleRequest($request);
+
+        $result = $productRepository->findAll();
+
+        if($form->isSubmitted() && $form->isValid()){
+            $result = $productRepository->searchProduct($form->getData());
+        }
+
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'form' => $form->createView(),
+            'results' => $result
         ]);
     }
 
