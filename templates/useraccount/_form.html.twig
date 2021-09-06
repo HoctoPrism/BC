@@ -11,9 +11,13 @@
             {{ form_label(form.pwduser, "Mot de passe", {'attr': {'class': 'form-label'}}) }}
             {{ form_widget(form.pwduser, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div class="mb-3"> <!-- Input du form pour le genre -->
+        <div class="mb-3 form-check p-0"> <!-- Input du form pour le genre -->
             {{ form_label(form.gender, "Sexe", {'attr': {'class': 'form-check-label'}}) }}
-            {{ form_widget(form.gender, {'attr': {'class': 'form-check-input'}}) }}
+            {{ form_widget(form.gender, {'attr': {'class': ''}}) }}
+        </div>
+        <div class="mb-3"> <!-- Input du form pour le password -->
+            {{ form_label(form.phonemobileuser, "Numéro de téléphone", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.phonemobileuser, {'attr': {'class': 'form-control'}}) }}
         </div>
     </div>
     <!-- SECONDE PARTIE -->
@@ -35,7 +39,7 @@
         {{ form_end(form) }}
 
 </div>
-<!-- RESET PASSWORD -->
+{# <!-- RESET PASSWORD -->
 <div class="col-12 row bg-secondary rounded-3 flex-column mb-5  text-white">
     <h3 class="text-center my-5">Réinitialiser votre mot de passe</h3>
     <div class="d-flex flex-column align-items-center">
@@ -49,4 +53,4 @@
         </div>
         <div class="d-flex justify-content-center my-3"><input type="submit" class="btn btn-warning text-white" value="Valider"></input></div>
     </div>
-</div>
+</div> #}

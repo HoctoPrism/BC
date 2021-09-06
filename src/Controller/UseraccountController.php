@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Entity\Useraccount;
 use App\Form\UseraccountType;
+use App\Repository\AddressRepository;
 use App\Repository\UseraccountRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,14 +18,14 @@ class UseraccountController extends AbstractController
 {
 
     #[Route('/', name: 'useraccount_index', methods: ['GET'])]
-    public function index(UseraccountRepository $useraccountRepository,  UserInterface $user): Response
+    public function index(UseraccountRepository $useraccountRepository,  UserInterface $user, AddressRepository $addressRepository): Response
     {
-
         $user = $this->getUser();
 
         return $this->render('useraccount/index.html.twig', [
             'useraccount' => $useraccountRepository->findAll(),
-            'iduser' => $user
+            'iduser' => $user,
+            'addresses' => $addressRepository->findAll()
         ]);
     }
 

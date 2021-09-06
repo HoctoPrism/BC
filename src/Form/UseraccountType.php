@@ -52,12 +52,12 @@ class UseraccountType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('vauncheruser')
-            ->add('phoneuser', TelType::class, [
+            /* ->add('vauncheruser') */
+/*             ->add('phoneuser', TelType::class, [
                 'required' => false
-            ])
+            ]) */
             ->add('phonemobileuser', TelType::class)
-            ->add('nborderuser')
+            /* ->add('nborderuser') */
         ;
     }
 
