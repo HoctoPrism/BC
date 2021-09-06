@@ -77,4 +77,13 @@ class ProductRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function similarProducts($cat, $prod){
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.idcategory = :cat')
+        ->andWhere('p.idproduct != :prod')
+        ->setParameters(['cat' => $cat, 'prod' => $prod])
+        ->getQuery()
+        ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
+    ;
+    }
 }

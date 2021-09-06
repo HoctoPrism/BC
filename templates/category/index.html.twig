@@ -3,7 +3,7 @@
 {% block title %}La Nimes'alerie - liste des catégories{% endblock %}
 
 {% block body %}
-    <section class="container-fluid g-0">
+    <div class="container-fluid g-0">
         <h1 class="text-secondary fw-bold text-center my-5">Liste des catégories</h1>
         {% if is_granted('ROLE_ADMIN') %}
             <div class="d-flex justify-content-center align-items-center flex-column">
@@ -11,48 +11,76 @@
                 <a href="{{ path('category_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter une catégorie</a>
             </div>
         {% endif %}
-        <div class="align-items-center justify-content-center m-lg-4 m-2 mt-2">
-            {% for animal in categories %}
-                {% if animal.idcategoryparent is empty %}
-                    <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1 bg-secondary text-white rounded-3 p-3 m-3 d-flex justify-content-between align-items-center">
-                        <h2 class="col-12 col-md-12 col-lg-12 mb-3 fw-bold text-center">{{ animal.namecategory|upper }}</h2>
-    
-                        {% for mainCategory in categories %}
-                            {% if mainCategory.idcategoryparent is not empty and animal.idcategory == mainCategory.idcategoryparent.idcategory %} 
-                                <div class="col d-flex flex-column align-items-lg-center py-2 py-lg-0">
-                                    <div>
-                                        <h3 class="fs-6 fw-bold text-warning">{{ mainCategory.namecategory|upper }}</h3>
-    
-                                        {% for subCategory in categories %}
-                                            {% if subCategory.idcategoryparent is not empty and mainCategory.idcategory == subCategory.idcategoryparent.idcategory %}
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    {{ subCategory.namecategory }}
-                                                
-                                                {% if is_granted('ROLE_ADMIN') %}
-                                                    <div class="d-flex m-1">
-                                                        <a href="{{ path('category_edit', {'idcategory': subCategory.idcategory}) }}" class="text-white p_edit_button rounded-3 p-1 px-2 mx-1">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                                                            </svg>
-                                                        </a>
-                                                        {% if subCategory.idcategory is not empty %}
-                                                            {{ include('category/_delete_form.html.twig') }}
-                                                        {% endif %}
-                                                        
-                                                    </div>
-                                                  
-                                                {% endif %}
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-    
-                                </div>
-                            {% endif %}
-                        {% endfor %}
+    </div>
+    <div class="row row-cols-2 g-0">
+
+        <!-- FILTRE -->
+        <div class="col-2 row row-cols-1 justify-content-center my-4">
+
+            {{ form_start(form, {'attr': {'class': 'd-flex flex-column mx-md-5 mx-1 my-2'}, 'method': 'POST'}) }}
+                <div class="fw-bold text-secondary text-center">Affiner votre recherche</div>
+
+                <div class="row d-flex flex-column align-items-center p-3">
+                    <div class="mb-3">
+                        {{ form_label(form.searchText, "Votre recherche", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.searchText, {'attr': {'class': 'form-control w-100 p-2 rounded-2 bg-light text-secondary'}}) }}
                     </div>
-                {% endif %}
-            {% endfor %}
+                    <div class="mb-3">
+                        {{ form_label(form.categories, "Nom de la catégorie", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.categories, {'attr': {'class': 'form-control w-100 p-2 rounded-2 bg-light text-secondary'}}) }}
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    {{ form_widget(form.submit, {'attr': { 'class': 'btn btn-warning text-white align-self-center'}}) }}
+                </div>
+            {{ form_end(form) }}
+    
+
         </div>
-    </section>
+
+        <div class="col-10 row row-cols-5 text-secondary g-0 my-4 mx-2">
+            {% for product in results %}
+            <div class="col">
+                <div class="d-flex flex-column justify-content-between p_borders rounded-3 m-2">
+
+                    <div class="my-3 d-flex justify-content-center align-items-center">
+                        <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2 ">
+                            <img src="{{ asset('upload/' ~ product.image1) }}" class="product_img_size flex-1" alt="{{ product.brandproduct }}">
+                        </a>
+                    </div>
+
+                    <div class="text-center my-4 flex-0">
+                        <div class="text-warning fw-bold">
+                            <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.brandproduct }}</a>
+                        </div>
+                        <div class="mb-2 p_product_list_name">
+                            <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.nameproduct }}{% if product.qtyproduct != null %} - {{ product.qtyproduct }} kg{% endif %}</a>
+                        </div>
+                    </div>
+    
+                    <div class="row py-2 align-items-center justify-content-center bg-secondary g-0 p_product_list_round">
+                        <a href="#" class="p-2 fw-bold text-white d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center ms-2">
+                                <div class="bg-warning rounded-3 p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            {% if results is empty %}
+                <div class="col-12 d-flex flex-column align-items-center justify-content-center p-5">
+                    <div class="fs-3">Aucun Produit trouvé</div>
+                    <div class="fw-bold text-warning fs-1">:(</div>
+                    <img src="{{ asset('images/cyring-man.gif') }}" alt="error">
+                </div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

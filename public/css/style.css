@@ -301,6 +301,10 @@ li {
     max-height: 10rem;
     width: 100%;
 }
+.perso_width_img_produit_parent {
+    max-width: 25rem !important;
+    height: 100% !important;
+}
 .p_product_list_name {
     height: 3rem;
 }
