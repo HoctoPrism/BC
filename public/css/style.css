@@ -41,6 +41,11 @@ li {
     height: 2.5rem;
     font-style: italic;
 }
+.perso_search_mobile {
+    height: 2.5rem;
+    font-style: italic;
+    border-radius: 5px;
+}
 .color_product_list_admin a {
     background-color: #ffddb0 !important;
     color: #55555e;
@@ -370,6 +375,20 @@ li {
        background-size: 150% auto; 
     }
 }
+.img_banniere {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.212), rgba(0, 0, 0, 0.212)), url("../images/eden.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 30rem;
+}
+.p_section_space {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem; 
+    background-color: white;
+    margin: 0 10rem 0 10rem;
+    padding: 5rem;
+}
 
 @media (max-width: 991.98px) {
     .perso_logo svg {
@@ -426,6 +445,10 @@ li {
     }
     .sliderText {
         font-size: 1.2rem;
+    }
+    .p_section_space {
+        margin: 0 5rem 15rem 5rem;
+        padding: 2rem;
     }
 } 
 @media (min-width: 991.99px) {
@@ -509,6 +532,13 @@ li {
     .product_img_size {
         height: 100%;
         width: 4rem;
+    }
+    .p_section_space {
+        margin: 0 1.8rem 15rem 1.8rem;
+        padding: 2rem;
+    }
+    .img_banniere {
+        height: 25rem;
     }
 }
 @media (min-width: 575.99px) {
