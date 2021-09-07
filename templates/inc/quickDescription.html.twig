@@ -1,17 +1,23 @@
 {% block quickDescription %}
 <section class="container-fluid row row-cols-lg-2 text-secondary mt-5 px-md-4 ps-2 pe-0">
     <div class="col-lg-4 col-md-5 col-12">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div>
                 <h1 class="fw-bold fs-5 text-center p-0 mb-5 d-block d-md-none">{{ product.nameproduct }} - {{ product.qtyproduct }} kg</h1>
             </div>
-            <div class="col-12">
-                <img src="{{ asset ('images/photo_produit/7613033136351_PHOTOSITE_20200324_164154_0.jpg') }}" alt="photo croquette" class="img-fluid perso_width_img_produit">
-            </div>
-            <div class="my-4">
-                <img src="{{ asset ('images/photo_produit/7613033136351_PHOTOSITE_20200324_164154_1.jpg') }}" alt="photo paquet" class="produit_photo_produit">
-                <img src="{{ asset ('images/photo_produit/7613033136351_PHOTOSITE_20200324_164154_3.jpg') }}" alt="photo paquet" class="produit_photo_produit">
-                <img src="{{ asset ('images/photo_produit/7613033136351_PHOTOSITE_20200324_164154_5.jpg') }}" alt="photo paquet" class="produit_photo_produit">
+            <div class="perso_width_img_produit_parent">
+                <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="w-100">
+                <div class="my-2 col-12">
+                    {% if product.image2 is not empty %}
+                        <img src="{{ asset('upload/' ~ product.image2) }}" alt="'image 2 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                    {% endif %}
+                    {% if product.image3 is not empty %}
+                        <img src="{{ asset('upload/' ~ product.image3) }}" alt="'image 3 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                    {% endif %}    
+                    {% if product.image4 is not empty %}
+                        <img src="{{ asset('upload/' ~ product.image4) }}" alt="'image 4 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
@@ -21,7 +27,7 @@
                 <h1 class="fw-bold fs-4 d-md-block d-none">{{ product.nameproduct }} - {{ product.qtyproduct }} kg</h1>
             </div>
             <div class="col-12 row align-items-center mt-4">
-                <div class="col-lg-5 col-12 d-flex align-items-center flex-md-row flex-column">
+                <div class="col-lg-6 col-12 d-flex align-items-center flex-md-row flex-column">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FDAB91" class="bi bi-star-fill" viewBox="0 0 16 16">
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -41,8 +47,7 @@
                     </div>
                     <div class="ms-3 fs-4">280 avis</div>
                 </div>
-                <div class="col-2 my-lg-0 my-2">compteur</div>
-                <div class="col-5 d-flex align-items-end justify-content-center my-lg-0 my-2">
+                <div class="col-6 d-flex align-items-end justify-content-center my-lg-0 my-2">
                     <div class="fs-1 fw-bold text-warning">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€<span class="text-secondary fs-6 fw-light">TTC</span></div>
                     
                 </div>

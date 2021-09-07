@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Nimes'alerie - liste des produits{% endblock %}
+
+{% block body %}
+    <section class="container-fluid g-0 text-secondary">
+        <h1 class="fw-bold text-center my-5">Liste de produits</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <div>Vous pouvez ajouter un produit</div>
+                <a href="{{ path('product_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter un produit</a>
+            </div>
+        {% endif %}
+        <div class="row row-cols-lg-3 row-cols-md-2 align-items-center justify-content-center g-0 mx-3">
+            {% for product in products %}
+                <div class="col">
+                    <div class="d-flex flex-column justify-content-between p_borders rounded-3 m-2">
+
+                            <div class="my-3 d-flex justify-content-center align-items-center">
+                                <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2 ">
+                                    <img src="{{ asset('upload/' ~ product.image1) }}" class="product_img_size flex-1" alt="{{ product.brandproduct }}">
+                                </a>
+                            </div>
+                            <div class="text-center my-4 flex-0">
+                                    <div class="text-warning fw-bold">
+                                        <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.brandproduct }}</a>
+                                    </div>
+                                    <div class="mb-2 p_product_list_name">
+                                        <a href="{{ path('product_show', {'idproduct': product.idproduct}) }}" class="text-secondary p-2">{{ product.nameproduct }}{% if product.qtyproduct != null %} - {{ product.qtyproduct }} kg{% endif %}</a>
+                                    </div>
+                            </div>
+             
+                        <div class="row py-2 align-items-center justify-content-center bg-secondary g-0 p_product_list_round">
+
+                            <a href="#" class="p-2 fw-bold text-white d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center ms-2">
+                                    <div class="bg-warning rounded-3 p-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="ms-2">Ajouter</span>
+                                </div>
+                                <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
+                            </a>
+        
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="col d-flex align-items-center">
+                                    <div class="mx-2 color_product_list_admin"><a href="{{ path('product_edit', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 fw-bold" >Modifier</a></div>                                
+                                    <form method="post" action="{{ path('product_delete', {'idproduct': product.idproduct}) }}" onsubmit="return confirm('êtes vous sur de vouloir supprimer le produit ?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.idproduct) }}">
+                                        <button class="btn rounded-2 fw-bold delete_button">Supprimer</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

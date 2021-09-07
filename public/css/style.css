@@ -45,6 +45,11 @@ li {
     background-color: #ffddb0 !important;
     color: #55555e;
 }
+.delete_button {
+    background-color: #ffddb0 !important;
+    color: #55555e !important;
+    height: 3.2rem !important;
+}
 .color_form {
     background-color: #3e3f4b !important;
 }
@@ -89,32 +94,24 @@ li {
     z-index: 2;
     position: relative;
 }
-.perso_circle {
-    background-color: #FDAB91;
-    border-radius: 50%;
-    width: 15rem;
-    height: 15rem;
-    position: relative;
-    left: 15%;
-    top: 40%;
-    z-index: 3;
-    box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.356);
-}
 .perso_radius_button {
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
 }
-.title_img_carousel {
-    position: relative;
-    top: 10%;
-    left: 9%;
-    font-size: 3rem;
-    color: white;
+.p_accordion_mega {
+    width: 25rem !important;
 }
+.p_plus::before {
+    content: "+";
+}
+.p_minus::before {
+    content: "-";
+}
+
 .perso_svg {
-    height: 5rem;
-    width: auto;
+    height: 3rem !important;
+    width: auto !important;
 }
 .perso_svg_2 {
     height: 3.5rem;
@@ -136,6 +133,11 @@ li {
 .footer {
     z-index: 2;
 }
+/*
+*
+    *CSS POUR LE CAROUSEL
+*
+*/
 .img-banniere-1 {
     background-image: url('../images/chat_yeux_bleus.jpg');
     background-size: cover;
@@ -160,6 +162,30 @@ li {
     position: absolute;
     height: 40rem;
 }
+.title_img_carousel {
+    position: relative;
+    top: 10%;
+    left: 9%;
+    font-size: 3rem;
+    color: white;
+}
+.perso_circle {
+    background-color: #FDAB91;
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    position: relative;
+    left: 15%;
+    top: 40%;
+    z-index: 3;
+    box-shadow: 0 10px 20px 1px rgba(0, 0, 0, 0.356);
+}
+/**********************/
+/*
+*
+    *CSS POUR LE FOOTER
+*
+*/
 .perso_icon_paiement {
     height: 2rem;
 }
@@ -262,8 +288,37 @@ li {
     -webkit-box-shadow: 0 0 0 0 !important;
             box-shadow: 0 0 0 0 !important;
 }
+.flex-1 {
+    flex: 1;
+}
+.flex-0 {
+    flex: 0 0 auto;
+}
 .pointer {
     cursor: pointer;
+}
+.product_img_size {
+    max-height: 10rem;
+    width: 100%;
+}
+.perso_width_img_produit_parent {
+    max-width: 25rem !important;
+    height: 100% !important;
+}
+.p_product_list_name {
+    height: 3rem;
+}
+.p_borders {
+    box-shadow: 0 0 0.08rem #505160 ;
+}
+.p_product_list_round {
+    border-radius: 0.8rem 0.8rem 0.3rem 0.3rem !important;
+}
+.p_edit_button {
+    background-color: #a6dda9;
+}
+.p_del_button {
+    background-color: #d68585;
 }
 /*
 *
@@ -289,7 +344,8 @@ li {
     max-width: 100%;
     height: 20rem;
     border-radius: 1.2rem;
-    animation-play-state: paused
+    animation-play-state: paused;
+
 }
 #back_img_space.animated {
     animation:zoomout 3s ease-in-out;
@@ -321,7 +377,7 @@ li {
         height: 40%;
     }
     .perso_ham_button {
-        display: none;
+        display: none !important;
     }
     .title_img_carousel {
         position: relative;
@@ -376,6 +432,27 @@ li {
     .perso_ham_button_2 {
         display: none;
     }
+
+    /* MEGA MENU */
+    .dropdown-menu li {
+        position: relative !important;
+    }
+    .dropdown-menu .dropdown-submenu {
+        display: none !important;
+        position: absolute !important;
+        left: 100% !important;
+        top: -7px !important;
+    }
+    .dropdown-menu .dropdown-submenu-left {
+        right: 100% !important;
+        left: auto !important;
+    }
+    .dropdown-menu > li:hover > .dropdown-submenu {
+        display: block !important;
+    }
+    .megaMenuMargin {
+        margin-left: 5rem !important;
+    }
 }
 @media (max-width: 575.98px) { 
     .label_icon_navbar {
@@ -428,6 +505,10 @@ li {
     }
     .sliderText {
         font-size: 1rem;
+    }
+    .product_img_size {
+        height: 100%;
+        width: 4rem;
     }
 }
 @media (min-width: 575.99px) {

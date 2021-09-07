@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 
 /**
@@ -15,6 +16,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\UseraccountRepository")
  * @UniqueEntity(fields={"emailuser"}, message="There is already an account with this emailuser")
+ * @ApiResource()
+ * 
  */
 class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -107,7 +110,7 @@ class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
-    public function getUserIdentifier(): ?int
+    public function getiduser(): ?int
     {
         return $this->iduser;
     }
@@ -257,7 +260,7 @@ class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ANON';
         return array_unique($roles);
     }
 
@@ -285,6 +288,9 @@ class Useraccount implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+    public function __toString() {
+        return $this->iduser;
     }
 
 }

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}La Nimes'alerie - CGU{% endblock %}
+
+{% block body %}
+        <h2 class="text-warning text-center pt-5 fw-bold m-2 m-md-0">FAQ</h2>
+        <div class="accordion accordion-flush mx-lg-5 mx-2 my-5" id="accordionExample">
+        <div class="accordion-item border-0 py-2">
+                <h2 class="accordion-header" id="headingOne">
+                <button class="border_cgu fs-3  text-secondary text-warning w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    1.1 <span class="text-secondary">Une question ?</span>
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="{{ path('app_contact') }}" class="text-secondary px-5">Envoyer nous un message !</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

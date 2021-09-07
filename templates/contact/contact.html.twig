@@ -1,28 +1,32 @@
 {% extends "base.html.twig" %}
+
+{% block title %}La Nimes'larie - {{title}}{% endblock %}
+
 {% block body %}
-<title>{{title}}</title>
-    <section class="d-flex flex-column align-items-center my-5 text-secondary">
-        <h1>Contactez-nous</h1>
-        <p>Vous pouvez nous contacter via le formulaire ci dessous.</p>
-        {{ form_start(form, {'attr': {'class': 'd-flex flex-column'}, 'method': 'POST'}) }}
-            <div class="mb-3"> <!-- Input du form pour Nom -->
-                {{ form_label(form.Nom, "Votre Nom", {'attr': {'class': 'form-label'}}) }}
-                {{ form_widget(form.Nom, {'attr': {'class': 'form-control w-100 p-2 rounded-2'}}) }}
-            </div>
-            <div class="mb-3"> <!-- Input du form pour L'email-->
-                {{ form_label(form.Email, "Votre Email", {'attr': {'class': 'form-label'}}) }}
-                {{ form_widget(form.Email, {'attr': {'class': 'form-control w-100 p-2 rounded-2'}}) }}
-            </div>
-            <div class="mb-3"> <!-- Le select -->
-                {{ form_label(form.Sujet, "Sujet : ", {'attr': {'class': 'form-label'}}) }}
-                {{ form_widget(form.Sujet, {'attr': {'class': 'form-select mb-3 w-100 p-2 rounded-2 text-secondary'}}) }}
-            </div>
-            <div class="mb-3"> <!-- Le textarea pour le message -->
-                {{ form_label(form.Message, "Votre Message : ", {'attr': {'class': 'form-label'}}) }}
-                {{ form_widget(form.Message, {'attr': {'class': 'form-control'}}) }}
-            </div>
-            <!-- Le bouton envoyé -->
-            {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-warning text-white w-50 align-self-center'}}) }}
-        {{ form_end(form) }}
+    <section class="container-fluid g-0 text-secondary">
+        <div class=" mx-3 mx-md-2 d-flex flex-column align-items-center my-5">
+            <h1>Contactez-nous</h1>
+            <p class="text-center">Vous pouvez nous contacter via le formulaire ci dessous.</p>
+            {{ form_start(form, {'attr': {'class': 'd-flex flex-column'}, 'method': 'POST'}) }}
+                <div class="mb-3"> <!-- Input du form pour Nom -->
+                    {{ form_label(form.Nom, "Votre Nom", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Nom, {'attr': {'class': 'form-control w-100 p-2 rounded-2'}}) }}
+                </div>
+                <div class="mb-3"> <!-- Input du form pour L'email-->
+                    {{ form_label(form.Email, "Votre Email", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Email, {'attr': {'class': 'form-control w-100 p-2 rounded-2'}}) }}
+                </div>
+                <div class="mb-3"> <!-- Le select -->
+                    {{ form_label(form.Sujet, "Sujet : ", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Sujet, {'attr': {'class': 'form-select mb-3 w-100 p-2 rounded-2 text-secondary'}}) }}
+                </div>
+                <div class="mb-3"> <!-- Le textarea pour le message -->
+                    {{ form_label(form.Message, "Votre Message : ", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Message, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <!-- Le bouton envoyé -->
+                {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-warning text-white w-50 align-self-center'}}) }}
+            {{ form_end(form) }}
+        </div>
     </section>
 {% endblock %}

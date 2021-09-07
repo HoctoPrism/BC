@@ -1,26 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Brand{% endblock %}
+{% block title %}La Nimes'alerie - {{ brand.nameBrand }}{% endblock %}
 
 {% block body %}
-    <h1>Brand</h1>
+    <section class="container-fluid py-5 justify-content-center g-0 text-secondary">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ brand.id }}</td>
-            </tr>
-            <tr>
-                <th>NameBrand</th>
-                <td>{{ brand.nameBrand }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <h1 class="text-center fw-bold text-warning my-3">{{ brand.nameBrand }}</h1>
 
-    <a href="{{ path('brand_index') }}">back to list</a>
+        <div class="m-2 d-flex align-items-center justify-content-center">
+            <img src="{{ asset('upload/' ~ brand.Logo) }}" alt="{{ brand.nameBrand }}" style="max-width: 300px;">
+        </div>
 
-    <a href="{{ path('brand_edit', {'id': brand.id}) }}">edit</a>
+        <div class="p-2 d-flex align-items-center justify-content-center text-center">
+            <div class="w-75">{{ brand.description }}</div>
+        </div>
 
-    {{ include('brand/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="row row-cols-2 text-white color_form m-5 rounded-3 justify-content-center">
+    
+                <h2 class="col-12 text-center my-4">Informations administrateurs</h2>
+    
+                <div class="col-3">
+                    <div class="fs-5">Id de la marque</div>
+                    <div class="bg-secondary p-2 rounded-3">
+                        <div>{{ brand.id }}</div>
+                    </div>
+                </div>
+    
+                <div class="col-9">
+                    <div class="fs-5">Nom du fichier logo</div>
+                    <div class="bg-secondary p-2 rounded-3">
+                        <div>{{ brand.Logo }}</div>
+                    </div>
+                </div>
+    
+                <div class="col-12 d-flex">
+                    <form method="post" action="{{ path('brand_edit', {'id': brand.id}) }}" class="m-2">
+                        <button class="btn btn-warning text-white my-4">Modifier</button>
+                    </form>
+                    <form method="post" action="{{ path('brand_delete', {'id': brand.id}) }}" onsubmit="return confirm('êtes vous sur de vouloir supprimer le produit ?');"  class="m-2">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ brand.id) }}">
+                        <button class="btn btn-danger text-white my-4">Supprimer</button>
+                    </form>
+                </div>
+    
+            </div>
+        {% endif %}
+
+    </section>
+
 {% endblock %}
+
+    

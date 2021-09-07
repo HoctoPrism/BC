@@ -19,41 +19,71 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    public function getNameProduct($value): ?Product
+    //allow to find product by their ranked (not yet included)
+    public function tendance(): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.idProduct = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Product
+    //get a list of product by idCategory
+    public function getProductsByCategory($value): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.idcategory = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
         ;
     }
-    */
+
+    //chercher un produit dans la barre de recherche
+    public function searchProduct($value)
+    {
+        $object = $this->createQueryBuilder('p')
+            ->leftjoin('p.idcategory', "c");
+
+        if (!is_null($value['searchText']) || empty($value['categories'])) {
+            $object->andWhere('p.nameproduct LIKE :val')
+            ->setParameter('val', '%'.$value['searchText'].'%');
+        };
+
+        if (!is_null($value['categories'])) {
+            $object->andWhere('c IN (:nameCat)')
+            ->setParameter('nameCat', $value['categories']);
+        };
+
+      /* dump($object->getQuery()->getSQL()); */
+        return $object->getQuery()->getResult();
+    }
+
+    public function searchProductsByName(string $query)
+    {
+
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->where(
+            $qb->expr()->andX(
+                $qb->expr()->orX(
+                    $qb->expr()->like('p.nameproduct', ':query')
+                )
+            )
+        )
+            ->setParameter('query', '%' . $query . '%');
+            
+        return $qb->getQuery()->getResult();
+    }
+
+    public function similarProducts($cat, $prod){
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.idcategory = :cat')
+        ->andWhere('p.idproduct != :prod')
+        ->setParameters(['cat' => $cat, 'prod' => $prod])
+        ->getQuery()
+        ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY)
+    ;
+    }
 }

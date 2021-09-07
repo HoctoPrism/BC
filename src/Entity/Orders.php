@@ -2,17 +2,26 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Orders
  *
- * @ORM\Table(name="orders", indexes={@ORM\Index(name="idAdress", columns={"idAdress"}), @ORM\Index(name="idPayment", columns={"idPayment"}), @ORM\Index(name="idProduct", columns={"idProduct"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Table(name="orders", indexes={@ORM\Index(name="idAdress", columns={"idAdress"}), @ORM\Index(name="idPayment", columns={"idPayment"}), @ORM\Index(name="idUser", columns={"idUser"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
+ * 
+ * @ApiResource(attributes={
+ *   "normalization_context"={"groups"={"read"}},
+ *   "denormalization_context"={"groups"={"write"}},
+ * })
+ * 
  */
+
 class Orders
 {
     /**
@@ -21,6 +30,8 @@ class Orders
      * @ORM\Column(name="idOrder", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"read"})
+     * 
      */
     private $idorder;
 
@@ -28,6 +39,7 @@ class Orders
      * @var int|null
      *
      * @ORM\Column(name="promoOrder", type="integer", nullable=true)
+     * @Groups({"read", "write"})
      */
     private $promoorder;
 
@@ -35,6 +47,7 @@ class Orders
      * @var \DateTime|null
      *
      * @ORM\Column(name="orderDate", type="date", nullable=true)
+     * @Groups({"read", "write"})
      */
     private $orderdate;
 
@@ -45,18 +58,9 @@ class Orders
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idAdress", referencedColumnName="idAdress")
      * })
+     * @Groups({"read", "write"})
      */
     private $idadress;
-
-    /**
-     * @var \Product
-     *
-     * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idProduct", referencedColumnName="idProduct")
-     * })
-     */
-    private $idproduct;
 
     /**
      * @var \Useraccount
@@ -65,6 +69,7 @@ class Orders
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idUser", referencedColumnName="idUser")
      * })
+     * @Groups({"read", "write"})
      */
     private $iduser;
 
@@ -75,6 +80,7 @@ class Orders
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idPayment", referencedColumnName="idPayment")
      * })
+     * @Groups({"read", "write"})
      */
     private $idpayment;
 
@@ -90,8 +96,15 @@ class Orders
      *     @ORM\JoinColumn(name="idStatus", referencedColumnName="idStatus")
      *   }
      * )
+     * @Groups({"read", "write"})
      */
     private $idstatus;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProductOrder::class, mappedBy="orderid")
+     * @Groups({"read", "write"})
+     */
+    private $productOrders;
 
     /**
      * Constructor
@@ -99,6 +112,7 @@ class Orders
     public function __construct()
     {
         $this->idstatus = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productOrders = new ArrayCollection();
     }
 
     public function getIdorder(): ?int
@@ -138,18 +152,6 @@ class Orders
     public function setIdadress(?Address $idadress): self
     {
         $this->idadress = $idadress;
-
-        return $this;
-    }
-
-    public function getIdproduct(): ?Product
-    {
-        return $this->idproduct;
-    }
-
-    public function setIdproduct(?Product $idproduct): self
-    {
-        $this->idproduct = $idproduct;
 
         return $this;
     }
@@ -198,6 +200,36 @@ class Orders
     public function removeIdstatus(Status $idstatus): self
     {
         $this->idstatus->removeElement($idstatus);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProductOrder[]
+     */
+    public function getProductOrders(): Collection
+    {
+        return $this->productOrders;
+    }
+
+    public function addProductOrder(ProductOrder $productOrder): self
+    {
+        if (!$this->productOrders->contains($productOrder)) {
+            $this->productOrders[] = $productOrder;
+            $productOrder->setIdorder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductOrder(ProductOrder $productOrder): self
+    {
+        if ($this->productOrders->removeElement($productOrder)) {
+            // set the owning side to null (unless already changed)
+            if ($productOrder->getIdorder() === $this) {
+                $productOrder->setIdorder(null);
+            }
+        }
 
         return $this;
     }

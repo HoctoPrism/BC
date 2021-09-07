@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    upload_directory: '%kernel.project_dir%/public/upload'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -21,5 +21,38 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    app.menu_builder:
+        class: App\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    # Ici on définit le chemin pour afficher la navbar du header
+    app.header_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createNavHeader]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: header }
+            
+    # Ici on définit le chemin pour afficher la navbar du footer
+    app.footer_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createNavFooter]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: footer }
+
+    # Ici on définit le chemin pour afficher la navbar des réseaux sociaux du footer
+    app.network_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createSocialNetwork]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: network }
+
+    # Ici on définit le chemin pour les catégories
+    app.categoryList_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createCategoryList]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: categoryList }

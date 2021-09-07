@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Address
  *
+ * @ApiResource()
  * @ORM\Table(name="address", indexes={@ORM\Index(name="idUser", columns={"idUser"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\AddressRepository")

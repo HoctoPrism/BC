@@ -1,0 +1,56 @@
+<div class="row align-items-center my-5 bg-secondary rounded-3 text-white">
+    <h2 class="col-12 text-center my-5">Informations personnelles</h2>
+    <!-- PREMIERE PARTIE -->
+    <div class="col-5 mx-3">
+        {{ form_start(form, {'attr': {'class': 'd-flex flex-column'}, 'method': 'POST'}) }}
+        <div class="mb-3"> <!-- Input du form pour l'email -->
+            {{ form_label(form.emailuser, "Adresse mail", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.emailuser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3"> <!-- Input du form pour le password -->
+            {{ form_label(form.pwduser, "Mot de passe", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.pwduser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3 form-check p-0"> <!-- Input du form pour le genre -->
+            {{ form_label(form.gender, "Sexe", {'attr': {'class': 'form-check-label'}}) }}
+            {{ form_widget(form.gender, {'attr': {'class': ''}}) }}
+        </div>
+        <div class="mb-3"> <!-- Input du form pour le password -->
+            {{ form_label(form.phonemobileuser, "Numéro de téléphone", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.phonemobileuser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <!-- SECONDE PARTIE -->
+    <div class="col-5 mx-3">
+        <div class="mb-3">
+            {{ form_label(form.firstnameuser, "Prénom", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.firstnameuser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.lastnameuser, "Nom", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.lastnameuser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.birthuser, "Date de naissance", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.birthuser, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-3"><button class="btn btn-warning text-white">{{ button_label|default('Valider') }}</button></div>
+        {{ form_end(form) }}
+
+</div>
+{# <!-- RESET PASSWORD -->
+<div class="col-12 row bg-secondary rounded-3 flex-column mb-5  text-white">
+    <h3 class="text-center my-5">Réinitialiser votre mot de passe</h3>
+    <div class="d-flex flex-column align-items-center">
+        <div class="mb-3 w-25">
+            <div><label for="passwordActual" class="form-label">Mot de passe actuel</label><span class="text-danger">*</span></div>
+            <input type="password" class="form-control" id="passwordActual">
+        </div>
+        <div class="mb-3 w-25">
+            <label for="passwordNew" class="form-label">Nouveau mot de passe</label><span class="text-danger">*</span>
+            <input type="password" class="form-control" id="passwordNew">
+        </div>
+        <div class="d-flex justify-content-center my-3"><input type="submit" class="btn btn-warning text-white" value="Valider"></input></div>
+    </div>
+</div> #}

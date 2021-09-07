@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Invoice
  *
+ * @ApiResource()
  * @ORM\Table(name="invoice", indexes={@ORM\Index(name="idOrder", columns={"idOrder"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
