@@ -121,13 +121,13 @@
                 </div>
             </div>
             <div class="col-12 d-lg-none d-flex justify-content-end">
-                <button type="button" class="btn btn-warning text-white btn-lg mt-4 fw-bold">Ajouter au Panier</button>
+                <a href="{{ path('basket_add', {'id': product.idproduct}) }}" class="btn btn-warning text-white btn-lg mt-4 fw-bold">Ajouter au Panier</a>
             </div>
             <div class="col-12 fw-bold mt-5 fs-5 d-lg-block d-none">
                 {{ product.quickdescript }}            
             </div>
             <div class="col-12 d-lg-flex d-none justify-content-end">
-                <button type="button" class="btn btn-warning text-white btn-lg mt-4 fw-bold">Ajouter au Panier</button>
+                <a href="{{ path('basket_add', {'id': product.idproduct}) }}" class="btn btn-warning text-white btn-lg mt-4 fw-bold">Ajouter au Panier</a>
             </div>
         </div>
     </div>

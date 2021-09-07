@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}La Nimes'alerie - Panier{% endblock %}
+
+{% block body %}
+
+<div>
+    <h2>Votre Panier</h2>
+    {% if baskets | length > 0 %}
+        {% for product in baskets %}
+            <div class="my-5">
+                <div>Nom : {{ product.product.nameproduct }}</div> 
+                <div>Montant HT : {{ product.product.htproduct }}</div>
+                <div>Quantity : {{ product.quantity }}</div>       
+                <a href="{{ path('basket_remove', {'id': product.product.idproduct}) }}" class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                </a>
+            </div>
+        {% endfor %}
+        <div>TOTAL : {{ total | format_number({fraction_digit: 2}) }}</div>
+
+        {% else %}
+            <div>Le panier est vide, RETOURNE ACHETER</div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
