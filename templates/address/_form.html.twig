@@ -23,10 +23,6 @@
             {{ form_label(form.countryadress, "Pays", {'attr': {'class': 'form-label'}}) }}
             {{ form_widget(form.countryadress, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div class="mb-3 form-check p-0">
-            {{ form_label(form.iduser, "ID", {'attr': {'class': 'form-check-label'}}) }}
-            {{ form_widget(form.iduser, {'attr': {'value': app.user}}) }}
-        </div>
     </div>
     <div class="d-flex justify-content-center py-3"><button class="btn btn-warning text-white">{{ button_label|default('Valider') }}</button></div>
     {{ form_end(form) }}

@@ -37,11 +37,11 @@ class AddressType extends AbstractType
                 ->add('countryadress', TextType::class, [
                     'required' => true
                 ])
-                ->add('iduser', EntityType::class, [
+/*                 ->add('iduser', EntityType::class, [
                     'class' => Useraccount::class,
                     'choice_label' => 'firstnameuser'
 
-                ])
+                ]) */
             ;
         }
         ;
