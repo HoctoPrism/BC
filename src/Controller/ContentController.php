@@ -41,6 +41,11 @@ class ContentController extends AbstractController{
     public function conf(): Response
     {
         return $this->render('content/conf.html.twig');
-    }  
+    }
+    #[Route('/space', name: 'app_space')]
+    public function space(): Response
+    {
+        return $this->render('content/space.html.twig');
+    }   
 };
 ?>
