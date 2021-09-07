@@ -2,42 +2,65 @@
 <section class="container-fluid g-0 text-secondary">
 
     <div class="row align-items-center justify-content-center mt-5  g-0">
-        <div class="col">
-            <a href="{{ path('category_show', {'idcategory': 12}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset ("icon/icon_dog.svg") }}" alt="logo section chat" class="perso_svg">
-                <h5 class="fs-5 perso_categorie_title m-0">Chien</h5>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-secondary d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset ("icon/icon_cat.svg") }}" alt="logo section chat" class="perso_svg">
-                <h5 class="fs-5 perso_categorie_title m-0">Chat</h5>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-secondary d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset ("icon/icon_rongeur.svg") }}" alt="logo section chat" class="perso_svg">
-                <h5 class="fs-5 perso_categorie_title m-0">Rongeur</h5>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-secondary d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset ("icon/icon_bird.svg") }}" alt="logo section chat" class="perso_svg">
-                <h5 class="fs-5 perso_categorie_title m-0">Oiseau</h5>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-secondary d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset ("icon/icon_reptile.svg") }}" alt="logo section chat" class="perso_svg">
-                <h5 class="fs-5 perso_categorie_title m-0">Reptile</h5>
-            </a>
-        </div>
-        <div class="col">
-            <a href="#" class="text-secondary d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset ("icon/icon_fish.svg") }}" alt="logo section chat" class="perso_svg">
-                <h5 class="fs-5 perso_categorie_title m-0">Poisson</h5>
-            </a>
-        </div>
+
+        {% for category in categories %}
+
+            {% if category.namecategory == "chien" %}
+                <div class="col">
+                    <a href="{{ path('category_show', {'idcategory': category.idcategory}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ asset ("icon/icon_dog.svg") }}" alt="logo section {{ category.namecategory }}" class="perso_svg">
+                        <h5 class="fs-5 perso_categorie_title m-0">{{ category.namecategory }}</h5>
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if category.namecategory == "chat" %}
+                <div class="col">
+                    <a href="{{ path('category_show', {'idcategory': category.idcategory}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ asset ("icon/icon_cat.svg") }}" alt="logo section {{ category.namecategory }}" class="perso_svg">
+                        <h5 class="fs-5 perso_categorie_title m-0">{{ category.namecategory }}</h5>
+                    </a>
+                </div>
+            {% endif %}
+            
+            {% if category.namecategory == "rongeur" %}
+                <div class="col">
+                    <a href="{{ path('category_show', {'idcategory': category.idcategory}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ asset ("icon/icon_rongeur.svg") }}" alt="logo section {{ category.namecategory }}" class="perso_svg">
+                        <h5 class="fs-5 perso_categorie_title m-0">{{ category.namecategory }}</h5>
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if category.namecategory == "oiseau" %}
+                <div class="col">
+                    <a href="{{ path('category_show', {'idcategory': category.idcategory}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ asset ("icon/icon_bird.svg") }}" alt="logo section {{ category.namecategory }}" class="perso_svg">
+                        <h5 class="fs-5 perso_categorie_title m-0">{{ category.namecategory }}</h5>
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if category.namecategory == "reptile" %}
+                <div class="col">
+                    <a href="{{ path('category_show', {'idcategory': category.idcategory}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ asset ("icon/icon_reptile.svg") }}" alt="logo section {{ category.namecategory }}" class="perso_svg">
+                        <h5 class="fs-5 perso_categorie_title m-0">{{ category.namecategory }}</h5>
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if category.namecategory == "poisson" %}
+                <div class="col">
+                    <a href="{{ path('category_show', {'idcategory': category.idcategory}) }}" class="text-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img src="{{ asset ("icon/icon_fish.svg") }}" alt="logo section {{ category.namecategory }}" class="perso_svg">
+                        <h5 class="fs-5 perso_categorie_title m-0">{{ category.namecategory }}</h5>
+                    </a>
+                </div>
+            {% endif %}
+
+        {% endfor %}
+        
     </div>
 
     <h1 class="fw-bold text-center my-5">Tendances</h1>

@@ -10,10 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController{
 
-    public function index(ProductRepository $productRepository): Response{
+    public function index(ProductRepository $productRepository, CategoryRepository $categoryRepository): Response{
 
         return $this->render('main/main.html.twig', [
-            'products' => $productRepository->tendance()
+            'products' => $productRepository->tendance(),
+            'categories' => $categoryRepository->findAll()
         ]);
     }
 
