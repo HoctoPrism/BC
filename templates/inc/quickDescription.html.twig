@@ -4,21 +4,78 @@
         <div class="row justify-content-center">
             <div>
                 <h1 class="fw-bold fs-5 text-center p-0 mb-5 d-block d-md-none">{{ product.nameproduct }} - {{ product.qtyproduct }} kg</h1>
-            </div>
-            <div class="perso_width_img_produit_parent">
-                <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="w-100">
-                <div class="my-2 col-12">
-                    {% if product.image2 is not empty %}
-                        <img src="{{ asset('upload/' ~ product.image2) }}" alt="'image 2 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
-                    {% endif %}
-                    {% if product.image3 is not empty %}
-                        <img src="{{ asset('upload/' ~ product.image3) }}" alt="'image 3 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
-                    {% endif %}    
-                    {% if product.image4 is not empty %}
-                        <img src="{{ asset('upload/' ~ product.image4) }}" alt="'image 4 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
-                    {% endif %}
+            </div>    
+            <div class="product perso_width_img_produit_parent">
+                <div class="column-xs-12 column-md-7">
+                    <div>
+                        <div class="product-image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="active w-100">
+                        </div>
+                        <ul class="image-list d-flex">
+                            <li class="image-item mx-3">
+                                {% if product.image1 is not empty %}
+                                    <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                {% endif %}
+                            </li>
+                            <li class="image-item mx-3">
+                                {% if product.image2 is not empty %}
+                                    <img src="{{ asset('upload/' ~ product.image2) }}" alt="'image 2 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                {% endif %}
+                            </li>
+                            <li class="image-item mx-3">
+                                {% if product.image3 is not empty %}
+                                    <img src="{{ asset('upload/' ~ product.image3) }}" alt="'image 3 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                {% endif %} 
+                            </li>
+                            <li class="image-item mx-3">
+                                {% if product.image4 is not empty %}
+                                    <img src="{{ asset('upload/' ~ product.image4) }}" alt="'image 4 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+            <div class="modal" id="staticBackdrop">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="carouselExampleControls" class="carousel slide carousel-dark" data-interval="false">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        {% if product.image1 is not empty %}
+                                            <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="d-block w-100">
+                                        {% endif %}
+                                    </div>
+                                    <div class="carousel-item">
+                                        {% if product.image2 is not empty %}
+                                            <img src="{{ asset('upload/' ~ product.image2) }}" alt="'image 2 de : ' {{ product.nameproduct }}" class="d-block w-100">
+                                        {% endif %}
+                                    </div>
+                                    <div class="carousel-item">
+                                        {% if product.image3 is not empty %}
+                                            <img src="{{ asset('upload/' ~ product.image3) }}" alt="'image 3 de : ' {{ product.nameproduct }}" class="d-block w-100">
+                                        {% endif %}
+                                    </div>
+                                    <div class="carousel-item">
+                                        {% if product.image4 is not empty %}
+                                            <img src="{{ asset('upload/' ~ product.image4) }}" alt="'image 7 de : ' {{ product.nameproduct }}" class="d-block w-100">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon me-4" aria-hidden="true"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="col-lg-8 col-md-7 col-12">

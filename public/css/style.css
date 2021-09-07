@@ -46,6 +46,9 @@ li {
     font-style: italic;
     border-radius: 5px;
 }
+.product-image {
+    height: 35rem;
+}
 .color_product_list_admin a {
     background-color: #ffddb0 !important;
     color: #55555e;
@@ -325,6 +328,8 @@ li {
 .p_del_button {
     background-color: #d68585;
 }
+
+
 /*
 *
     *CSS POUR LA PARTIE ESPACE
@@ -389,6 +394,13 @@ li {
     margin: 0 10rem 0 10rem;
     padding: 5rem;
 }
+
+
+/** 
+
+    RESPONSIVE
+
+*/
 
 @media (max-width: 991.98px) {
     .perso_logo svg {
