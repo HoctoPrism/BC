@@ -83,8 +83,7 @@
       {{ render(path('headerMenu')) }}
 
       <div class="col-10 d-flex p-0 d-md-none perso_block_nav_mobile">
-        <input type="search" value="" placeholder="Chercher un produit, une marque..." class="border-0 w-100 perso_search ps-2 perso_search_color_2" id="search_header_bar">
-        <button type="submit" class="btn-warning perso_button p_btn_search"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="2rem" height="2rem" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396l1.414-1.414l-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8s3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6s-6-2.691-6-6s2.691-6 6-6z" fill="white"/></svg></button>
+        {{ render(controller('App\\Controller\\SearchController::searchBarMobile')) }}
       </div>
     </div>
   </nav>

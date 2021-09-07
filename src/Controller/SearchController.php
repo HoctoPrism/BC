@@ -33,6 +33,21 @@ class SearchController extends AbstractController
         ]);
     }
 
+    public function searchBarMobile()
+    {
+        $searchBar = $this->createFormBuilder()
+        ->setAction($this->generateUrl('handleSearch'))
+        ->add('query', TextType::class, [
+            'attr' => [
+                'placeholder' => 'Chercher un produit, une marque...'
+            ]
+        ])
+        ->getForm();
+        return $this->render('search/searchBarMobile.html.twig', [
+            'searchBar' => $searchBar->createView()
+        ]);
+    }
+
     #[Route('/handleSearch', name: 'handleSearch')]
     public function handleSearch(Request $request, ProductRepository $repo)
     {
