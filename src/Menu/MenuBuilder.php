@@ -42,11 +42,11 @@ class MenuBuilder
         // setChildrenAttribute pour modifier l'ul
         // setAttribute pour modifier li
         // setLinkAttribute pour modifier a
-        $footer->addChild('A Propos de Nous', ['route' => 'index']);
+        $footer->addChild('A Propos de Nous', ['route' => 'app_propos']);
         $footer->addChild('Nous Contacter', ['route' => 'app_contact']);
-        $footer->addChild('FAQ', ['route' => 'index']);
+        $footer->addChild('FAQ', ['route' => 'app_faq']);
         $footer->addChild('Mentions Légales', ['route' => 'app_mentions']);
-        $footer->addChild('Confidentialité', ['route' => 'index']);
+        $footer->addChild('Confidentialité', ['route' => 'app_conf']);
         $footer->addChild('Conditions Générales', ['route' => 'app_cgu']);
 
         return $footer;
