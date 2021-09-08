@@ -2,15 +2,18 @@
 
 namespace App\Service\Basket;
 
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class BasketService 
 {
     protected $session;
+    protected $productRepository;
 
-    public function __construct(RequestStack $request)
+    public function __construct(RequestStack $request, ProductRepository $productRepository)
     { 
         $this->session = $request->getSession();
+        $this->productRepository = $productRepository;
 
     }
 
@@ -23,13 +26,43 @@ class BasketService
         } else {
             $basket[$id] = 1;
         }
-        
-        $basket[$id] = 1;
 
         $this->session->set('basket', $basket);
     }
-/*     public function remove(int $id){ }
-    public function getFullBasket() : array { }
-    public function getTotal(float $id): float { } */
+    public function remove(int $id)
+    { 
+        $basket = $this->session->get('basket', []);
+
+        if (!empty($basket[$id])) {
+            unset($basket[$id]);
+        }
+
+        $this->session->set('basket', $basket);
+    }
+    public function getFullBasket() : array { 
+
+        $basket = $this->session->get('basket', []);
+
+        $basketWithData = [];
+
+        foreach ($basket as $id => $quantity) {
+            $basketWithData[] = [
+                'product' => $this->productRepository->find($id),
+                'quantity' => $quantity
+            ];
+        }
+
+        return $basketWithData;
+     }
+    public function getTotal(): float {
+
+        $total = 0;
+
+        foreach ($this->getFullBasket() as $value) {
+            $total += ($value['product']->getHtproduct() * 1.2 ) * $value['quantity'];
+        }
+
+        return $total;
+    }
 }
 ?>
