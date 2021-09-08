@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use App\Repository\ProductRepository;
 use App\Service\Basket\BasketService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BasketController extends AbstractController
@@ -23,6 +21,14 @@ class BasketController extends AbstractController
     public function add($id, BasketService $basketService)
     {
         $basketService->add($id);
+
+        return $this->redirectToRoute('basket_index');
+    }
+
+    #[Route('/basket/decrement/{id}', name: 'basket_decrement', methods: ['GET', 'POST'])]
+    public function decrement($id, BasketService $basketService)
+    {
+        $basketService->decrement($id);
 
         return $this->redirectToRoute('basket_index');
     }
