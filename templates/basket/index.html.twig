@@ -56,7 +56,7 @@
                 <div class="fs-5 fw-bold mt-3 text-center">Montant total du panier</div>
                 <div class="my-3 fs-4">{{ total | format_number({fraction_digit: 2}) }}€</div>
                 <div class="mt-5">
-                    <a href="#" class="btn btn-warning ">Passer commande</a>
+                    <a href="{{ path('basket_delivery') }}" class="btn btn-warning text-white">Passer commande</a>
                 </div>
                 <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
             </div>

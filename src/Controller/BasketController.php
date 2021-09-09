@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AddressRepository;
 use App\Service\Basket\BasketService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,7 +49,25 @@ class BasketController extends AbstractController
 
         return $this->redirectToRoute('basket_index');
     }
-    
 
+    #[Route('/basket/delivery', name: 'basket_delivery', methods: ['GET'])]
+    public function delivery(BasketService $basketService, AddressRepository $addressRepository)
+    {
+        return $this->render('basket/delivery.html.twig', [
+            'baskets' => $basketService->getFullBasket(),
+            'total' => $basketService->getTotal(),
+            'address' => $addressRepository->findAll()
+        ]);
+    }
+
+    #[Route('/basket/payment/{idadress}', name: 'basket_payment', methods: ['GET'])]
+    public function payment($idadress, BasketService $basketService, AddressRepository $addressRepository)
+    {
+        return $this->render('basket/payment.html.twig', [
+            'baskets' => $basketService->getFullBasket(),
+            'total' => $basketService->getTotal(),
+            'address' => $addressRepository->find($idadress)
+        ]);
+    }
 }
 ?>
