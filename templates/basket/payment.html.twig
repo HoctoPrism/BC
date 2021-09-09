@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}La Nimes'alerie - Panier{% endblock %}
+
+
+{% block body %}
+<section class="text-secondary">
+    <h2 class="text-center my-5">Paiement</h2>
+    <div class="row row-cols-4 g-0 mb-5">
+
+        <div>Votre addresse</div>
+        <div>Livraison</div>
+        <div>Paiement</div>
+
+        <div class="col-lg-3 col-12">
+            <div class="p-3 mx-5 my-3 bg-light rounded-3 d-flex flex-column align-items-center justify-content-center">
+                <div class="fs-5 fw-bold mt-3 text-center">Montant total du panier</div>
+                <div class="my-3 fs-4">{{ total | format_number({fraction_digit: 2}) }}€</div>
+                <div class="mt-5">
+                    <a href="#" class="btn btn-warning ">Passer commande</a>
+                </div>
+                <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
