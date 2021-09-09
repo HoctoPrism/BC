@@ -13,8 +13,11 @@
                     <div class="col-1"></div>
                     <div class="col-6">Nom du produit</div>
                     <div class="col-2">Prix</div>
-                    <div class="col-3">
-                        <div class="ms-5">Quantité</div>
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <div class="pe-5 me-3">Quantité</div>
+                        <a href="{{ path('basket_removeBasket') }}" class="text-danger fs-3">
+                            <i class="bi bi-bag-x"></i>
+                        </a>
                     </div>
                 </div>
                 {% for product in baskets %}

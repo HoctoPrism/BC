@@ -40,6 +40,14 @@ class BasketController extends AbstractController
 
         return $this->redirectToRoute('basket_index');
     }
+
+    #[Route('/basket/removeBasket', name: 'basket_removeBasket', methods: ['GET'])]
+    public function removeBasket(BasketService $basketService)
+    {
+        $basketService->removeBasket();
+
+        return $this->redirectToRoute('basket_index');
+    }
     
 
 }

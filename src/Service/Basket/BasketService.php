@@ -53,6 +53,18 @@ class BasketService
 
         $this->session->set('basket', $basket);
     }
+
+    public function removeBasket()
+    { 
+        $basket = $this->session->get('basket', []);
+
+        if (!empty($basket)) {
+            unset($basket);
+        }
+
+        $this->session->set('basket', []);
+    }
+
     public function getFullBasket() : array { 
 
         $basket = $this->session->get('basket', []);
