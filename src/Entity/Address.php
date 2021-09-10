@@ -69,6 +69,11 @@ class Address
      */
     private $iduser;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $delivery_default;
+
     public function getIdadress(): ?int
     {
         return $this->idadress;
@@ -142,6 +147,18 @@ class Address
     public function setIduser(?Useraccount $iduser): self
     {
         $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getDeliveryDefault(): ?bool
+    {
+        return $this->delivery_default;
+    }
+
+    public function setDeliveryDefault(?bool $delivery_default): self
+    {
+        $this->delivery_default = $delivery_default;
 
         return $this;
     }

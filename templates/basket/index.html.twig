@@ -2,27 +2,67 @@
 
 {% block title %}La Nimes'alerie - Panier{% endblock %}
 
+
 {% block body %}
-
-<div>
-    <h2>Votre Panier</h2>
-    {% if baskets | length > 0 %}
-        {% for product in baskets %}
-            <div class="my-5">
-                <div>Nom : {{ product.product.nameproduct }}</div> 
-                <div>Montant HT : {{ product.product.htproduct }}</div>
-                <div>Quantity : {{ product.quantity }}</div>       
-                <a href="{{ path('basket_remove', {'id': product.product.idproduct}) }}" class="btn btn-danger">
-                    <i class="bi bi-trash"></i>
-                </a>
+<section class="text-secondary">
+    <h2 class="text-center my-5">Votre Panier</h2>
+    <div class="row row-cols-2 g-0 mb-5">
+        {% if baskets | length > 0 %}
+            <div class="col-lg-9 col-12">
+                <div class="d-none d-md-flex my-3 py-2 ms-lg-5 ms-md-3 me-3 row row-cols-4 align-items-center justify-content-center bg-light rounded-3">
+                    <div class="col-1"></div>
+                    <div class="col-6">Nom du produit</div>
+                    <div class="col-2">Prix</div>
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <div class="pe-5 me-3">Quantité</div>
+                        <a href="{{ path('basket_removeBasket') }}" class="text-danger fs-3">
+                            <i class="bi bi-bag-x"></i>
+                        </a>
+                    </div>
+                </div>
+                {% for product in baskets %}
+                    <div class="my-3 ms-lg-5 ms-md-3 me-md-3 me-0 row row-cols-4 align-items-center justify-content-center bg-light height_product_box rounded-3">
+                        <div class="col-md-1 col-3">
+                            <img src="{{ asset('upload/' ~ product.product.image1) }}" alt="'image 1 de : ' {{ product.product.nameproduct }}" class="img-fluid">
+                        </div>
+                        <a href="{{ path('product_show', {'idproduct': product.product.idproduct}) }}" class="col-md-6 col-4 fw-md-bold text-secondary">{{ product.product.nameproduct }}</a> 
+                        <div class="col-md-2">
+                            <div class="fw-5">TTC : <span class="fw-bold">{{ ((product.product.htproduct * (1.2)) * product.quantity) | format_number({fraction_digit: 2}) }}€</span></div>
+                            <div class="ht_size">HT : {{ (product.product.htproduct * product.quantity) | format_number({fraction_digit: 2}) }}€</div>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a href="{{ path('basket_decrement', {'id': product.product.idproduct}) }}" class="text-secondary fs-5">
+                                    <i class="bi bi-dash"></i>
+                                </a>
+                                <div class="px-3">{{ product.quantity }}</div>
+                                <a href="{{ path('basket_add', {'id': product.product.idproduct}) }}" class="text-secondary fs-5 pe-5">
+                                    <i class="bi bi-plus"></i>
+                                </a>
+                                <a href="{{ path('basket_remove', {'id': product.product.idproduct}) }}" class="text-danger fs-1">
+                                    <i class="bi bi-x"></i>
+                                </a>
+                            </div>    
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-        <div>TOTAL : {{ total | format_number({fraction_digit: 2}) }}</div>
-
-        {% else %}
+            
+            {% else %}
             <div>Le panier est vide, RETOURNE ACHETER</div>
-    {% endif %}
+        {% endif %}
+        <div class="col-lg-3 col-12">
+            <div class="p-3 mx-5 my-3 bg-light rounded-3 d-flex flex-column align-items-center justify-content-center">
+                <div class="fs-5 fw-bold mt-3 text-center">Montant total du panier</div>
+                <div class="my-3 fs-4">{{ total | format_number({fraction_digit: 2}) }}€</div>
+                <div class="mt-5">
+                    <a href="{{ path('basket_delivery') }}" class="btn btn-warning text-white">Passer commande</a>
+                </div>
+                <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
+            </div>
+        </div>
+    </div>
 
-</div>
+</section>
 
 {% endblock %}

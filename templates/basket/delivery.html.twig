@@ -1,0 +1,104 @@
+{% extends "base.html.twig" %}
+
+{% block title %}La Nimes'alerie - Panier{% endblock %}
+
+
+{% block body %}
+<section class="text-secondary">
+    <h2 class="text-center my-5">Livraison</h2>
+    <div class="d-flex align-items-center mb-5">
+            <a href="{{ path('useraccount_index') }}" class="fw-bold mx-md-3 mx-1 fs-md-5 fs-6 text-warning">Mon Compte</a>
+            <i class="bi bi-caret-right-fill me-lg-3 me-1 fs-md-5 fs-6"></i>
+            <a href="{{ path('basket_index') }}" class="fw-bold me-lg-3 me-1 fs-md-5 fs-6 text-warning">Panier</a>
+            <i class="bi bi-caret-right-fill me-lg-3 me-1 fs-md-5 fs-6"></i>
+            <div class="text-secondary me-lg-3 me-1 fs-md-5 fs-6">Livraison</div>
+            <i class="bi bi-caret-right-fill me-lg-3 me-1 fs-md-5 fs-6"></i>
+            <div class="text-secondary fs-md-5 fs-6">Paiement</div>
+    </div>
+    <div class="row row-cols-4 g-0 mb-5">
+        <div class="col-lg-4 col-12">
+            <div class="fw-bold px-3 pb-3 fs-5">Vos adresses</div>
+            {% for address in address %}
+                {% if address.iduser.iduser == app.user.iduser and address.deliverydefault == 1 %}
+                    <div class="p-0 ps-lg-3 px-lg-0 px-3">
+                        <div class="d-flex align-self-center text-secondary g-0">
+                            <div class="bg-light p-3 w-100 rounded-3">
+                                <div>{{ app.user.firstnameuser }} {{ app.user.lastnameuser }}</div>
+                                <div>{{ address.postadress }}</div>
+                                <div>{{ address.cpadress }}</div>
+                                <div>{{ address.postadress2 }}</div>
+                                <div>{{ address.countryadress }}</div>
+                                <div class="btn btn-warning text-white mt-3" id="AddressButton" data-bs-toggle="modal" data-bs-target="#modalAddress" >Changer</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        
+            <div class="modal fade" id="modalAddress" tabindex="-1" aria-labelledby="ModalAddressLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body row row-cols-2">
+                        {% for address in address %}
+                        {% if address.iduser.iduser == app.user.iduser %}
+                        <div class="col p-3">
+                            <div class="d-flex align-self-center text-secondary g-0">
+                                <div class="bg-light p-3 w-100 rounded-3">
+                                    <div>{{ app.user.firstnameuser }} {{ app.user.lastnameuser }}</div>
+                                    <div>{{ address.postadress }}</div>
+                                    <div>{{ address.cpadress }}</div>
+                                    <div>{{ address.postadress2 }}</div>
+                                    <div>{{ address.countryadress }}</div>
+                                    <a href="#" class="btn btn-warning text-white w-100 mt-3">Selectionner</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-5 col-12">
+            <div class="row row-cols-2 ms-lg-3 mx-md-3 mx-0 mx-lg-0 g-0">
+                <div class="col-12 fw-bold fs-5 pb-3">Mode de Livraison</div>
+                <div class="col">
+                    <div>Livraison standard</div>
+                    <div class="bg-light p-3 w-100 rounded-3 me-2">
+                        <div>Colissimo</div>
+                        <div>Gratuit</div>
+                        <div>3-5 jours</div>
+                        <a href="#" class="btn btn-warning text-white w-100 mt-3">Selectionner</a>
+                    </div>
+                </div>
+                <div class="col">  
+                    <div>Livraison express</div>
+                    <div class="bg-light p-3 w-100 rounded-3 ms-2">
+                        <div>Chronopost</div>
+                        <div>Gratuit</div>
+                        <div>1-3 jours ouvrés</div>
+                        <a href="#" class="btn btn-warning text-white w-100 mt-3">Selectionner</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="p-3 mx-5 my-3 bg-light rounded-3 d-flex flex-column align-items-center justify-content-center">
+                <div class="fs-5 fw-bold mt-3 text-center">Montant total du panier</div>
+                <div class="my-3 fs-4">{{ total | format_number({fraction_digit: 2}) }}€</div>
+                <div class="mt-5">
+                    {% for address in address %}
+                        {% if address.deliverydefault == 1 %}
+                            <a href="{{ path('basket_payment', {'idadress': address.idadress }) }}" class="btn btn-warning text-white ">Payer</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

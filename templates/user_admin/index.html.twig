@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Nimes'alerie - User/admin{% endblock %}
+
+{% block body %}
+<section class="">
+    <h1 class="py-5 text-secondary text-center">Gestion des utilisateurs</h1>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Iduser</th>
+                <th>Firstnameuser</th>
+                <th>Lastnameuser</th>
+                <th>Gender</th>
+                <th>Emailuser</th>
+                <th>Birthuser</th>
+                <th>Vauncheruser</th>
+                <th>Phoneuser</th>
+                <th>Phonemobileuser</th>
+                <th>Nborderuser</th>
+                <th>Roles</th>
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for useraccount in useraccounts %}
+            <tr>
+                <td>{{ useraccount.iduser }}</td>
+                <td>{{ useraccount.firstnameuser }}</td>
+                <td>{{ useraccount.lastnameuser }}</td>
+                <td>{{ useraccount.gender }}</td>
+                <td>{{ useraccount.emailuser }}</td>
+                <td>{{ useraccount.birthuser ? useraccount.birthuser|date('Y-m-d') : '' }}</td>
+                <td>{{ useraccount.vauncheruser }}</td>
+                <td>{{ useraccount.phoneuser }}</td>
+                <td>{{ useraccount.phonemobileuser }}</td>
+                <td>{{ useraccount.nborderuser }}</td>
+                <td>{{ useraccount.roles ? useraccount.roles|json_encode : '' }}</td>
+                <td>{{ useraccount.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('user_admin_edit', {'iduser': useraccount.iduser}) }}" class="btn btn-secondary text-white">MODIFIER</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">Aucun utilisateur référencé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_admin_new') }}" class="btn btn-warning text-white m-2">Ajouter un utilisateur</a>
+</section>
+{% endblock %}

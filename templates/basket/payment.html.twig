@@ -1,0 +1,99 @@
+{% extends "base.html.twig" %}
+
+{% block title %}La Nimes'alerie - Panier{% endblock %}
+
+
+{% block body %}
+<section class="text-secondary">
+    <h2 class="text-center my-5">Livraison</h2>
+    <div class="d-flex align-items-center mb-5">
+        <a href="{{ path('useraccount_index') }}" class="fw-bold mx-md-3 mx-1 fs-md-5 fs-6 text-warning">Mon Compte</a>
+        <i class="bi bi-caret-right-fill me-lg-3 me-1 fs-md-5 fs-6"></i>
+        <a href="{{ path('basket_index') }}" class="fw-bold me-lg-3 me-1 fs-md-5 fs-6 text-warning">Panier</a>
+        <i class="bi bi-caret-right-fill me-lg-3 me-1 fs-md-5 fs-6"></i>
+        <a href="{{ path('basket_delivery') }}" class="fw-bold me-lg-3 me-1 fs-md-5 fs-6 text-warning">Livraison</a>
+        <i class="bi bi-caret-right-fill me-lg-3 me-1 fs-md-5 fs-6"></i>
+        <div class="text-secondary fs-md-5 fs-6">Paiement</div>
+    </div>
+    <div class="row row-cols-4 g-0 mb-5">
+        <div class="col-lg-4 col-12 px-md-3 px-1">
+            <div class="fw-bold px-3 pb-3 fs-5">Récapitulatif</div>
+            <div class="bg-light rounded-3 p-md-3 p-1 d-lg-block d-flex justify-content-evenly">
+                <div>
+                    <div class="fw-bold">Adresse de livraison</div>
+                    {% if address.iduser.iduser == app.user.iduser and address.deliverydefault == 1 %}
+                        <div class="mb-2">
+                            <div class="d-flex align-self-center text-secondary g-0">
+                                <div class="w-100">
+                                    <div>{{ app.user.firstnameuser }} {{ app.user.lastnameuser }}</div>
+                                    <div>{{ address.postadress }}</div>
+                                    <div>{{ address.cpadress }}</div>
+                                    <div>{{ address.postadress2 }}</div>
+                                    <div>{{ address.countryadress }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div>
+                    <div class="fw-bold">Mode de Livraison</div>
+                    <div>
+                        <div>Livraison standard</div>
+                        <div>
+                            <div>Colissimo</div>
+                            <div>Gratuit</div>
+                            <div>3-5 jours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-12">
+            <div class="mx-md-3 mx-1">
+                <div class="fw-bold fs-5 pb-3">Mode de paiement</div>
+                <div class="mb-2">
+                    <input class="form-check-input p_checkbox" type="radio" name="RadioPayment" id="RadioPaypal2" checked>
+                    <label class="form-check-label" for="RadioPaypal2">
+                      Paypal
+                    </label>
+                    <div class="bg-light p-3 w-100 rounded-3">
+                        <div>Après avoir cliqué sur "Valider", vous serez redirigé(e) vers Paypal pour finaliser votre achat de façon sécurisée.</div>
+                    </div>
+                </div>
+                <div>
+                    <input class="form-check-input p_checkbox" type="radio" name="RadioPayment" id="RadioPaypal2" checked>
+                    <label class="form-check-label" for="RadioPaypal2">
+                      Carte Bancaire
+                    </label>
+                    <div class="bg-light p-3 w-100 rounded-3">
+                        <form>
+                            <div class="mb-3">
+                              <input type="text" class="form-control" id="CardCodeInputEmail1" aria-describedby="emailHelp" placeholder="Numéro de carte">
+                            </div>
+                            <div class="mb-3">
+                              <input type="text" class="form-control" id="NameTitualireInput" placeholder="Nom du titulaire de la carte">
+                            </div>
+                            <div class="mb-3 row row-cols-2">
+                                <div class="col"><input type="text" class="form-control" id="DateExpCardInput" placeholder="Date d'expiration (MM/AA)"></div>
+                                <div class="col"><input type="text" class="form-control" id="CCVInput" placeholder="Code de sécurité"></div>
+                              </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="p-3 mx-5 my-5 bg-light rounded-3 d-flex flex-column align-items-center justify-content-center">
+                <div class="fs-5 fw-bold mt-3 text-center">Montant total du panier</div>
+                <div class="my-3 fs-4">{{ total | format_number({fraction_digit: 2}) }}€</div>
+                <div class="mt-5">
+                    <a href="#" class="btn btn-warning text-white ">Valider</a>
+                </div>
+                <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

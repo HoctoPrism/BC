@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Address;
 use App\Entity\Useraccount;
+use App\Form\ModifyPasswordType;
 use App\Form\UseraccountType;
 use App\Repository\AddressRepository;
 use App\Repository\UseraccountRepository;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route('/useraccount')]
@@ -42,6 +44,28 @@ class UseraccountController extends AbstractController
         }
 
         return $this->render('useraccount/edit.html.twig', [
+            'useraccount' => $useraccount,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/{emailuser}/passwordReset', name: 'useraccount_password', methods: ['GET', 'POST'])]
+    public function passwordReset(Request $request, Useraccount $useraccount, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createForm(ModifyPasswordType::class, $useraccount);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $passwordEncoder->encodePassword(
+                $useraccount,
+                $form->get('plainPassword')->getData()
+            );
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('useraccount_index');
+        }
+
+        return $this->render('useraccount/password.html.twig', [
             'useraccount' => $useraccount,
             'form' => $form->createView(),
         ]);

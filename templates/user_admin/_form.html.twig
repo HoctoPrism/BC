@@ -1,0 +1,74 @@
+<div class="color_form">
+    <div class="p-5">
+        <div class="row align-items-center bg-secondary text-white g-0 rounded-3">
+            <h2 class="col-12 text-center my-5">
+                {% if form.firstnameuser.vars.value != null %}
+                    Modification
+                {% endif %} 
+                {% if form.firstnameuser.vars.value is empty %}
+                    Création
+                {% endif %} 
+                d'un utilisateur
+            </h2>
+            <!-- PREMIERE PARTIE -->
+            <div class="col-6">
+                {{ form_start(form, {'attr': {'class': 'd-flex flex-column mx-4'}, 'method': 'POST'}) }}
+                <div class="mb-3 form-check p-0">
+                    {{ form_label(form.gender, "Sexe", {'attr': {'class': 'form-check-label'}}) }}
+                    {{ form_widget(form.gender, {'attr': {'class': ''}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.emailuser, "Adresse mail", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.emailuser, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.firstnameuser, "Prénom", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.firstnameuser, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.lastnameuser, "Nom", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.lastnameuser, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.birthuser, "Date de naissance", {'attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.birthuser, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                
+            </div>
+            <!-- SECONDE PARTIE -->
+            <div class="col-6">
+                <div class="mx-4">
+                    <div class="mb-3">
+                        {{ form_label(form.phonemobileuser, "Numéro de téléphone", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.phonemobileuser, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.phoneuser, "Numéro de téléphone secondaire", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.phoneuser, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="mb-3"> 
+                        {{ form_label(form.pwduser, "Mot de passe", {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.pwduser, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.roles, "Rôle(s) de l'utilisateur") }}
+                        {{ form_widget(form.roles) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.isverified, "Si l'utilisateur est vérifié", {'attr': {'class': 'form-check-label'}}) }}
+                        {{ form_widget(form.isverified, {'attr': {'class': 'form-check-input p_checkbox'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center my-3"><button class="btn btn-warning text-white">{{ button_label|default('Valider') }}</button></div>
+                {{ form_end(form) }}
+        
+            <div class="text-center">
+                {% if useraccount.iduser is not empty %}
+                    {{ include('user_admin/_delete_form.html.twig') }}
+                {% endif %}
+            </div>
+            <a href="{{ path('user_admin_index') }}" class="text-white fs-4 fw-bold py-5 text-center">Retour à la liste</a>
+        </div>
+    </div>
+</div>
