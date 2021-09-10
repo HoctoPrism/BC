@@ -1,0 +1,35 @@
+<div class="color_form text-white d-flex align-items-center justify-content-center flex-column">
+    <h2 class="py-5">Nouvelle adresse</h2>
+    <!-- PREMIERE PARTIE -->
+    <div class="p-3 d-flex justify-content-center bg-secondary rounded-3">
+        {{ form_start(form, {'attr': {'class': 'd-flex flex-column'}, 'method': 'POST'}) }}
+        <div class="mb-3 form-check p-0">
+            {{ form_label(form.typeadress, "Type d'adresse", {'attr': {'class': 'form-check-label'}}) }}
+            {{ form_widget(form.typeadress) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.postadress, "adresse", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.postadress, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.postadress2, "Ville", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.postadress2, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.cpadress, "Code postal", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.cpadress, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.countryadress, "Pays", {'attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.countryadress, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="d-flex justify-content-center py-3"><button class="btn btn-warning text-white">{{ button_label|default('Valider') }}</button></div>
+    {{ form_end(form) }}
+    <div class="text-center">
+        {% if address.idadress is not empty %}
+            {{ include('address/_delete_form.html.twig') }}
+        {% endif %}
+        <a href="{{ path('useraccount_index') }}" class="text-white fs-4 fw-bold">Retour à la liste</a>
+    </div>
+</div>

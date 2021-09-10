@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Form\SearchType as FormSearchType;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,11 +16,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-    #[Route('/', name: 'category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    #[Route('/', name: 'category_index', methods: ['GET', 'POST'])]
+    public function index(CategoryRepository $categoryRepository, ProductRepository $productRepository, Request $request): Response
     {
+        $form = $this->createForm(FormSearchType::class);
+        $form->handleRequest($request);
+
+        $result = $productRepository->findAll();
+
+        if($form->isSubmitted() && $form->isValid()){
+            $result = $productRepository->searchProduct($form->getData());
+        }
+
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'form' => $form->createView(),
+            'results' => $result
         ]);
     }
 
@@ -48,11 +61,25 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{idcategory}', name: 'category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    #[Route('/{idcategory}', name: 'category_show', methods: ['GET', 'POST'])]
+    public function show(Category $category, CategoryRepository $categoryRepository, ProductRepository $productRepository, Request $request): Response
     {
+        $form = $this->createForm(FormSearchType::class);
+        $form->handleRequest($request);
+
+        $result = $productRepository->findAll();
+
+        if($form->isSubmitted() && $form->isValid()){
+            $result = $productRepository->searchProduct($form->getData());
+        }
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'categories' => $categoryRepository->findAll(),
+            'product' => $productRepository->getProductsByCategory( $category->getIdcategory() ),
+            'products' => $productRepository->findAll(),            
+            'form' => $form->createView(),
+            'results' => $result
         ]);
     }
 

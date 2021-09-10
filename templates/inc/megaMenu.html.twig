@@ -1,0 +1,149 @@
+<div class="dropdown perso_ham_button">
+
+    <button class="btn btn-secondary dropdown-toggle bg-warning border-0 fs-3 d-flex justify-content-between align-items-center perso_radius_button" 
+            type="button" 
+            id="dropdownMenuButton" 
+            data-mdb-toggle="dropdown" 
+            aria-expanded="false">
+        Toutes les catégories
+    </button>
+
+    <ul class="align-items-center justify-content-center dropdown-menu megaMenuMargin" aria-labelledby="dropdownMenuButton">
+
+        {% for animal in categories %}
+            {% if animal.idcategoryparent is empty %}
+
+                <li>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item fs-5" id="CatPlusMinusEvent" href="/category/{{ animal.idcategory }}">{{ animal.namecategory|title }}</a>
+                        <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-submenu">
+
+                        {% for mainCategory in categories %}
+                            {% if mainCategory.idcategoryparent is not empty and animal.idcategory == mainCategory.idcategoryparent.idcategory %}
+
+                                <li>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a class="dropdown-item fs-6" href="/category/{{ mainCategory.idcategory }}">{{ mainCategory.namecategory|title }}</a>
+                                        <div id="CatPlusMinus" class="text-warning fs-6 fw-bold pe-3"></div>
+                                    </div>
+                                    <ul class="dropdown-menu dropdown-submenu">
+
+                                        {% for subCategory in categories %}
+                                            {% if subCategory.idcategoryparent is not empty and mainCategory.idcategory == subCategory.idcategoryparent.idcategory %}
+
+                                                <li>
+                                                    <a class="dropdown-item" href="/category/{{ subCategory.idcategory }}">{{ subCategory.namecategory|title }}</a>
+                                                </li>
+
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </ul>
+                                </li>
+
+                            {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                </li>
+
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+
+<!-- 
+    VERSION TABLETTE ET MOBILE 
+-->
+
+
+<div class="perso_ham_button_2">
+
+    <button class="btn btn-secondary bg-warning border-0 fs-3 d-flex justify-content-between align-items-center perso_radius_button" 
+            type="button" 
+            id="dropdownMenuButton2" 
+            data-bs-target="#accordionFlushExample" 
+            data-bs-toggle="collapse"
+            aria-expanded="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+    </button>
+
+    <div class="accordion accordion-flush dropdown-menu align-items-center justify-content-center" id="accordionFlushExample" aria-labelledby="dropdownMenuButton2">
+        
+        {% for animal in categories %}
+            {% if animal.idcategoryparent is empty %}
+
+                <div class="ps-3 p_accordion_mega">
+
+                    <div class="d-flex flex-column my-1" id="CatPlusMinusEvent">
+                     
+                        <a  class="text-secondary fs-5 d-flex justify-content-between" 
+                            href="#"
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#flush-collapse{{animal.idcategory}}" 
+                            aria-expanded="false" 
+                            aria-controls="flush-collapse{{animal.idcategory}}"
+                            >
+                            <div>{{ animal.nameCategory|title }}</div>
+                            <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>
+                        </a>
+                      
+                    </div>
+
+                    <div id="flush-collapse{{animal.idcategory}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+
+                        <a class="fw-bold text-warning ps-4 fs-5" href="/category/{{ animal.idcategory }}">Tous les produits</a>
+
+                        {% for mainCategory in categories %}
+                            {% if mainCategory.idcategoryparent is not empty and animal.idcategory == mainCategory.idcategoryparent.idcategory %}
+
+                                <div class="d-flex flex-column my-1">
+                              
+                                    <a  class="ps-4 text-secondary fs-5 d-flex justify-content-between" 
+                                        href="#"
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#flush-collapse{{mainCategory.idcategory}}" 
+                                        aria-expanded="false" 
+                                        aria-controls="flush-collapse{{mainCategory.idcategory}}"
+                                        id="CatPlusMinusEvent">
+                                        <div>{{ mainCategory.nameCategory|title }}</div>
+                                        <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>  
+                                    </a>
+                                   
+                                </div>
+
+                                <div id="flush-collapse{{mainCategory.idcategory}}" class="accordion-collapse collapse" data-bs-parent="#flush-collapse{{animal.idcategory}}">
+
+                                    <a class="text-warning fw-bold px-5" href="/category/{{ mainCategory.idcategory }}">Tous les produits</a>
+
+                                    {% for subCategory in categories %}
+                                        {% if subCategory.idcategoryparent is not empty and mainCategory.idcategory == subCategory.idcategoryparent.idcategory %}
+                                        
+                                            <div class="d-flex flex-column">
+                                                <a class="text-secondary px-5" href="/category/{{ subCategory.idcategory }}">{{ subCategory.namecategory|title }}</a>
+                                            </div>
+
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+      </div>
+
+</div> 

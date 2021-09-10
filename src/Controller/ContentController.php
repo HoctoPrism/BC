@@ -26,6 +26,26 @@ class ContentController extends AbstractController{
     public function mention(): Response
     {
         return $this->render('content/mentions.html.twig');
-    }  
+    }
+    #[Route('/propos', name: 'app_propos')]
+    public function propos(): Response
+    {
+        return $this->render('content/propos.html.twig');
+    }
+    #[Route('/faq', name: 'app_faq')]
+    public function faq(): Response
+    {
+        return $this->render('content/faq.html.twig');
+    }
+    #[Route('/conf', name: 'app_conf')]
+    public function conf(): Response
+    {
+        return $this->render('content/conf.html.twig');
+    }
+    #[Route('/space', name: 'app_space')]
+    public function space(): Response
+    {
+        return $this->render('content/space.html.twig');
+    }   
 };
 ?>
