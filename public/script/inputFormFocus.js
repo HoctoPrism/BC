@@ -13,6 +13,10 @@ document.querySelectorAll("select").forEach(element => {
     element.classList.add('activeForm')
 });
 
+//on select les selects pour ajouter la classe active form (pour changer la couleur des bordures)
+document.getElementById("pwdConstraint").querySelectorAll('ul').forEach(element => {
+        element.classList.add('p-0')
+})
 //on select la search bar du header pour supprimer la class activeForm qui rencontre en conflit avec d'autres de ses classes
 document.querySelectorAll("#search_header_bar").forEach(element => {
     element.classList.remove('activeForm')
