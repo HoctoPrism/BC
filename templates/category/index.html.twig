@@ -6,10 +6,19 @@
     <div class="container-fluid g-0">
         <h1 class="text-secondary fw-bold text-center my-5">Liste des catégories</h1>
         {% if is_granted('ROLE_ADMIN') %}
-            <div class="d-flex justify-content-center align-items-center flex-column">
-                <div>Vous pouvez ajouter une catégorie</div>
-                <a href="{{ path('category_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter une catégorie</a>
+        
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex justify-content-center align-items-center flex-column me-1">
+                    <div>Vous pouvez ajouter une catégorie</div>
+                    <a href="{{ path('category_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter une catégorie</a>
+                </div>
+    
+                <div class="d-flex justify-content-center align-items-center flex-column ms-1">
+                    <div>Vous pouvez ajouter un produit</div>
+                    <a href="{{ path('product_new') }}" class="text-white bg-danger p-3 rounded-2 my-3" >Ajouter un produit</a>
+                </div>
             </div>
+
         {% endif %}
     </div>
     <div class="row row-cols-2 g-0">
@@ -69,6 +78,16 @@
                             </div>
                             <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
                         </a>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="col d-flex align-items-center">
+                            <div class="mx-2 color_product_list_admin"><a href="{{ path('product_edit', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 fw-bold" >Modifier</a></div>                                
+                            <form method="post" action="{{ path('product_delete', {'idproduct': product.idproduct}) }}" onsubmit="return confirm('êtes vous sur de vouloir supprimer le produit ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.idproduct) }}">
+                                <button class="btn rounded-2 fw-bold delete_button">Supprimer</button>
+                            </form>
+                        </div>
+                    {% endif %}
                     </div>
 
                 </div>

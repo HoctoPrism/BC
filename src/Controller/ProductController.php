@@ -133,7 +133,7 @@ class ProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute('product_index');
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render('product/new.html.twig', [
@@ -240,7 +240,7 @@ class ProductController extends AbstractController
             }
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('product/edit.html.twig', [
@@ -262,6 +262,6 @@ class ProductController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('product_index');
+        return $this->redirectToRoute('category_index');
     }
 }
