@@ -14,9 +14,8 @@
             {% if animal.idcategoryparent is empty %}
 
                 <li>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a class="dropdown-item fs-5" id="CatPlusMinusEvent" href="/category/{{ animal.idcategory }}">{{ animal.namecategory|title }}</a>
-                        <div id="CatPlusMinus" class="text-warning fs-5 fw-bold pe-3"></div>
+                    <div class="d-flex justify-content-between align-items-center" id="CatHoverMega">
+                        <a class="dropdown-item fs-5 CatHoverMega text-secondary" href="/category/{{ animal.idcategory }}">{{ animal.namecategory|title }}</a>
                     </div>
                     <ul class="dropdown-menu dropdown-submenu">
 
@@ -24,9 +23,8 @@
                             {% if mainCategory.idcategoryparent is not empty and animal.idcategory == mainCategory.idcategoryparent.idcategory %}
 
                                 <li>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <a class="dropdown-item fs-6" href="/category/{{ mainCategory.idcategory }}">{{ mainCategory.namecategory|title }}</a>
-                                        <div id="CatPlusMinus" class="text-warning fs-6 fw-bold pe-3"></div>
+                                    <div class="d-flex justify-content-between align-items-center" id="CatHoverMega">
+                                        <a class="dropdown-item fs-6 CatHoverMega text-secondary" href="/category/{{ mainCategory.idcategory }}">{{ mainCategory.namecategory|title }}</a>
                                     </div>
                                     <ul class="dropdown-menu dropdown-submenu">
 
@@ -34,7 +32,7 @@
                                             {% if subCategory.idcategoryparent is not empty and mainCategory.idcategory == subCategory.idcategoryparent.idcategory %}
 
                                                 <li>
-                                                    <a class="dropdown-item" href="/category/{{ subCategory.idcategory }}">{{ subCategory.namecategory|title }}</a>
+                                                    <a class="dropdown-item CatHoverMega text-secondary" href="/category/{{ subCategory.idcategory }}">{{ subCategory.namecategory|title }}</a>
                                                 </li>
 
                                             {% endif %}

@@ -320,6 +320,10 @@ li {
     box-shadow: 0 0 15px #5051604d;
     z-index: 1;
 }
+.CatHoverMega.dropdown-item:hover {
+    background-color: #ffccbd !important;
+    color: white !important;
+}
 /**********************/
 /*
 *
