@@ -49,16 +49,21 @@
             </div>
             
             {% else %}
-            <div>Le panier est vide, RETOURNE ACHETER</div>
+            <div class="col-lg-9 col-12 fs-1 d-flex align-items-center justify-content-center flex-column">
+                <div>Le panier est vide, tristesse, ouin ouin</div>
+                <div class="text-warning fw-bold"> :(</div>
+            </div>
         {% endif %}
         <div class="col-lg-3 col-12">
             <div class="p-3 mx-5 my-3 bg-light rounded-3 d-flex flex-column align-items-center justify-content-center">
                 <div class="fs-5 fw-bold mt-3 text-center">Montant total du panier</div>
                 <div class="my-3 fs-4">{{ total | format_number({fraction_digit: 2}) }}€</div>
-                <div class="mt-5">
-                    <a href="{{ path('basket_delivery') }}" class="btn btn-warning text-white">Passer commande</a>
-                </div>
-                <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
+                {% if baskets is not empty %}
+                    <div class="mt-5">
+                        <a href="{{ path('basket_delivery') }}" class="btn btn-warning text-white">Passer commande</a>
+                    </div>
+                    <div class="mt-2 ht_size">Panier affiché TTC sur la base d'une TVA à 20%.</div>
+                {% endif %}
             </div>
         </div>
     </div>
