@@ -77,6 +77,16 @@
                                                                 </div>
                                                                 <span class="text-warning me-2">{{ (product.htproduct * 1.2)|format_number({fraction_digit: 2})}}€</span>
                                                             </a>
+
+                                                            {% if is_granted('ROLE_ADMIN') %}
+                                                            <div class="col d-flex align-items-center">
+                                                                <div class="mx-2 color_product_list_admin"><a href="{{ path('product_edit', {'idproduct': product.idproduct}) }}" class="p-3 rounded-2 fw-bold" >Modifier</a></div>                                
+                                                                <form method="post" action="{{ path('product_delete', {'idproduct': product.idproduct}) }}" onsubmit="return confirm('êtes vous sur de vouloir supprimer le produit ?');">
+                                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.idproduct) }}">
+                                                                    <button class="btn rounded-2 fw-bold delete_button">Supprimer</button>
+                                                                </form>
+                                                            </div>
+                                                        {% endif %}
                                                         </div>
 
                                                     </div>

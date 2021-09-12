@@ -9,27 +9,27 @@
                 <div class="column-xs-12 column-md-7">
                     <div>
                         <div class="product-image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="active w-100">
+                            <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="img-fluid active main_picture_product">
                         </div>
                         <ul class="image-list d-flex">
                             <li class="image-item mx-3">
                                 {% if product.image1 is not empty %}
-                                    <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                    <img src="{{ asset('upload/' ~ product.image1) }}" alt="'image 1 de : ' {{ product.nameproduct }}" class="produit_photo_produit img-fluid">
                                 {% endif %}
                             </li>
                             <li class="image-item mx-3">
                                 {% if product.image2 is not empty %}
-                                    <img src="{{ asset('upload/' ~ product.image2) }}" alt="'image 2 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                    <img src="{{ asset('upload/' ~ product.image2) }}" alt="'image 2 de : ' {{ product.nameproduct }}" class="produit_photo_produit img-fluid">
                                 {% endif %}
                             </li>
                             <li class="image-item mx-3">
                                 {% if product.image3 is not empty %}
-                                    <img src="{{ asset('upload/' ~ product.image3) }}" alt="'image 3 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                    <img src="{{ asset('upload/' ~ product.image3) }}" alt="'image 3 de : ' {{ product.nameproduct }}" class="produit_photo_produit img-fluid">
                                 {% endif %} 
                             </li>
                             <li class="image-item mx-3">
                                 {% if product.image4 is not empty %}
-                                    <img src="{{ asset('upload/' ~ product.image4) }}" alt="'image 4 de : ' {{ product.nameproduct }}" class="produit_photo_produit">
+                                    <img src="{{ asset('upload/' ~ product.image4) }}" alt="'image 4 de : ' {{ product.nameproduct }}" class="produit_photo_produit img-fluid">
                                 {% endif %}
                             </li>
                         </ul>
