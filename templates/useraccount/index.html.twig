@@ -3,6 +3,11 @@
 {% block title %}La Nimes'alerie - Mon Compte{% endblock %}
 
 {% block body %}
+
+<pre>
+    {{ dump(orders) }}
+</pre>
+
 <section class="container-fluid row row-cols-2">
     <div class="col-2 p-3 mt-4">
         <a href="#infos"><div class="text-secondary fs-5 p-1">Mes informations</div></a>
@@ -121,7 +126,13 @@
         <div class="col-12 w-100">
             <div class="text-secondary text-center my-5" id="baskets">
                 <h2 class="fs-1">Commande en cours</h2>
-                <div class="fs-2">0</div>
+                {% set break = false %}
+                {% for order in orders %}
+                    {% if order.iduser.iduser == app.user.iduser and break != true %}
+                        <div class="fs-2">{{ order.iduser|length }}</div>
+                        {% set break = true %}
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="text-secondary" id="orders">
                 <h2 class="fs-1 text-center mb-5">Historique des commandes</h2>

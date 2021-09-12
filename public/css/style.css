@@ -252,6 +252,12 @@ li {
     *CSS POUR LA NAV
 *
 */
+.perso_link_dark a{
+    color: #505160 !important;
+}
+.perso_link_light a{
+    color: #FFF !important;
+}
 .hoverLogin a {
     color: #FDAB91 !important;
 }
@@ -269,12 +275,6 @@ li {
 .dropdown>.dropdown-toggle:active {
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
-}
-.perso_link_dark a{
-    color: #505160 !important;
-}
-.perso_link_light a{
-    color: #FFF !important;
 }
 .perso_search {
     border-top-left-radius: 5px;
