@@ -36,6 +36,29 @@ class CategoryController extends AbstractController
     }
 
     #[IsGranted("ROLE_ADMIN")]
+    #[Route('/all', name: 'categories_index', methods: ['GET', 'POST'])]
+    public function categories(CategoryRepository $categoryRepository, ProductRepository $productRepository, Request $request): Response
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $form = $this->createForm(FormSearchType::class);
+        $form->handleRequest($request);
+
+        $result = $productRepository->findAll();
+
+        if($form->isSubmitted() && $form->isValid()){
+            $result = $productRepository->searchProduct($form->getData());
+        }
+
+        return $this->render('category/categories.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+            'form' => $form->createView(),
+            'results' => $result
+        ]);
+    }
+
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/new', name: 'category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
