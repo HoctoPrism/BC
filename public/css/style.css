@@ -354,7 +354,13 @@ li {
 .p_del_button {
     background-color: #d68585;
 }
-
+.produit_photo {
+    width: 5rem;
+    height: 100%;
+}
+.product_height_order {
+    height: 10rem;
+}
 
 /*
 *

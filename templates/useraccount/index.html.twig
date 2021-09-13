@@ -4,10 +4,6 @@
 
 {% block body %}
 
-<pre>
-    {{ dump(orders) }}
-</pre>
-
 <section class="container-fluid row row-cols-2">
     <div class="col-2 p-3 mt-4">
         <a href="#infos"><div class="text-secondary fs-5 p-1">Mes informations</div></a>
@@ -146,8 +142,16 @@
                             <div class="d-flex row text-center p-3">
                                 <div class="col-1">#1</div>
                                 <div class="col-3">N°{{ order.idorder }}</div>
-                                <div class="col-3">197€80 TTC</div>
-                                <div class="col-3">Expédiée le 13/02/2017</div>
+                                <div class="col-3">
+                                    {% set totalPrice = 0 %}
+                                    {% for item in order.productOrders.snapshot %}
+                                        {% set totalPrice = totalPrice + ((item.idproduct.htproduct * 1.2 ) * item.quantity) %}
+                                        {% if loop.last %}
+                                            {{ totalPrice|format_number({fraction_digit: 2}) }}€ TTC    
+                                        {% endif %}
+                                    {% endfor %} 
+                                </div>
+                                <div class="col-3">Commandé le {{ order.orderdate|format_datetime('short', 'none', locale='fr') }}</div>
                                 <div class="accordion accordion-flush col-2" id="accordionFlush{{order.idorder}}">
                                     <h2 class="accordion-header d-flex justify-content-center align-items-center" id="flush-heading{{order.idorder}}">
                                         <button class="btn collapsed p-0 perso_accordion_b_produit text-secondary d-flex colorTrigger" id="colorTrigger1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{order.idorder}}" aria-expanded="false" aria-controls="flush-collapse{{order.idorder}}">
@@ -167,13 +171,11 @@
                                         <div class="my-2">Mode de paiement : <strong>{{ order.idpayment.namepayment|title }}</strong></div>
                                         <div class="my-2">Mode de livraison : <strong>Livraison Chronopost Express (13h)</strong></div>
                                         {% for item in order.productOrders.snapshot %}
-                                            <pre>
-                                                {{ dump(item) }}
-                                            </pre>
-                                            <div class="d-flex row align-items-center justify-content-center border-top">
-                                                <div class="col-7"><img src="" alt="croquette de chat"></div>
-                                                <div class="col-2 text-end">{{ item.quantity }}</div>
-                                                <div class="col-3 text-end">prix</div>
+                                            <div class="d-flex row align-items-center justify-content-center border-top product_height_order">
+                                                <div class="col-2 my-2 d-flex justify-content-center align-items-center"><img src="{{ asset('upload/' ~ item.idproduct.image1) }}" alt="{{ item.idproduct.nameproduct }}" class="produit_photo"></div>
+                                                <div class="col-7">{{ item.idproduct.nameproduct }}</div>
+                                                <div class="col-1 text-end">x{{ item.quantity }}</div>
+                                                <div class="col-2 text-end">{{ (item.quantity * (item.idproduct.htproduct * 1.2 ))|format_number({fraction_digit: 2}) }}</div>
                                             </div>
                                         {% endfor %}
                                     </div>
@@ -186,9 +188,17 @@
                                             </div>
                                             <div class="d-flex justify-content-between my-1 bg-warning p-2 text-white fw-bold">
                                                 <div>Total de la commande</div>
-                                                <div>197€80</div>
+                                                <div>
+                                                    {% set totalPrice = 0 %}
+                                                    {% for item in order.productOrders.snapshot %}
+                                                        {% set totalPrice = totalPrice + ((item.idproduct.htproduct * 1.2 ) * item.quantity) %}
+                                                        {% if loop.last %}
+                                                            {{ totalPrice|format_number({fraction_digit: 2}) }}€ TTC    
+                                                        {% endif %}
+                                                    {% endfor %} 
+                                                </div>
                                             </div>
-                                            <div class="text-end"><a href="#" class="text-secondary">Télécharger la facture</a></div>
+                                            <div class="text-end m-2"><a href="#" class="text-secondary fw-bold">Télécharger la facture</a></div>
                                         </div>
                                     </div>
                                 </div>
