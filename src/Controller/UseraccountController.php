@@ -2,32 +2,30 @@
 
 namespace App\Controller;
 
-use App\Entity\Address;
 use App\Entity\Useraccount;
 use App\Form\ModifyPasswordType;
 use App\Form\UseraccountType;
 use App\Repository\AddressRepository;
+use App\Repository\OrdersRepository;
 use App\Repository\UseraccountRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route('/useraccount')]
 class UseraccountController extends AbstractController
 {
 
     #[Route('/', name: 'useraccount_index', methods: ['GET'])]
-    public function index(UseraccountRepository $useraccountRepository,  UserInterface $user, AddressRepository $addressRepository): Response
+    public function index(UseraccountRepository $useraccountRepository, AddressRepository $addressRepository, OrdersRepository $order): Response
     {
-        $user = $this->getUser();
-
         return $this->render('useraccount/index.html.twig', [
             'useraccount' => $useraccountRepository->findAll(),
-            'iduser' => $user,
-            'addresses' => $addressRepository->findAll()
+            'iduser' =>  $this->getUser(),
+            'addresses' => $addressRepository->findAll(),
+            'orders' => $order->findAll()
         ]);
     }
 

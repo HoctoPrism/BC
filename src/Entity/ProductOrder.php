@@ -26,7 +26,7 @@ class ProductOrder
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="productOrders")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="productOrders", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idProduct", referencedColumnName="idProduct")
      * })
@@ -34,7 +34,7 @@ class ProductOrder
     private $productid;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="productOrders")
+     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="productOrders", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idOrder", referencedColumnName="idOrder")
      * })
