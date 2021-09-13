@@ -21,8 +21,11 @@
         <div class="row align-items-center my-5 bg-secondary rounded-3 text-white py-4 w-100" id="infos">
             {% if is_granted('ROLE_ADMIN') %}
             <div class="col-12 bg-light rounded-3 d-flex justify-content-center align-items-center flex-column">
-                <div class="text-secondary fs-4 pt-2">En tant qu'administrateur vous pouvez accéder à la liste des utilisateurs ainsi qu'au dashboard</div>
+                <div class="text-secondary fs-4 pt-2">En tant qu'administrateur vous pouvez accéder au back office du site et au dashboard</div>
                 <div class="py-5">
+                    <a href="{{ path('categories_index') }}" target="_blank" class="text-white bg-danger p-3 rounded-2 my-3" >CATEGORIES</a>
+                    <a href="{{ path('category_index') }}" target="_blank" class="text-white bg-danger p-3 rounded-2 my-3" >PRODUITS</a>
+                    <a href="{{ path('brand_index') }}" target="_blank" class="text-white bg-danger p-3 rounded-2 my-3" >MARQUES</a>
                     <a href="{{ path('user_admin_index') }}" class="text-white bg-danger p-3 rounded-2 my-3" >UTILISATEURS</a>
                     <a href="http://localhost:4200/" target="_blank" class="text-white bg-danger p-3 rounded-2 my-3" >DASHBOARD</a>
                 </div>
@@ -170,7 +173,7 @@
                                             <div class="d-flex row align-items-center justify-content-center border-top">
                                                 <div class="col-7"><img src="" alt="croquette de chat"></div>
                                                 <div class="col-2 text-end">{{ item.quantity }}</div>
-                                                <div class="col-3 text-end"></div>
+                                                <div class="col-3 text-end">prix</div>
                                             </div>
                                         {% endfor %}
                                     </div>
