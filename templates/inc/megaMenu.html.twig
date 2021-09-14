@@ -9,7 +9,11 @@
     </button>
 
     <ul class="align-items-center justify-content-center dropdown-menu megaMenuMargin" aria-labelledby="dropdownMenuButton">
-
+        <li class="border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ path('category_index') }}" class="dropdown-item fs-5 text-warning">Voir tout</a>
+            </div>
+        </li>
         {% for animal in categories %}
             {% if animal.idcategoryparent is empty %}
 
