@@ -11,6 +11,7 @@ use App\Repository\UseraccountRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -48,16 +49,14 @@ class UseraccountController extends AbstractController
     }
 
     #[Route('/{emailuser}/passwordReset', name: 'useraccount_password', methods: ['GET', 'POST'])]
-    public function passwordReset(Request $request, Useraccount $useraccount, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function passwordReset(Request $request, Useraccount $useraccount, UserPasswordHasherInterface $passwordEncoder): Response
     {
         $form = $this->createForm(ModifyPasswordType::class, $useraccount);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $passwordEncoder->encodePassword(
-                $useraccount,
-                $form->get('plainPassword')->getData()
-            );
+            $password = $passwordEncoder->hashPassword($useraccount, $form->get('plainPassword')->getData());
+            $useraccount->setPassword($password);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('useraccount_index');

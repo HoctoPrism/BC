@@ -12,6 +12,10 @@ security:
         App\Entity\Useraccount:
             algorithm: auto
 
+    password_hashers:
+        App\Entity\Useraccount:
+            algorithm: 'auto'
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
